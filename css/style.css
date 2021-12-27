@@ -1,0 +1,21 @@
+.line {
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path {
+  stroke: black;
+}
+
+.axis-grid line {
+  stroke: black;
+  stroke-width: 0.08;
+}
+
+.title-text {
+  font-size: 1.3em;
+}
+
+.title-image {
+  border-radius: 50%;
+}

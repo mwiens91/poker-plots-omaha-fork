@@ -1,0 +1,446 @@
+{
+  "players": [
+    {
+      "name": "Zen",
+      "colour": "#ffb6c1",
+      "avatar": "../data/avatars/zen.webp",
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-10-30",
+          "buyin": 4.0,
+          "delta": 14.25,
+          "cumSum": 14.25
+        },
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 2.0,
+          "delta": 115.0,
+          "cumSum": 129.25
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 50.0,
+          "delta": 23.13,
+          "cumSum": 152.38
+        },
+        {
+          "id": 4,
+          "date": "2021-12-21",
+          "buyin": 20.0,
+          "delta": 18.78,
+          "cumSum": 171.16
+        },
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "buyin": 30.0,
+          "delta": 0.66,
+          "cumSum": 171.82
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 125.76,
+          "delta": -91.38,
+          "cumSum": 80.44
+        }
+      ]
+    },
+    {
+      "name": "Juno",
+      "colour": "#00ff00",
+      "avatar": "../data/avatars/juno.webp",
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-10-30",
+          "buyin": 8.0,
+          "delta": -8.0,
+          "cumSum": -8.0
+        },
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 130.0,
+          "delta": -130.0,
+          "cumSum": -138.0
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 20.0,
+          "delta": -20.0,
+          "cumSum": -158.0
+        },
+        {
+          "id": 4,
+          "date": "2021-12-21",
+          "buyin": 20.0,
+          "delta": -8.78,
+          "cumSum": -166.78
+        },
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "buyin": 15.0,
+          "delta": 10.73,
+          "cumSum": -156.05
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 50.0,
+          "delta": 11.06,
+          "cumSum": -144.99
+        }
+      ]
+    },
+    {
+      "name": "Aidan",
+      "colour": "#191970",
+      "avatar": "../data/avatars/aidan.webp",
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-10-30",
+          "buyin": 6.25,
+          "delta": -4.25,
+          "cumSum": -4.25
+        },
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 6.0,
+          "delta": 1.1,
+          "cumSum": -3.15
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 20.0,
+          "delta": 3.01,
+          "cumSum": -0.14
+        },
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "buyin": 12.0,
+          "delta": -12.0,
+          "cumSum": -12.14
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 20.0,
+          "delta": -20.0,
+          "cumSum": -32.14
+        }
+      ]
+    },
+    {
+      "name": "Alex",
+      "colour": "#006400",
+      "avatar": "../data/avatars/alex.webp",
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-10-30",
+          "buyin": 2.0,
+          "delta": -2.0,
+          "cumSum": -2.0
+        },
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 116.0,
+          "delta": -116.0,
+          "cumSum": -118.0
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 20.0,
+          "delta": 44.06,
+          "cumSum": -73.94
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 40.0,
+          "delta": 1.73,
+          "cumSum": -72.21
+        }
+      ]
+    },
+    {
+      "name": "Jayden",
+      "colour": "#ffd700",
+      "avatar": "../data/avatars/jayden.webp",
+      "data": [
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 102.29,
+          "delta": -25.28,
+          "cumSum": -25.28
+        }
+      ]
+    },
+    {
+      "name": "David",
+      "colour": "#ff0000",
+      "avatar": "../data/avatars/david.webp",
+      "data": [
+        {
+          "id": 2,
+          "date": "2021-11-01",
+          "buyin": 10.0,
+          "delta": 95.27,
+          "cumSum": 95.27
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 80.0,
+          "delta": -80.0,
+          "cumSum": 15.27
+        },
+        {
+          "id": 4,
+          "date": "2021-12-21",
+          "buyin": 10.0,
+          "delta": -10.0,
+          "cumSum": 5.27
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 41.0,
+          "delta": -41.0,
+          "cumSum": -35.73
+        }
+      ]
+    },
+    {
+      "name": "Russell",
+      "colour": "#ff00ff",
+      "avatar": "../data/avatars/russell.webp",
+      "data": [
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "buyin": 10.0,
+          "delta": 29.8,
+          "cumSum": 29.8
+        }
+      ]
+    },
+    {
+      "name": "Matt",
+      "colour": "#00ffff",
+      "avatar": "../data/avatars/matt.webp",
+      "data": [
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "buyin": 20.0,
+          "delta": 0.61,
+          "cumSum": 0.61
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "buyin": 40.0,
+          "delta": 139.59,
+          "cumSum": 140.2
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "date": "2021-10-30",
+      "data": [
+        {
+          "player": "Zen",
+          "buyin": 4.0,
+          "delta": 14.25
+        },
+        {
+          "player": "Juno",
+          "buyin": 8.0,
+          "delta": -8.0
+        },
+        {
+          "player": "Aidan",
+          "buyin": 6.25,
+          "delta": -4.25
+        },
+        {
+          "player": "Alex",
+          "buyin": 2.0,
+          "delta": -2.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "date": "2021-11-01",
+      "data": [
+        {
+          "player": "Zen",
+          "buyin": 2.0,
+          "delta": 115.0
+        },
+        {
+          "player": "Jayden",
+          "buyin": 102.29,
+          "delta": -25.28
+        },
+        {
+          "player": "David",
+          "buyin": 10.0,
+          "delta": 95.27
+        },
+        {
+          "player": "Juno",
+          "buyin": 130.0,
+          "delta": -130.0
+        },
+        {
+          "player": "Aidan",
+          "buyin": 6.0,
+          "delta": 1.1
+        },
+        {
+          "player": "Alex",
+          "buyin": 116.0,
+          "delta": -116.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "date": "2021-11-05",
+      "data": [
+        {
+          "player": "Russell",
+          "buyin": 10.0,
+          "delta": 29.8
+        },
+        {
+          "player": "David",
+          "buyin": 80.0,
+          "delta": -80.0
+        },
+        {
+          "player": "Zen",
+          "buyin": 50.0,
+          "delta": 23.13
+        },
+        {
+          "player": "Juno",
+          "buyin": 20.0,
+          "delta": -20.0
+        },
+        {
+          "player": "Aidan",
+          "buyin": 20.0,
+          "delta": 3.01
+        },
+        {
+          "player": "Alex",
+          "buyin": 20.0,
+          "delta": 44.06
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "date": "2021-12-21",
+      "data": [
+        {
+          "player": "Zen",
+          "buyin": 20.0,
+          "delta": 18.78
+        },
+        {
+          "player": "Juno",
+          "buyin": 20.0,
+          "delta": -8.78
+        },
+        {
+          "player": "David",
+          "buyin": 10.0,
+          "delta": -10.0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "date": "2021-12-23",
+      "data": [
+        {
+          "player": "Juno",
+          "buyin": 15.0,
+          "delta": 10.73
+        },
+        {
+          "player": "Zen",
+          "buyin": 30.0,
+          "delta": 0.66
+        },
+        {
+          "player": "Matt",
+          "buyin": 20.0,
+          "delta": 0.61
+        },
+        {
+          "player": "Aidan",
+          "buyin": 12.0,
+          "delta": -12.0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "date": "2021-12-24",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 40.0,
+          "delta": 139.59
+        },
+        {
+          "player": "Juno",
+          "buyin": 50.0,
+          "delta": 11.06
+        },
+        {
+          "player": "Alex",
+          "buyin": 40.0,
+          "delta": 1.73
+        },
+        {
+          "player": "Aidan",
+          "buyin": 20.0,
+          "delta": -20.0
+        },
+        {
+          "player": "David",
+          "buyin": 41.0,
+          "delta": -41.0
+        },
+        {
+          "player": "Zen",
+          "buyin": 125.76,
+          "delta": -91.38
+        }
+      ]
+    }
+  ]
+}
