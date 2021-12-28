@@ -11,6 +11,8 @@ This script generates JSON data using the raw data of Poker Now ledgers
             name: str,
             colour: str,
             avatar: str,
+            gameCount: int,
+            cumSum: float,
             data:
               [
                 {
@@ -39,6 +41,9 @@ This script generates JSON data using the raw data of Poker Now ledgers
           }
         ]
     }
+
+Games are sorted by date (in "first to last" order). Players are sorted
+by cumulative sum.
 """
 
 import json
@@ -51,6 +56,7 @@ AVATAR_DATA_DIR = DATA_DIR + "/avatars"
 OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
 
+# Colours for players. Try to keep these as distinct as possible.
 PLAYER_COLOURS = {
     "aidan": "#191970",
     "alex": "#006400",
@@ -65,6 +71,7 @@ PLAYER_COLOURS = {
 # Initialize list of games with the following structure
 #   [
 #     {
+#       id: int,
 #       date: str,
 #       data:
 #         [
@@ -83,6 +90,7 @@ games = []
 #     name:
 #       [
 #         {
+#           id: int,
 #           date: str,
 #           buyin: float,
 #           delta: float,
@@ -154,9 +162,14 @@ for player in player_dict:
             name=player,
             colour=PLAYER_COLOURS[player.lower()],
             avatar=AVATAR_DATA_DIR + "/" + player.lower() + ".webp",
+            gameCount=len(player_dict[player]),
+            cumSum=player_dict[player][-1]["cumSum"],
             data=player_dict[player],
         )
     )
+
+# Sort players by cumulative sum
+players.sort(key=itemgetter("cumSum"), reverse=True)
 
 # Dump to file
 with open(OUTFILE, "w") as f:
