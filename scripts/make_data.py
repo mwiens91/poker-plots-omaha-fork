@@ -206,6 +206,9 @@ for player in player_dict:
 # Sort players by cumulative sum
 players.sort(key=itemgetter("cumSum"), reverse=True)
 
+# Sort games so newest are first
+games.sort(key=itemgetter("id"), reverse=True)
+
 # Dump to file
 with open(OUTFILE, "w") as f:
     json.dump(dict(players=players, games=games), f, indent=2)
