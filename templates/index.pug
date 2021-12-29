@@ -1,7 +1,6 @@
 head
   meta(content="text/html;charset=utf-8", http-equiv="Content-Type")
   meta(content="utf-8", http-equiv="encoding")
-  meta(name="viewport", content="width=device-width, initial-scale=1")
   title title
   // bootstrap
   link(
@@ -23,21 +22,35 @@ head
 .container.pt-3
   .row.pt-3.text-center
     h1 people
-    #people-grid.row.pt-5.pb-3.text-center
-        each player in data.players
-            .card.player-card.m-1(style={background: player.colour})
-              .row.g-0.align-items-center
-                .col-md-4
-                  img.img-fluid.avatar-circle(src=player.avatar, alt=player.name)
-                .col-md-8
-                  .card-body
-                    h5.card-title #{player.name}
-                    p.card-text
-                        | #{player.cumSum}
-  .row.pt-3.text-center
+    #people-grid.row.pt-3.pb-3(style={ "justify-content": "center" })
+      each player in data.players
+        .card.player-card.border-3.border-light.m-1(
+          style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)" }
+        )
+          .row.g-0.align-items-center
+            .col-md-4
+              img.img-fluid.avatar-circle(src=player.avatar, alt=player.name)
+            .col-md-8
+              .card-body
+                h5.card-title #{ player.name }
+                p.card-text
+                  - const parseCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+                  | #{ parseCurrency.format(player.cumSum) }
+  .row.pt-5.text-center
     h1 cumulative sum line plot
   .row
     #line-plot.col.text-center
-  .row.pt-3.text-center
+  .row.mx-5
+    #line-plot-avatar-div.col-2.py-1(style={ "text-align": "center" })
+      img#line-plot-avatar.img-fluid.avatar-circle(
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAABk0lEQVR4nO3SQQkAMAzAwPo3vaoIg3KnII/Mg8D8DuAmY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWiQWlnUTzYEi5dwAAAABJRU5ErkJggg=="
+      )
+    #line-plot-player-div.col-4.pt-2
+      h3#line-plot-player
+      #line-plot-amount
+    #line-plot-game-div.col-6.pt-2
+      h4#line-plot-game-title
+      #line-plot-game-info
+  .row.pt-5.text-center
     h1 cumulative sum box plot
   script(src="js/main.js", type="module")

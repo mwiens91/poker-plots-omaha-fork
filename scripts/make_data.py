@@ -9,7 +9,8 @@ This script generates JSON data using the raw data of Poker Now ledgers
         [
           {
             name: str,
-            colour: str,
+            colourHex: str,
+            colourRgb: [ int ],
             avatar: str,
             gameCount: int,
             cumSum: float,
@@ -18,9 +19,11 @@ This script generates JSON data using the raw data of Poker Now ledgers
                 {
                   id: int,
                   date: str,
+                  player: str,
                   buyin: float,
+                  buyout: float,
                   delta: float,
-                  cumSum: float
+                  cumSum: float,
                 }
               ]
           }
@@ -35,6 +38,7 @@ This script generates JSON data using the raw data of Poker Now ledgers
                 {
                   player: str,
                   buyin: float,
+                  buyout: float,
                   delta: float
                 }
               ]
@@ -56,16 +60,31 @@ AVATAR_DATA_DIR = DATA_DIR + "/avatars"
 OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
 
-# Colours for players. Try to keep these as distinct as possible.
-PLAYER_COLOURS = {
-    "aidan": "#191970",
-    "alex": "#006400",
-    "david": "#ff0000",
-    "jayden": "#ffd700",
-    "juno": "#00ff00",
-    "matt": "#00ffff",
-    "russell": "#ff00ff",
-    "zen": "#ffb6c1",
+# Colours for players. Try to keep these as distinct as possible. This
+# site is good for generating them:
+#
+# https://medialab.github.io/iwanthue/
+#
+# The two dictionaries should coincide.
+PLAYER_COLOURS_HEX = {
+    "aidan": "#4490ff",
+    "alex": "#62bc27",
+    "david": "#ff4aae",
+    "jayden": "#00d0cd",
+    "juno": "#db0046",
+    "matt": "#588f69",
+    "russell": "#ab3200",
+    "zen": "#ab7c00",
+}
+PLAYER_COLOURS_RGB = {
+    "aidan": [68, 144, 255],
+    "alex": [98, 188, 39],
+    "david": [255, 74, 174],
+    "jayden": [0, 208, 205],
+    "juno": [219, 0, 70],
+    "matt": [88, 143, 105],
+    "russell": [171, 50, 0],
+    "zen": [171, 124, 0],
 }
 
 # Initialize list of games with the following structure
@@ -78,6 +97,7 @@ PLAYER_COLOURS = {
 #           {
 #             player: str,
 #             buyin: float,
+#             buyout: float,
 #             delta: float
 #           }
 #         ]
@@ -92,7 +112,9 @@ games = []
 #         {
 #           id: int,
 #           date: str,
+#           player: str,
 #           buyin: float,
+#           buyout: float,
 #           delta: float,
 #         }
 #       ]
@@ -110,8 +132,8 @@ for filename in raw_data_files:
     # Initialize dict for this game - the date is encoded in the file
     # name
     date = filename[:-7]
-    this_id = current_id
-    game = {"id": this_id, "date": date, "data": []}
+    game_id = current_id
+    game = {"id": game_id, "date": date, "data": []}
 
     # Increment the current game ID
     current_id += 1
@@ -127,9 +149,14 @@ for filename in raw_data_files:
         player = l1.split()[0].lower().title()
         player_data = [float(x) for x in l2.split("\t")]
 
+        # Parse data
+        buyin = player_data[0]
+        buyout = player_data[1] + player_data[2]
+        delta = player_data[3]
+
         # Add data for this game dict
         game["data"].append(
-            dict(player=player, buyin=player_data[0], delta=player_data[3])
+            dict(player=player, buyin=buyin, buyout=buyout, delta=delta)
         )
 
         # Add data for the players dict
@@ -137,7 +164,14 @@ for filename in raw_data_files:
             player_dict[player] = []
 
         player_dict[player].append(
-            dict(id=this_id, date=date, buyin=player_data[0], delta=player_data[3])
+            dict(
+                id=game_id,
+                date=date,
+                player=player,
+                buyin=buyin,
+                buyout=buyout,
+                delta=delta,
+            )
         )
 
     # Push game
@@ -160,7 +194,8 @@ for player in player_dict:
     players.append(
         dict(
             name=player,
-            colour=PLAYER_COLOURS[player.lower()],
+            colourHex=PLAYER_COLOURS_HEX[player.lower()],
+            colourRgb=PLAYER_COLOURS_RGB[player.lower()],
             avatar=AVATAR_DATA_DIR + "/" + player.lower() + ".webp",
             gameCount=len(player_dict[player]),
             cumSum=player_dict[player][-1]["cumSum"],

@@ -8,21 +8,23 @@
   stroke: black;
 }
 
+.axis text {
+  font-size: 11px;
+}
+
 .axis-grid line {
   stroke: black;
   stroke-width: 0.08;
 }
 
-.title-text {
-  font-size: 1.3em;
-}
-
 /* page stuff */
 .avatar-circle {
   border-radius: 50%;
+  max-height: 75px;
+  max-width: 75px;
 }
 
 .player-card {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 250px;
+  max-height: 150px;
 }
