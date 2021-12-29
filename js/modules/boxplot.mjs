@@ -188,6 +188,40 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .on("mousemove", tooltipMousemove)
     .on("mouseout", tooltipMouseout);
 
+  // Whiskers
+  svg
+    .selectAll("horizlines")
+    .data(playersNew)
+    .enter()
+    .append("path")
+    .attr("stroke", "black")
+    .attr(
+      "d",
+      (d) => `
+        M${xScale(d.name) + halfBoxWidth / 3},${yScale(d.range[1])}
+        H${xScale(d.name) - halfBoxWidth / 3}
+      `
+    )
+    .on("mouseover", tooltipNormalMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
+  svg
+    .selectAll("horizlines")
+    .data(playersNew)
+    .enter()
+    .append("path")
+    .attr("stroke", "black")
+    .attr(
+      "d",
+      (d) => `
+        M${xScale(d.name) + halfBoxWidth / 3},${yScale(d.range[0])}
+        H${xScale(d.name) - halfBoxWidth / 3}
+      `
+    )
+    .on("mouseover", tooltipNormalMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
+
   // Outlier circles
   svg
     .selectAll("circle-group")
