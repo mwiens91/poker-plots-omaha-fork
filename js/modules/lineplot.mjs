@@ -36,7 +36,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
 
   // Sizes
   const width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  const height = 0.75 * width;
+  const height = 0.65 * width;
 
   // Scales - for x scale, start slightly before the first data point
   const allDates = playersNew
