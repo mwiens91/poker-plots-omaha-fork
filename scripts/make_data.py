@@ -206,7 +206,10 @@ for player in player_dict:
 # Sort players by cumulative sum
 players.sort(key=itemgetter("cumSum"), reverse=True)
 
-# Sort games so newest are first
+# Sort games so newest are first and the deltas are in decreasing order
+for game in games:
+    game["data"].sort(key=itemgetter("delta"), reverse=True)
+
 games.sort(key=itemgetter("id"), reverse=True)
 
 # Dump to file

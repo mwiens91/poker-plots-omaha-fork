@@ -572,16 +572,16 @@
       "date": "2021-11-05",
       "data": [
         {
+          "player": "Alex",
+          "buyin": 20.0,
+          "buyout": 64.06,
+          "delta": 44.06
+        },
+        {
           "player": "Russell",
           "buyin": 10.0,
           "buyout": 39.8,
           "delta": 29.8
-        },
-        {
-          "player": "David",
-          "buyin": 80.0,
-          "buyout": 0.0,
-          "delta": -80.0
         },
         {
           "player": "Zen",
@@ -590,22 +590,22 @@
           "delta": 23.13
         },
         {
-          "player": "Juno",
-          "buyin": 20.0,
-          "buyout": 0.0,
-          "delta": -20.0
-        },
-        {
           "player": "Aidan",
           "buyin": 20.0,
           "buyout": 23.01,
           "delta": 3.01
         },
         {
-          "player": "Alex",
+          "player": "Juno",
           "buyin": 20.0,
-          "buyout": 64.06,
-          "delta": 44.06
+          "buyout": 0.0,
+          "delta": -20.0
+        },
+        {
+          "player": "David",
+          "buyin": 80.0,
+          "buyout": 0.0,
+          "delta": -80.0
         }
       ]
     },
@@ -620,22 +620,10 @@
           "delta": 115.0
         },
         {
-          "player": "Jayden",
-          "buyin": 102.29,
-          "buyout": 77.01,
-          "delta": -25.28
-        },
-        {
           "player": "David",
           "buyin": 10.0,
           "buyout": 105.27,
           "delta": 95.27
-        },
-        {
-          "player": "Juno",
-          "buyin": 130.0,
-          "buyout": 0.0,
-          "delta": -130.0
         },
         {
           "player": "Aidan",
@@ -644,10 +632,22 @@
           "delta": 1.1
         },
         {
+          "player": "Jayden",
+          "buyin": 102.29,
+          "buyout": 77.01,
+          "delta": -25.28
+        },
+        {
           "player": "Alex",
           "buyin": 116.0,
           "buyout": 59.91,
           "delta": -56.09
+        },
+        {
+          "player": "Juno",
+          "buyin": 130.0,
+          "buyout": 0.0,
+          "delta": -130.0
         }
       ]
     },
@@ -662,10 +662,10 @@
           "delta": 14.25
         },
         {
-          "player": "Juno",
-          "buyin": 8.0,
+          "player": "Alex",
+          "buyin": 2.0,
           "buyout": 0.0,
-          "delta": -8.0
+          "delta": -2.0
         },
         {
           "player": "Aidan",
@@ -674,10 +674,10 @@
           "delta": -4.25
         },
         {
-          "player": "Alex",
-          "buyin": 2.0,
+          "player": "Juno",
+          "buyin": 8.0,
           "buyout": 0.0,
-          "delta": -2.0
+          "delta": -8.0
         }
       ]
     }
