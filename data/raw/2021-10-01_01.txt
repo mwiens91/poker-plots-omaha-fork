@@ -9,4 +9,4 @@ juno @ svNTrzTcCk
 aidan @ svNTrzTcCk
 6.00	0.00	7.10	+1.10
 alex @ svNTrzTcCk
-116.00	0.00	64.06	-116.00
+116.00	0.00	59.91	-56.09
