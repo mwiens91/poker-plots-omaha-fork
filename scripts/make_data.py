@@ -59,7 +59,7 @@ RAW_DATA_DIR = DATA_DIR + "/raw"
 OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
 
-AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/avatars"
+AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 
 # Colours for players. Try to keep these as distinct as possible. This
 # site is good for generating them:
