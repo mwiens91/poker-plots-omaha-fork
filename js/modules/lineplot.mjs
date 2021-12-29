@@ -166,7 +166,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .append("path")
     .attr("class", "line")
     .attr("d", (d) => line(d.data))
-    .style("stroke", (d, i) => d.colourHex)
+    .style("stroke", (d) => d.colourHex)
     .style("opacity", lineOpacity)
     .on("mouseover", (event, d) => {
       d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
@@ -199,7 +199,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .data(playersNew)
     .enter()
     .append("g")
-    .style("fill", (d, i) => d.colourHex)
+    .style("fill", (d) => d.colourHex)
     .selectAll("circle")
     .data((d) => d.data)
     .enter()
