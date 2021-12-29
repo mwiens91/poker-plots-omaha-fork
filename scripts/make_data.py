@@ -60,6 +60,7 @@ OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
 
 AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
+#AVATAR_BASE_URL = DATA_DIR + "/avatars"  # uncomment this to use local avatars
 
 # Colours for players. Try to keep these as distinct as possible. This
 # site is good for generating them:
