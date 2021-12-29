@@ -45,6 +45,7 @@ head
     #people-grid.row.pt-3.pb-3(style={ "justify-content": "center" })
       each player in data.players
         .card.player-card.border-3.border-light.m-1(
+          id="player-card-" + player.name,
           style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)" }
         )
           .row.g-0.align-items-center

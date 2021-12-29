@@ -257,9 +257,49 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
       infoBarGameInfoElement.text("");
     })
     .on("click", (event, d) => {
-      const element = document.getElementById("game-" + d.id)
+      const element = document.getElementById("game-" + d.id);
       element.scrollIntoView();
-    })
+    });
+
+  // Add mouseover events for player cards
+  for (const player of playersNew) {
+    const playerCardElement = document.getElementById(
+      "player-card-" + player.name
+    );
+
+    playerCardElement.addEventListener("mouseover", (event) => {
+      d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
+      d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
+
+      lines
+        .selectAll("path")
+        .filter((d) => d.name === player.name)
+        .style("opacity", lineOpacityHover)
+        .style("stroke-width", lineStrokeHover);
+
+      infoBarAvatarDivElement.style(
+        "background",
+        "rgb(" + player.colourRgb + ")"
+      );
+      infoBarPlayerDivElement.style(
+        "background",
+        "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ")"
+      );
+      infoBarAvatarElement.attr("src", player.avatar);
+      infoBarPlayerTitleElement.text(player.name);
+      infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
+    });
+    playerCardElement.addEventListener("mouseout", (event) => {
+      d3.selectAll(".line").style("opacity", lineOpacity);
+      d3.selectAll(".circle").style("opacity", circleOpacity);
+
+      lines
+        .selectAll("path")
+        .filter((d) => d.name === player.name)
+        .style("stroke-width", lineStroke)
+        .style("cursor", "none");
+    });
+  }
 };
 
 export { drawLinePlot };
