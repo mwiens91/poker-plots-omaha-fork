@@ -105,6 +105,31 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .attr("fill", "#000")
     .text("cumulative sum (CAD)");
 
+  // Tooltip stuff for
+  const tooltip = d3
+    .select("#" + divId)
+    .append("div")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .attr("class", "tooltip");
+  const tooltipMousemove = (event, d) =>
+    tooltip
+      .style("left", event.pageX + 70 + "px")
+      .style("top", event.pageY + "px");
+  const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
+  const tooltipNormalMouseover = (event, d) =>
+    tooltip
+      .style("opacity", 0.8)
+      .html(
+        `max: ${parseCurrency.format(d.range[1])}<br>` +
+          `75% quantile: ${parseCurrency.format(d.quartiles[2])}<br>` +
+          `50% quantile: ${parseCurrency.format(d.quartiles[1])}<br>` +
+          `25% quantile: ${parseCurrency.format(d.quartiles[0])}<br>` +
+          `min: ${parseCurrency.format(d.range[0])}`
+      );
+  const tooltipOutlierMouseover = (event, d) =>
+    tooltip.style("opacity", 0.8).html("outlier: " + parseCurrency.format(d));
+
   // Show the main vertical lines
   svg
     .selectAll("vertlines")
@@ -119,7 +144,10 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
       `
     )
     .attr("stroke", "black")
-    .style("width", 40);
+    .style("width", 40)
+    .on("mouseover", tooltipNormalMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
 
   // Draw the main box
   svg
@@ -137,7 +165,10 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
         H${xScale(d.name) + halfBoxWidth}
         Z
       `
-    );
+    )
+    .on("mouseover", tooltipNormalMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
 
   // Median lines
   svg
@@ -152,7 +183,10 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
         M${xScale(d.name) + halfBoxWidth},${yScale(d.quartiles[1])}
         H${xScale(d.name) - halfBoxWidth}
       `
-    );
+    )
+    .on("mouseover", tooltipNormalMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
 
   // Outlier circles
   svg
@@ -172,7 +206,10 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .append("circle")
     .attr("r", outlierRadius)
     .attr("cx", () => (Math.random() - 0.5) * jitter)
-    .attr("cy", (d) => yScale(d));
+    .attr("cy", (d) => yScale(d))
+    .on("mouseover", tooltipOutlierMouseover)
+    .on("mousemove", tooltipMousemove)
+    .on("mouseout", tooltipMouseout);
 };
 
 export { drawBoxPlot };

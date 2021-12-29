@@ -17,6 +17,14 @@
   stroke-width: 0.08;
 }
 
+.tooltip {
+  position: absolute;
+  color: white;
+  font-size: 11px;
+  background: black;
+  padding: 20px;
+}
+
 /* page stuff */
 .avatar-circle {
   border-radius: 50%;
