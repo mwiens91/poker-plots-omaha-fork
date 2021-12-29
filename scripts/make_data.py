@@ -56,9 +56,10 @@ import os
 
 DATA_DIR = "../data"
 RAW_DATA_DIR = DATA_DIR + "/raw"
-AVATAR_DATA_DIR = DATA_DIR + "/avatars"
 OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
+
+AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/avatars"
 
 # Colours for players. Try to keep these as distinct as possible. This
 # site is good for generating them:
@@ -196,7 +197,7 @@ for player in player_dict:
             name=player,
             colourHex=PLAYER_COLOURS_HEX[player.lower()],
             colourRgb=PLAYER_COLOURS_RGB[player.lower()],
-            avatar=AVATAR_DATA_DIR + "/" + player.lower() + ".webp",
+            avatar=AVATAR_BASE_URL + "/" + player.lower() + ".webp",
             gameCount=len(player_dict[player]),
             cumSum=player_dict[player][-1]["cumSum"],
             data=player_dict[player],

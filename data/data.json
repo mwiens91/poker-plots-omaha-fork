@@ -8,7 +8,7 @@
         143,
         105
       ],
-      "avatar": "../data/avatars/matt.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/matt.webp",
       "gameCount": 3,
       "cumSum": 146.63,
       "data": [
@@ -49,7 +49,7 @@
         124,
         0
       ],
-      "avatar": "../data/avatars/zen.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/zen.webp",
       "gameCount": 7,
       "cumSum": 83.19,
       "data": [
@@ -126,7 +126,7 @@
         50,
         0
       ],
-      "avatar": "../data/avatars/russell.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/russell.webp",
       "gameCount": 1,
       "cumSum": 29.8,
       "data": [
@@ -149,7 +149,7 @@
         188,
         39
       ],
-      "avatar": "../data/avatars/alex.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/alex.webp",
       "gameCount": 5,
       "cumSum": 8.01,
       "data": [
@@ -208,7 +208,7 @@
         144,
         255
       ],
-      "avatar": "../data/avatars/aidan.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/aidan.webp",
       "gameCount": 6,
       "cumSum": -6.98,
       "data": [
@@ -276,7 +276,7 @@
         208,
         205
       ],
-      "avatar": "../data/avatars/jayden.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/jayden.webp",
       "gameCount": 1,
       "cumSum": -25.28,
       "data": [
@@ -299,7 +299,7 @@
         74,
         174
       ],
-      "avatar": "../data/avatars/david.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/david.webp",
       "gameCount": 5,
       "cumSum": -30.38,
       "data": [
@@ -358,7 +358,7 @@
         0,
         70
       ],
-      "avatar": "../data/avatars/juno.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/avatars/juno.webp",
       "gameCount": 7,
       "cumSum": -204.99,
       "data": [
