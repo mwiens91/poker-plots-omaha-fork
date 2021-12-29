@@ -58,9 +58,9 @@ head
   .row.pt-5.pb-2.text-center
     h1 games
   each game in data.games
-    .row.pt-4
+    .row.pt-4(id="game-" + game.id)
       div
-        - const theDate = new Date(game.date)
+        - const theDate = new Date(game.date);
         h3= theDate.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
       div
         table.table(style={ "table-layout": "fixed" })

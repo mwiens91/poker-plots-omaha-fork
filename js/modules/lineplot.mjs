@@ -255,7 +255,11 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
       infoBarGameDivElement.style("background", "#FFFFFF");
       infoBarGameTitleElement.text("");
       infoBarGameInfoElement.text("");
-    });
+    })
+    .on("click", (event, d) => {
+      const element = document.getElementById("game-" + d.id)
+      element.scrollIntoView();
+    })
 };
 
 export { drawLinePlot };
