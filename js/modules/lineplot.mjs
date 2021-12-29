@@ -245,7 +245,9 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
           ", buy-out: " +
           parseCurrency.format(d.buyout) +
           ", net: " +
-          parseCurrency.format(d.delta)
+          parseCurrency.format(d.delta) +
+          ", cum-sum: " +
+          parseCurrency.format(d.cumSum)
       );
     })
     .on("mouseout", (event, d) => {
