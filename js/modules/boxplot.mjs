@@ -27,8 +27,8 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
       const q2 = d3.quantile(vals, 0.5);
       const q3 = d3.quantile(vals, 0.75);
       const iqr = q3 - q1;
-      const r0 = q1 - 1.5 * iqr;
-      const r1 = q3 + 1.5 * iqr;
+      const r0 = d3.max([d3.min(vals), q1 - 1.5 * iqr]);
+      const r1 = d3.min([d3.max(vals), q3 + 1.5 * iqr]);
 
       return {
         ...player,
