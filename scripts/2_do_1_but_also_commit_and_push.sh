@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+git pull
+
 ./1_make_data_and_html.sh
 
 git add ../index.html
