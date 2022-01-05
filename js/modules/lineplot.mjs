@@ -15,6 +15,11 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const circleRadius = "0.25em";
   const circleRadiusHover = "0.45em";
 
+  // Whether to show time series or to show game data in a (non-time)
+  // series
+  let useTimeSeries = true;
+  const getXVal = (d) => (useTimeSeries ? d.date : d.id);
+
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -47,11 +52,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   let height = 0.65 * width;
 
   // x-scale - start slightly before the first data point
-  let xScale = d3
-    .scaleTime()
-    .domain([lowerDate, d3.max(allDates)])
+  let xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
+    .domain(
+      useTimeSeries
+        ? [lowerDate, d3.max(allDates)]
+        : [0, d3.max(data.games.map((game) => game.id))]
+    )
     .range([0, width - margin.left - margin.right]);
-  const xScaleCopy = xScale.copy();
+  let xScaleCopy = xScale.copy();
 
   // y-scale
   const yScale = d3
@@ -70,23 +78,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Function to draw plot
   const drawGraph = () => {
-    // Make the zoom function - this references stuff that hasn't been
-    // defined yet, yet I still need to define it here (I think?)
-    const zoomed = ({ transform }) => {
-      // Axis
-      xScale = transform.rescaleX(xScaleCopy);
-      xAxis.scale(xScale);
-      xAxisG.call(xAxis);
-
-      // Lines
-      drawArea
-        .selectAll("circle")
-        .attr("cx", (d) => xScale(d.date))
-        .attr("cy", (d) => yScale(d.cumSum));
-
-      drawArea.selectAll("path").attr("d", (d) => line(d.data));
-    };
-
     // Make the SVG... G
     const svgG = svg
       .attr("preserveAspectRatio", "xMinYMin meet")
@@ -97,7 +88,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
           " " +
           (height + margin.top + margin.bottom)
       )
-      .call(d3.zoom().scaleExtent([0.5, 10]).on("zoom", zoomed))
       .append("g")
       .attr(
         "transform",
@@ -157,7 +147,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     // Line function
     const line = d3
       .line()
-      .x((d) => xScale(d.date))
+      .x((d) => xScale(getXVal(d)))
       .y((d) => yScale(d.cumSum));
 
     // Line plot info bar elements
@@ -223,7 +213,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .append("g")
       .attr("class", "circle")
       .append("circle")
-      .attr("cx", (d) => xScale(d.date))
+      .attr("cx", (d) => xScale(getXVal(d)))
       .attr("cy", (d) => yScale(d.cumSum))
       .attr("r", circleRadius)
       .style("opacity", circleOpacity)
@@ -279,6 +269,52 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         const element = document.getElementById("game-" + d.id);
         element.scrollIntoView();
       });
+
+    // Zooming and axis transition
+    const zoomed = ({ transform }) => {
+      // Axis
+      xScale = transform.rescaleX(xScaleCopy);
+      xAxis.scale(xScale);
+      xAxisG.call(xAxis);
+
+      // Lines and data points
+      drawArea.selectAll("circle").attr("cx", (d) => xScale(getXVal(d)));
+      drawArea.selectAll("path").attr("d", (d) => line(d.data));
+    };
+
+    const zoom = d3.zoom().scaleExtent([0.5, 10]).on("zoom", zoomed);
+
+    const transitionXAxis = () => {
+      // Change from time series to serializes (or vise versa)
+      useTimeSeries = useTimeSeries ? false : true;
+
+      // Scale
+      xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
+        .domain(
+          useTimeSeries
+            ? [lowerDate, d3.max(allDates)]
+            : [0.9, d3.max(data.games.map((game) => game.id))]
+        )
+        .range([0, width - margin.left - margin.right]);
+      xScaleCopy = xScale.copy();
+
+      // Axis
+      xAxis.scale(xScale);
+      xAxisG.transition().call(xAxis);
+
+      // Lines and data points
+      drawArea
+        .selectAll("circle")
+        .transition()
+        .attr("cx", (d) => xScale(getXVal(d)));
+      drawArea
+        .selectAll("path")
+        .transition()
+        .attr("d", (d) => line(d.data))
+        .on("end", () => svg.call(zoom.transform, d3.zoomIdentity));
+    };
+
+    svg.call(zoom).on("dblclick.zoom", null).on("dblclick", transitionXAxis);
 
     // Add mouseover events for player cards
     for (const player of playersNew) {
