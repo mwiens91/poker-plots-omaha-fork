@@ -4,11 +4,12 @@ This repo contains the source code for
 [this page](https://mwiens91.github.io/poker-plots/). It provides some
 nice interactive for poker time-series data. I made a video
 demonstrating what features it currently has
-[here](https://youtu.be/hBfKXofgwbg).
+[here](https://youtu.be/hBfKXofgwbg), although the video is a bit
+outdated.
 
 ## Tech
 
-[d3.js](https://d3js.org/) for any of the interactive visualizations;
+[D3.js](https://d3js.org/) for any of the interactive visualizations;
 [pug](https://pugjs.org/api/getting-started.html) for templating; and
 some minimal usage of [Bootstrap](https://getbootstrap.com/) for
 styling.
