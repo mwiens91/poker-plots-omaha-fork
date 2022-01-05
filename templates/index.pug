@@ -43,19 +43,29 @@ head
   .row.pt-3.text-center
     h1 people
     #people-grid.row.pt-3.pb-3(style={ "justify-content": "center" })
-      each player in data.players
-        .card.player-card.border-3.border-light.m-1(
-          id="player-card-" + player.name,
-          style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)" }
-        )
-          .row.g-0.align-items-center
-            .col-md-4
-              img.img-fluid.avatar-circle(src=player.avatar, alt=player.name)
-            .col-md-8
-              .card-body
-                h5.card-title #{ player.name }
-                p.card-text
-                  | #{ parseCurrency.format(player.cumSum) }
+      // batch players into N groups
+      - const N = 4;
+      - let i, j;
+      - let playersBatched = [];
+      - for (i = 0, j = data.players.length; i < j; i += N) {playersBatched.push(data.players.slice(i, i + N))}
+      each playersChunk in playersBatched
+        .row.p-0.my-1
+          each player in playersChunk
+            // Make sure the number after "col" is 12 / N
+            .col-3.p-0.g-0
+              div(
+                id="player-card-" + player.name,
+                style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)", "margin-left": "0.25rem", "margin-right": "0.25rem", "padding-top": "0.2rem", "padding-bottom": "0.2rem", "padding-left": "0.2rem" }
+              )
+                .row.g-0.align-items-center
+                  .col-md-4
+                    img.img-fluid.avatar-circle(
+                      src=player.avatar,
+                      alt=player.name
+                    )
+                  .col-md-8
+                    h5.card-title #{ player.name }
+                    | #{ parseCurrency.format(player.cumSum) }
   .row.pt-5.text-center
     h1 cumulative sum line plots
   .row
