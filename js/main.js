@@ -7,7 +7,11 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
   .then((response) => response.json())
   .then((data) => {
     const margin = { top: 20, bottom: 20, left: 30, right: 30 };
+    const maxWidth = 950;
 
-    drawLinePlot(data, "line-plot", 950, margin);
-    drawBoxPlot(data, "box-plot", 950, margin);
+    const redrawLinePlot = drawLinePlot(data, "line-plot", maxWidth, margin);
+    const redrawBoxPlot = drawBoxPlot(data, "box-plot", maxWidth, margin);
+
+    window.addEventListener("resize", redrawLinePlot);
+    window.addEventListener("resize", redrawBoxPlot);
   });

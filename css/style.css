@@ -1,6 +1,5 @@
 /* plot stuff */
 .line {
-  stroke-width: 2;
   fill: none;
 }
 
@@ -9,7 +8,7 @@
 }
 
 .axis text {
-  font-size: 11px;
+  font-size: 0.7rem;
 }
 
 .axis-grid line {
