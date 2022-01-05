@@ -6,6 +6,8 @@ import { drawLinePlot } from "./modules/lineplot.mjs";
 fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
   .then((response) => response.json())
   .then((data) => {
-    drawLinePlot(data, "line-plot", 950, 60, 40);
-    drawBoxPlot(data, "box-plot", 950, 60, 40);
+    const margin = { top: 20, bottom: 20, left: 30, right: 30 };
+
+    drawLinePlot(data, "line-plot", 950, margin);
+    drawBoxPlot(data, "box-plot", 950, margin);
   });

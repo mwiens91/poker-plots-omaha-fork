@@ -3,7 +3,7 @@
 // https://observablehq.com/@d3/box-plot
 
 // Function to draw box plot
-const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
+const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Display options
   const jitter = 0; // amount of random displacement for outlier dots (px)
   const outlierRadius = 3;
@@ -48,7 +48,7 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .domain(playersNew.map((player) => player.name))
     .paddingInner(1)
     .paddingOuter(0.5)
-    .range([0, width - xmargin]);
+    .range([0, width - margin.left - margin.right]);
   const yScale = d3
     .scaleLinear()
     .domain(
@@ -60,16 +60,25 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
         )
         .map((x) => 1.05 * x)
     )
-    .range([height - ymargin, 0]);
+    .range([height - margin.top - margin.bottom, 0]);
 
   // Make the SVG
   const svg = d3
     .select("#" + divId)
     .append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + (width + xmargin) + " " + (height + ymargin))
+    .attr(
+      "viewBox",
+      "0 0 " +
+        (width + margin.left + margin.right) +
+        " " +
+        (height + margin.top + margin.bottom)
+    )
     .append("g")
-    .attr("transform", `translate(${xmargin}, ${ymargin})`);
+    .attr(
+      "transform",
+      `translate(${margin.left + margin.right}, ${margin.top + margin.bottom})`
+    );
 
   // Axes
   const xAxis = d3.axisBottom(xScale);
@@ -81,7 +90,7 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
   // Grids
   const yAxisGrid = d3
     .axisLeft(yScale)
-    .tickSize(xmargin - width)
+    .tickSize(margin.left + margin.right - width)
     .tickFormat("")
     .ticks(10)
     .tickSizeOuter(0);
@@ -92,7 +101,7 @@ const drawBoxPlot = (data, divId, maxWidth, xmargin, ymargin) => {
   svg
     .append("g")
     .attr("class", "x axis")
-    .attr("transform", `translate(0, ${height - ymargin})`)
+    .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
     .call(xAxis);
 
   svg

@@ -2,7 +2,7 @@
 // https://codepen.io/zakariachowdhury/pen/JEmjwq
 
 // Function to draw multi-line plot
-const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
+const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Tweak display settings
   const lineOpacity = 0.6;
   const lineOpacityHover = 0.85;
@@ -49,7 +49,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
   let xScale = d3
     .scaleTime()
     .domain([lowerDate, d3.max(allDates)])
-    .range([0, width - xmargin]);
+    .range([0, width - margin.left - margin.right]);
   const xScaleCopy = xScale.copy();
 
   const yScale = d3
@@ -61,7 +61,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
         )
         .map((x) => 1.05 * x)
     )
-    .range([height - ymargin, 0]);
+    .range([height - margin.top - margin.bottom, 0]);
 
   // Make the zoom function - this references stuff that hasn't been
   // defined yet, yet I still need to define it here (I think?)
@@ -85,10 +85,19 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
     .select("#" + divId)
     .append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + (width + xmargin) + " " + (height + ymargin))
+    .attr(
+      "viewBox",
+      "0 0 " +
+        (width + margin.left + margin.right) +
+        " " +
+        (height + margin.top + margin.bottom)
+    )
     .call(d3.zoom().scaleExtent([0.5, 10]).on("zoom", zoomed))
     .append("g")
-    .attr("transform", `translate(${xmargin}, ${ymargin})`);
+    .attr(
+      "transform",
+      `translate(${margin.left + margin.right}, ${margin.top + margin.bottom})`
+    );
 
   // Axes
   const xAxis = d3.axisBottom(xScale);
@@ -100,7 +109,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
   // Grids
   const yAxisGrid = d3
     .axisLeft(yScale)
-    .tickSize(xmargin - width)
+    .tickSize(margin.left + margin.right - width)
     .tickFormat("")
     .ticks(10)
     .tickSizeOuter(0);
@@ -111,7 +120,7 @@ const drawLinePlot = (data, divId, maxWidth, xmargin, ymargin) => {
   const xAxisG = svg
     .append("g")
     .attr("class", "x axis")
-    .attr("transform", `translate(0, ${height - ymargin})`)
+    .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
     .call(xAxis);
 
   svg
