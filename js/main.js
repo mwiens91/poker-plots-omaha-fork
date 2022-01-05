@@ -13,26 +13,26 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
 
     const redrawLinePlot = drawLinePlot(
       data,
-      "line-plot",
+      "line-plot-parent",
       maxWidth,
       bigPlotMargin
     );
     const redrawBoxPlot = drawBoxPlot(
       data,
-      "box-plot",
+      "box-plot-parent",
       maxWidth,
       bigPlotMargin
     );
 
     const redrawWinnerPiePlot = drawPiePlot(
       data.players.filter((x) => x.cumSum > 0),
-      "winner-pie-chart",
+      "winner-pie-chart-parent",
       maxWidth,
       piePlotMargin
     );
     const redrawLoserPiePlot = drawPiePlot(
       data.players.filter((x) => x.cumSum < 0),
-      "loser-pie-chart",
+      "loser-pie-chart-parent",
       maxWidth,
       piePlotMargin
     );

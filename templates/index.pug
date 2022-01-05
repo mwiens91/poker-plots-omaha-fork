@@ -22,7 +22,7 @@ head
     href="favicon/favicon-16x16.png"
   )
   link(rel="manifest", href="favicon/site.webmanifest")
-  // bootstrap
+  // Bootstrap
   link(
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
     rel="stylesheet",
@@ -35,14 +35,124 @@ head
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p",
     crossorigin="anonymous"
   )
-  // d3
+  // D3
   script(src="https://d3js.org/d3.v7.min.js", type="text/javascript")
-  // css
+  // CSS
   link(type="text/css", href="css/style.css", rel="stylesheet")
 .container.pt-3
+  .row
+    .col-6
+      div(style={ display: "flex", "justify-content": "center" })
+        div(style={ "max-width": "410px" })
+          img(
+            src="favicon/android-chrome-192x192.png",
+            style={ height: "100px", width: "100px" }
+          )
+          p
+            b poker-plots
+            |
+            | generates a few interactive visualizations of our poker data.
+            | It also provides a log of all the data in nice table form.
+            br
+            br
+            | Some features might not be obvious on first use, so click below
+            | to see what's available.
+          button.btn.btn-primary(
+            type="button",
+            data-bs-toggle="collapse",
+            data-bs-target="#collapseHelp",
+            aria-expanded="false",
+            aria-controls="collapseHelp"
+          )
+            | more info
+          #collapseHelp.collapse.pt-4
+            h2 More info
+            h4 Terms
+            ul
+              li
+                b cumulative sum:
+                |
+                | how much money a player has accumulated at a given point in time
+                | (abbreviated "cum-sum" sometimes)
+              li
+                b buy-in:
+                |
+                | the total amount of money a player plays in a game
+              li
+                b buy-out:
+                |
+                | the amount of money a player leaves with in a game
+            h4 Features
+            h5 People section
+            ul
+              li hovering over a player's card will highlight their data on the line plot
+              li the cards also act as a legend for the player's colour
+            h5 Multi-line chart
+            ul
+              li hovering over a player's trajectory will highlight their entire trajectory
+              li hovering over a player's data point will show the data point's info on the info panel
+              li hovering over either of the above will show the player's info in the info panel
+              li scrolling will zoom in the x-axis
+              li dragging will pan on the x-axis
+            h5 Box plot
+            ul
+              li hovering over a player's "box and whiskers" will show the extrema and quartiles
+              li hovering over an outlier will show its value
+            h5 Pie charts
+            ul
+              li
+                | hovering over a player's arc or label will show their current cumulative sum
+                | and percentage of total winnings/losses
+            h4 About
+            | This page was written by Matt Wiens.!{ ' ' }
+            a(href="https://d3js.org/") D3.js
+            |
+            | is used for data visualization and the most of the styling is courtesy of!{ ' ' }
+            a(href="https://getbootstrap.com/") Bootstrap
+            | .
+            | Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience.
+            | The source code is available!{ ' ' }
+            a(href="https://github.com/mwiens91/poker-plots") here
+            | .
+    .col-6
+      div(
+        style={ display: "flex", "flex-direction": "column", "justify-content": "center", width: "100%", height: "100%" }
+      )
+        div
+          h2 Quick links
+        .link-div
+          | >
+          button.btn.btn-link(
+            onclick="document.getElementById('people').scrollIntoView();"
+          )
+            | People
+        .link-div
+          | >
+          button.btn.btn-link(
+            onclick="document.getElementById('line-chart').scrollIntoView();"
+          )
+            | Line chart
+        .link-div
+          | >
+          button.btn.btn-link(
+            onclick="document.getElementById('box-plot').scrollIntoView();"
+          )
+            | Box plot
+        .link-div
+          | >
+          button.btn.btn-link(
+            onclick="document.getElementById('pie-charts').scrollIntoView();"
+          )
+            | Pie charts
+        .link-div
+          | >
+          button.btn.btn-link(
+            onclick="document.getElementById('games').scrollIntoView();"
+          )
+            | Games log
   - const parseCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-  .row.pt-3.text-center
-    h1 people
+  #people.row.pt-5.text-center
+    h1 People
     #people-grid.row.pt-3.pb-3(style={ "justify-content": "center" })
       // batch players into N groups
       - const N = 4;
@@ -67,10 +177,10 @@ head
                   .col-md-8
                     h5.card-title #{ player.name }
                     | #{ parseCurrency.format(player.cumSum) }
-  .row.pt-5.text-center
-    h1 cumulative sums multi-line chart
+  #line-chart.row.pt-5.text-center
+    h1 Cumulative sums multi-line chart
   .row
-    #line-plot.col.text-center
+    #line-plot-parent.col.text-center
   .row.mx-5
     #line-plot-avatar-div.col-2.py-1(style={ "text-align": "center" })
       img#line-plot-avatar.img-fluid.avatar-circle(
@@ -82,21 +192,21 @@ head
     #line-plot-game-div.col-7.pt-2
       h3#line-plot-game-title
       #line-plot-game-info
-  .row.text-center(style={ "padding-top": "5rem" })
-    h1 cumulative sums box plot
+  #box-plot.row.text-center(style={ "padding-top": "5rem" })
+    h1 Cumulative sums box plot
   .row
-    #box-plot.col.text-center
-  .row.pt-5.pb-4.text-center
-    h1 current cumulative sums pie charts
+    #box-plot-parent.col.text-center
+  #pie-charts.row.pt-5.pb-4.text-center
+    h1 Current cumulative sums pie charts
   .row.pt-4.text-center
     .col-6
-      h2 winners
-      div#winner-pie-chart
+      h2 Winners
+      #winner-pie-chart-parent
     .col-6
-      h2 losers
-      div#loser-pie-chart
-  .row.pt-5.pb-3.text-center
-    h1 games
+      h2 Losers
+      #loser-pie-chart-parent
+  #games.row.pt-5.pb-3.text-center
+    h1 Games
   each game in data.games
     .row.pt-4(id="game-" + game.id)
       div

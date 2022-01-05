@@ -25,6 +25,16 @@
 }
 
 /* page stuff */
+ul {
+  padding-left: 1em;
+  margin-bottom: 0.5em;
+}
+
+.link-div {
+  display: flex;
+  align-items: center;
+}
+
 .avatar-circle {
   border-radius: 50%;
   max-height: 75px;
