@@ -12,8 +12,8 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   const circleOpacity = 0.85;
   const circleOpacityOnLineHover = 0.69;
-  const circleRadius = "0.25rem";
-  const circleRadiusHover = "0.45rem";
+  const circleRadius = "0.25em";
+  const circleRadiusHover = "0.45em";
 
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
