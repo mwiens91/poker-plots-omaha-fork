@@ -38,38 +38,35 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       };
     });
 
+  // Sizes
+  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+  let height = 0.65 * width;
+
+  // Scales
+  const xScale = d3
+    .scaleBand()
+    .domain(playersNew.map((player) => player.name))
+    .paddingInner(1)
+    .paddingOuter(0.5)
+    .range([0, width - margin.left - margin.right]);
+  const yScale = d3
+    .scaleLinear()
+    .domain(
+      d3
+        .extent(
+          playersNew
+            .map((player) => [...player.outliers, ...player.range])
+            .flat()
+        )
+        .map((x) => 1.05 * x)
+    )
+    .range([height - margin.top - margin.bottom, 0]);
+
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
 
   // Function to draw plot
   const drawGraph = () => {
-    // Sizes
-    const width = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
-    const height = 0.65 * width;
-
-    // Scales
-    const xScale = d3
-      .scaleBand()
-      .domain(playersNew.map((player) => player.name))
-      .paddingInner(1)
-      .paddingOuter(0.5)
-      .range([0, width - margin.left - margin.right]);
-    const yScale = d3
-      .scaleLinear()
-      .domain(
-        d3
-          .extent(
-            playersNew
-              .map((player) => [...player.outliers, ...player.range])
-              .flat()
-          )
-          .map((x) => 1.05 * x)
-      )
-      .range([height - margin.top - margin.bottom, 0]);
-
     // Make the SVG ... G
     const svgG = svg
       .attr(
@@ -267,6 +264,15 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
 
   // Return function to redraw graph
   return () => {
+    // Reset sizes
+    width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+    height = 0.65 * width;
+
+    // Update scales
+    xScale.range([0, width - margin.left - margin.right]);
+    yScale.range([height - margin.top - margin.bottom, 0]);
+
+    // Remove everything and redraw
     svg.selectAll("*").remove();
     drawGraph();
   };

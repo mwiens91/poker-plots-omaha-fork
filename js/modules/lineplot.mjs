@@ -42,36 +42,34 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   let lowerDate = new Date(Number(minDate));
   lowerDate.setDate(minDate.getDate() - 1); // this is possibly not robust?
 
+  // Sizes
+  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+  let height = 0.65 * width;
+
+  // x-scale - start slightly before the first data point
+  let xScale = d3
+    .scaleTime()
+    .domain([lowerDate, d3.max(allDates)])
+    .range([0, width - margin.left - margin.right]);
+  const xScaleCopy = xScale.copy();
+
+  // y-scale
+  const yScale = d3
+    .scaleLinear()
+    .domain(
+      d3
+        .extent(
+          playersNew.map((player) => player.data.map((v) => v.cumSum)).flat()
+        )
+        .map((x) => 1.05 * x)
+    )
+    .range([height - margin.top - margin.bottom, 0]);
+
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
 
   // Function to draw plot
   const drawGraph = () => {
-    // Sizes
-    const width = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
-    const height = 0.65 * width;
-
-    // Scales - for x scale, start slightly before the first data point
-    let xScale = d3
-      .scaleTime()
-      .domain([lowerDate, d3.max(allDates)])
-      .range([0, width - margin.left - margin.right]);
-    const xScaleCopy = xScale.copy();
-
-    const yScale = d3
-      .scaleLinear()
-      .domain(
-        d3
-          .extent(
-            playersNew.map((player) => player.data.map((v) => v.cumSum)).flat()
-          )
-          .map((x) => 1.05 * x)
-      )
-      .range([height - margin.top - margin.bottom, 0]);
-
     // Make the zoom function - this references stuff that hasn't been
     // defined yet, yet I still need to define it here (I think?)
     const zoomed = ({ transform }) => {
@@ -328,6 +326,15 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Return function to redraw graph
   return () => {
+    // Reset sizes
+    width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+    height = 0.65 * width;
+
+    // Update scales
+    xScale.range([0, width - margin.left - margin.right]);
+    yScale.range([height - margin.top - margin.bottom, 0]);
+
+    // Remove everything and redraw
     svg.selectAll("*").remove();
     drawGraph();
   };
