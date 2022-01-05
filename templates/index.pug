@@ -53,9 +53,9 @@ head
           each player in playersChunk
             // Make sure the number after "col" is 12 / N
             .col-3.p-0.g-0
-              div(
+              .player-card(
                 id="player-card-" + player.name,
-                style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)", "margin-left": "0.25rem", "margin-right": "0.25rem", "padding-top": "0.2rem", "padding-bottom": "0.2rem", "padding-left": "0.2rem" }
+                style={ background: "linear-gradient(55deg, rgb(" + player.colourRgb + ") 0%, rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ") 60%)" }
               )
                 .row.g-0.align-items-center
                   .col-md-4
