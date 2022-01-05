@@ -65,6 +65,31 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
 
+  // Tooltip stuff
+  const tooltip = d3
+    .select("#" + divId)
+    .append("div")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .attr("class", "tooltip");
+  const tooltipMousemove = (event, d) =>
+    tooltip
+      .style("left", event.pageX + 70 + "px")
+      .style("top", event.pageY + "px");
+  const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
+  const tooltipNormalMouseover = (event, d) =>
+    tooltip
+      .style("opacity", 0.8)
+      .html(
+        `max: ${parseCurrency.format(d.range[1])}<br>` +
+          `75% quantile: ${parseCurrency.format(d.quartiles[2])}<br>` +
+          `50% quantile: ${parseCurrency.format(d.quartiles[1])}<br>` +
+          `25% quantile: ${parseCurrency.format(d.quartiles[0])}<br>` +
+          `min: ${parseCurrency.format(d.range[0])}`
+      );
+  const tooltipOutlierMouseover = (event, d) =>
+    tooltip.style("opacity", 0.8).html("outlier: " + parseCurrency.format(d));
+
   // Function to draw plot
   const drawGraph = () => {
     // Make the SVG ... G
@@ -117,31 +142,6 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       .attr("transform", "rotate(-90)")
       .attr("fill", "#000")
       .text("cumulative sum (CAD)");
-
-    // Tooltip stuff for
-    const tooltip = d3
-      .select("#" + divId)
-      .append("div")
-      .style("opacity", 0)
-      .style("position", "absolute")
-      .attr("class", "tooltip");
-    const tooltipMousemove = (event, d) =>
-      tooltip
-        .style("left", event.pageX + 70 + "px")
-        .style("top", event.pageY + "px");
-    const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
-    const tooltipNormalMouseover = (event, d) =>
-      tooltip
-        .style("opacity", 0.8)
-        .html(
-          `max: ${parseCurrency.format(d.range[1])}<br>` +
-            `75% quantile: ${parseCurrency.format(d.quartiles[2])}<br>` +
-            `50% quantile: ${parseCurrency.format(d.quartiles[1])}<br>` +
-            `25% quantile: ${parseCurrency.format(d.quartiles[0])}<br>` +
-            `min: ${parseCurrency.format(d.range[0])}`
-        );
-    const tooltipOutlierMouseover = (event, d) =>
-      tooltip.style("opacity", 0.8).html("outlier: " + parseCurrency.format(d));
 
     // Show the main vertical lines
     svgG
