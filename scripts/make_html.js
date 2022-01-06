@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { writeFile } = require("fs");
+const minify = require("html-minifier").minify;
 const pug = require("pug");
 
 // File to write to
@@ -13,8 +14,16 @@ const data = require("../data/data.json");
 const compiledFunction = pug.compileFile("../templates/index.pug");
 
 // Compile it with the data
-const content = compiledFunction({
+let content = compiledFunction({
   data: data,
+});
+
+// Minify it
+content = minify(content, {
+  collapseInlineTagWhitespace: true,
+  collapseWhitespace: true,
+  removeAttributeQuotes: true,
+  removeComments: true,
 });
 
 // Save it
