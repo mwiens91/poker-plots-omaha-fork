@@ -29,15 +29,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Initialise a formatter for displaying dates
   const parseDate = d3.timeParse("%Y-%m-%d");
 
-  // Make deep clone of player data
-  const playersNew = structuredClone(data.players);
-
-  // Parse dates in the player data
-  for (const player of playersNew) {
-    for (const datum of player.data) {
-      datum.date = parseDate(datum.date);
-    }
-  }
+  // Parse dates in player data
+  const playersNew = data.players.map((player) => ({
+    ...player,
+    data: player.data.map((datum) => ({
+      ...datum,
+      date: parseDate(datum.date),
+    })),
+  }));
 
   // Dates for x-axis
   const allDates = playersNew
