@@ -50,13 +50,14 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
     window.addEventListener("resize", redrawBoxPlot);
     window.addEventListener("resize", redrawWinnerPiePlot);
     window.addEventListener("resize", redrawLoserPiePlot);
-
-    window.addEventListener("resize", () => {
-      console.log(document.documentElement.clientWidth)
-      if (document.documentElement.clientWidth < 950) {
-        document.getElementById("calendar").style.display = "none"
-      } else {
-        document.getElementById("calendar").style.display = "block"
-      }
-    });
   });
+
+// Don't show calendar block if window is small
+window.addEventListener("resize", () => {
+  console.log(document.documentElement.clientWidth)
+  if (document.documentElement.clientWidth < 950) {
+    document.getElementById("calendar").style.display = "none"
+  } else {
+    document.getElementById("calendar").style.display = "block"
+  }
+});
