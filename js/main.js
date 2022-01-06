@@ -1,4 +1,5 @@
 import { drawBoxPlot } from "./modules/boxplot.mjs";
+import { drawCalendar } from "./modules/calendar.mjs";
 import { drawLinePlot } from "./modules/lineplot.mjs";
 import { drawPiePlot } from "./modules/pieplot.mjs";
 
@@ -9,6 +10,7 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
   .then((data) => {
     const bigPlotMargin = { top: 20, bottom: 20, left: 30, right: 30 };
     const piePlotMargin = { top: 0, bottom: 0, left: 27, right: 27 };
+    const calendarMargin = { top: 0, bottom: 0, left: 0, right: 0 };
     const maxWidth = 950;
 
     const redrawLinePlot = drawLinePlot(
@@ -17,6 +19,7 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
       maxWidth,
       bigPlotMargin
     );
+
     const redrawBoxPlot = drawBoxPlot(
       data,
       "box-plot-parent",
@@ -36,6 +39,13 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
       maxWidth,
       piePlotMargin
     );
+
+    drawCalendar(
+      data,
+      "calendar-parent",
+      maxWidth,
+      calendarMargin
+    )
 
     window.addEventListener("resize", redrawLinePlot);
     window.addEventListener("resize", redrawBoxPlot);
