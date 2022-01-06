@@ -20,8 +20,6 @@ let content = compiledFunction({
 
 // Minify it
 content = minify(content, {
-  collapseInlineTagWhitespace: true,
-  collapseWhitespace: true,
   removeAttributeQuotes: true,
   removeComments: true,
 });

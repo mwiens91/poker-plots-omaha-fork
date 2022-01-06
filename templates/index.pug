@@ -51,20 +51,17 @@ head
           p
             b poker-plots
             |
-            | generates a few interactive visualizations of our poker data.
-            | It also provides a log of the data.
+            | generates a few interactive visualizations of our poker data. It also provides a log of the data.
             br
             br
-            | Some features might not be obvious on first use, so click below
-            | to see what's available.
+            | Some features might not be obvious on first use, so click below to see what's available.
           button.btn.btn-outline-primary(
             type="button",
             data-bs-toggle="collapse",
             data-bs-target="#collapseHelp",
             aria-expanded="false",
             aria-controls="collapseHelp"
-          )
-            | more info
+          ) more info
           #collapseHelp.collapse.pt-4
             h2 More info
             h4 Terms
@@ -72,8 +69,7 @@ head
               li
                 b cumulative sum:
                 |
-                | how much money a player has accumulated at a given point in time
-                | (abbreviated "cum-sum" sometimes)
+                | how much money a player has accumulated at a given point in time (abbreviated "cum-sum" sometimes)
               li
                 b buy-in:
                 |
@@ -102,26 +98,19 @@ head
               li hovering over an outlier will show its value
             h5 Pie charts
             ul
-              li
-                | hovering over a player's arc or label will show their current cumulative sum
-                | and percentage of total winnings/losses
+              li hovering over a player's arc or label will show their current cumulative sum and percentage of total winnings/losses
             h5 Games log
             ul
-              li
-                | hovering over a cell will show the total buy-ins
-              li
-                | clicking on a cell will scroll to the corresponding game
-              li
-                | a cell's intensity indicates the amount of total buy-ins
+              li hovering over a cell will show the total buy-ins
+              li clicking on a cell will scroll to the corresponding game
+              li a cell's intensity indicates the amount of total buy-ins
             h4 About
-            | This page was written by Matt Wiens.!{ ' ' }
+            | This page was written by Matt Wiens.#{ ' ' }
             a(href="https://d3js.org/") D3.js
             |
-            | is used for data visualization and the most of the styling is courtesy of!{ ' ' }
+            | is used for data visualization and the most of the styling is courtesy of#{ ' ' }
             a(href="https://getbootstrap.com/") Bootstrap
-            | .
-            | Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience.
-            | The source code is available!{ ' ' }
+            | . Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience. The source code is available#{ ' ' }
             a(href="https://github.com/mwiens91/poker-plots") here
             | .
     .col-6
