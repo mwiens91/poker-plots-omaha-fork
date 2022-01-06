@@ -1,13 +1,16 @@
 // Based off this link
 // https://observablehq.com/@d3/calendar
 
-// Function to draw calendar. Does *not* return a redraw function
-const drawCalendar = (data, divId, maxWidth, margin) => {
+// Function to draw calendar
+const drawCalendar = (data, divId, margin) => {
   // Display options
   const dayAbbrevs = "SMTWRFS";
   const cellSize = 17;
 
   const height = cellSize * 9;
+
+  // Fixed width
+  const width = 950
 
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
@@ -74,11 +77,11 @@ const drawCalendar = (data, divId, maxWidth, margin) => {
     .domain([0, d3.max(newData.map((datum) => datum.val))])
     .range(["#ebedf0", "teal"]);
 
-  // Width
-  const width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-
   // Make the SVG
-  const svg = d3.select("#" + divId).append("svg");
+  const svg = d3
+    .select("#" + divId)
+    .append("svg")
+    .attr("id", "calendar-svg");
 
   // Tooltip stuff
   const tooltip = d3
