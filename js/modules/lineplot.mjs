@@ -7,13 +7,13 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const lineOpacity = 0.6;
   const lineOpacityHover = 0.85;
   const otherLinesOpacityHover = 0.15;
-  const lineStroke = "0.15rem";
-  const lineStrokeHover = "0.2rem";
+  const lineStroke = "0.1rem";
+  const lineStrokeHover = "0.15rem";
 
   const circleOpacity = 0.85;
-  const circleOpacityOnLineHover = 0.69;
-  const circleRadius = "0.25em";
-  const circleRadiusHover = "0.45em";
+  const circleOpacityOnLineHover = 0.6;
+  const circleRadius = "0.2em";
+  const circleRadiusHover = "0.4em";
 
   // Whether to show time series or to show game data in a (non-time)
   // series
