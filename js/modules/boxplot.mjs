@@ -74,8 +74,8 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
     .attr("class", "tooltip");
   const tooltipMousemove = (event, d) =>
     tooltip
-      .style("left", event.pageX + 70 + "px")
-      .style("top", event.pageY + "px");
+      .style("left", event.pageX + 30 + "px")
+      .style("top", event.pageY - 20 + "px");
   const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
   const tooltipNormalMouseover = (event, d) =>
     tooltip
