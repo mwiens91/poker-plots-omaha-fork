@@ -105,7 +105,7 @@ const drawCalendar = (data, divId, margin) => {
       })}</b><br>` +
         (newData[d].id === null
           ? "no game"
-          : `total buy-in: ${parseCurrency.format(newData[d].val)}`)
+          : `total buy-ins: ${parseCurrency.format(newData[d].val)}`)
     );
 
   // svg stuff
