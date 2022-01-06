@@ -2,10 +2,7 @@
 
 This repo contains the source code for
 [this page](https://mwiens91.github.io/poker-plots/). It provides some
-nice interactive for poker time-series data. I made a video
-demonstrating what features it currently has
-[here](https://youtu.be/hBfKXofgwbg), although the video is a bit
-outdated.
+nice interactive for poker time-series data.
 
 ## Tech
 
