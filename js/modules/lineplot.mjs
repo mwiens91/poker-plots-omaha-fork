@@ -48,7 +48,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.65 * width;
+  let height = 0.5 * width;
 
   // x-scale - start slightly before the first data point
   let xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
@@ -362,7 +362,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   return () => {
     // Reset sizes
     width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-    height = 0.65 * width;
+    height = 0.5 * width;
 
     // Update scales
     xScale.range([0, width - margin.left - margin.right]);
