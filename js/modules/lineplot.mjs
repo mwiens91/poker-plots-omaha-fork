@@ -264,10 +264,9 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         infoBarGameTitleElement.text("");
         infoBarGameInfoElement.text("");
       })
-      .on("click", (event, d) => {
-        const element = document.getElementById("game-" + d.id);
-        element.scrollIntoView();
-      });
+      .on("click", (event, d) =>
+        document.getElementById("game-" + d.id).scrollIntoView()
+      );
 
     // Zooming and axis transition
     const zoomed = ({ transform }) => {
