@@ -9,8 +9,8 @@
         105
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 6,
-      "cumSum": 114.7,
+      "gameCount": 7,
+      "cumSum": 117.96,
       "data": [
         {
           "id": 5,
@@ -65,6 +65,38 @@
           "buyout": 51.83,
           "delta": -36.6,
           "cumSum": 114.7
+        },
+        {
+          "id": 14,
+          "date": "2022-01-06",
+          "player": "Matt",
+          "buyin": 40.0,
+          "buyout": 43.26,
+          "delta": 3.26,
+          "cumSum": 117.96
+        }
+      ]
+    },
+    {
+      "name": "Russell",
+      "colourHex": "#ab3200",
+      "colourRgb": [
+        171,
+        50,
+        0
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
+      "gameCount": 1,
+      "cumSum": 29.8,
+      "data": [
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Russell",
+          "buyin": 10.0,
+          "buyout": 39.8,
+          "delta": 29.8,
+          "cumSum": 29.8
         }
       ]
     },
@@ -77,8 +109,8 @@
         0
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 13,
-      "cumSum": 32.01,
+      "gameCount": 14,
+      "cumSum": 27.31,
       "data": [
         {
           "id": 1,
@@ -196,29 +228,15 @@
           "buyout": 17.8,
           "delta": -2.2,
           "cumSum": 32.01
-        }
-      ]
-    },
-    {
-      "name": "Russell",
-      "colourHex": "#ab3200",
-      "colourRgb": [
-        171,
-        50,
-        0
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
-      "gameCount": 1,
-      "cumSum": 29.8,
-      "data": [
+        },
         {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Russell",
-          "buyin": 10.0,
-          "buyout": 39.8,
-          "delta": 29.8,
-          "cumSum": 29.8
+          "id": 14,
+          "date": "2022-01-06",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 15.3,
+          "delta": -4.7,
+          "cumSum": 27.31
         }
       ]
     },
@@ -530,8 +548,8 @@
         70
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 13,
-      "cumSum": -78.69,
+      "gameCount": 14,
+      "cumSum": -77.25,
       "data": [
         {
           "id": 1,
@@ -649,11 +667,44 @@
           "buyout": 12.71,
           "delta": -7.29,
           "cumSum": -78.69
+        },
+        {
+          "id": 14,
+          "date": "2022-01-06",
+          "player": "Juno",
+          "buyin": 40.0,
+          "buyout": 41.44,
+          "delta": 1.44,
+          "cumSum": -77.25
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 14,
+      "date": "2022-01-06",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 40.0,
+          "buyout": 43.26,
+          "delta": 3.26
+        },
+        {
+          "player": "Juno",
+          "buyin": 40.0,
+          "buyout": 41.44,
+          "delta": 1.44
+        },
+        {
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 15.3,
+          "delta": -4.7
+        }
+      ]
+    },
     {
       "id": 13,
       "date": "2022-01-05",
