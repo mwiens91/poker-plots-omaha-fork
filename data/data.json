@@ -9,8 +9,8 @@
         105
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 8,
-      "cumSum": 144.86,
+      "gameCount": 9,
+      "cumSum": 212.26,
       "data": [
         {
           "id": 5,
@@ -83,6 +83,15 @@
           "buyout": 66.9,
           "delta": 26.9,
           "cumSum": 144.86
+        },
+        {
+          "id": 16,
+          "date": "2022-01-14",
+          "player": "Matt",
+          "buyin": 20.0,
+          "buyout": 87.4,
+          "delta": 67.4,
+          "cumSum": 212.26
         }
       ]
     },
@@ -210,155 +219,6 @@
           "buyout": 0.0,
           "delta": -40.0,
           "cumSum": 9.41
-        }
-      ]
-    },
-    {
-      "name": "Zen",
-      "colourHex": "#ab7c00",
-      "colourRgb": [
-        171,
-        124,
-        0
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 15,
-      "cumSum": 7.31,
-      "data": [
-        {
-          "id": 1,
-          "date": "2021-09-30",
-          "player": "Zen",
-          "buyin": 4.0,
-          "buyout": 18.25,
-          "delta": 14.25,
-          "cumSum": 14.25
-        },
-        {
-          "id": 2,
-          "date": "2021-10-01",
-          "player": "Zen",
-          "buyin": 2.0,
-          "buyout": 117.0,
-          "delta": 115.0,
-          "cumSum": 129.25
-        },
-        {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Zen",
-          "buyin": 50.0,
-          "buyout": 73.13,
-          "delta": 23.13,
-          "cumSum": 152.38
-        },
-        {
-          "id": 4,
-          "date": "2021-12-21",
-          "player": "Zen",
-          "buyin": 20.0,
-          "buyout": 38.78,
-          "delta": 18.78,
-          "cumSum": 171.16
-        },
-        {
-          "id": 5,
-          "date": "2021-12-23",
-          "player": "Zen",
-          "buyin": 30.0,
-          "buyout": 30.66,
-          "delta": 0.66,
-          "cumSum": 171.82
-        },
-        {
-          "id": 6,
-          "date": "2021-12-24",
-          "player": "Zen",
-          "buyin": 125.76,
-          "buyout": 34.38,
-          "delta": -91.38,
-          "cumSum": 80.44
-        },
-        {
-          "id": 7,
-          "date": "2021-12-27",
-          "player": "Zen",
-          "buyin": 47.09,
-          "buyout": 49.84,
-          "delta": 2.75,
-          "cumSum": 83.19
-        },
-        {
-          "id": 8,
-          "date": "2021-12-29",
-          "player": "Zen",
-          "buyin": 42.0,
-          "buyout": 40.33,
-          "delta": -1.67,
-          "cumSum": 81.52
-        },
-        {
-          "id": 9,
-          "date": "2021-12-30",
-          "player": "Zen",
-          "buyin": 22.0,
-          "buyout": 14.3,
-          "delta": -7.7,
-          "cumSum": 73.82
-        },
-        {
-          "id": 10,
-          "date": "2022-01-01",
-          "player": "Zen",
-          "buyin": 20.22,
-          "buyout": 16.64,
-          "delta": -3.58,
-          "cumSum": 70.24
-        },
-        {
-          "id": 11,
-          "date": "2022-01-03",
-          "player": "Zen",
-          "buyin": 100.0,
-          "buyout": 64.37,
-          "delta": -35.63,
-          "cumSum": 34.61
-        },
-        {
-          "id": 12,
-          "date": "2022-01-04",
-          "player": "Zen",
-          "buyin": 80.0,
-          "buyout": 79.6,
-          "delta": -0.4,
-          "cumSum": 34.21
-        },
-        {
-          "id": 13,
-          "date": "2022-01-05",
-          "player": "Zen",
-          "buyin": 20.0,
-          "buyout": 17.8,
-          "delta": -2.2,
-          "cumSum": 32.01
-        },
-        {
-          "id": 14,
-          "date": "2022-01-06",
-          "player": "Zen",
-          "buyin": 20.0,
-          "buyout": 15.3,
-          "delta": -4.7,
-          "cumSum": 27.31
-        },
-        {
-          "id": 15,
-          "date": "2022-01-12",
-          "player": "Zen",
-          "buyin": 20.0,
-          "buyout": 0.0,
-          "delta": -20.0,
-          "cumSum": 7.31
         }
       ]
     },
@@ -558,6 +418,164 @@
       ]
     },
     {
+      "name": "Zen",
+      "colourHex": "#ab7c00",
+      "colourRgb": [
+        171,
+        124,
+        0
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
+      "gameCount": 16,
+      "cumSum": -60.09,
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-09-30",
+          "player": "Zen",
+          "buyin": 4.0,
+          "buyout": 18.25,
+          "delta": 14.25,
+          "cumSum": 14.25
+        },
+        {
+          "id": 2,
+          "date": "2021-10-01",
+          "player": "Zen",
+          "buyin": 2.0,
+          "buyout": 117.0,
+          "delta": 115.0,
+          "cumSum": 129.25
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Zen",
+          "buyin": 50.0,
+          "buyout": 73.13,
+          "delta": 23.13,
+          "cumSum": 152.38
+        },
+        {
+          "id": 4,
+          "date": "2021-12-21",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 38.78,
+          "delta": 18.78,
+          "cumSum": 171.16
+        },
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "player": "Zen",
+          "buyin": 30.0,
+          "buyout": 30.66,
+          "delta": 0.66,
+          "cumSum": 171.82
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "player": "Zen",
+          "buyin": 125.76,
+          "buyout": 34.38,
+          "delta": -91.38,
+          "cumSum": 80.44
+        },
+        {
+          "id": 7,
+          "date": "2021-12-27",
+          "player": "Zen",
+          "buyin": 47.09,
+          "buyout": 49.84,
+          "delta": 2.75,
+          "cumSum": 83.19
+        },
+        {
+          "id": 8,
+          "date": "2021-12-29",
+          "player": "Zen",
+          "buyin": 42.0,
+          "buyout": 40.33,
+          "delta": -1.67,
+          "cumSum": 81.52
+        },
+        {
+          "id": 9,
+          "date": "2021-12-30",
+          "player": "Zen",
+          "buyin": 22.0,
+          "buyout": 14.3,
+          "delta": -7.7,
+          "cumSum": 73.82
+        },
+        {
+          "id": 10,
+          "date": "2022-01-01",
+          "player": "Zen",
+          "buyin": 20.22,
+          "buyout": 16.64,
+          "delta": -3.58,
+          "cumSum": 70.24
+        },
+        {
+          "id": 11,
+          "date": "2022-01-03",
+          "player": "Zen",
+          "buyin": 100.0,
+          "buyout": 64.37,
+          "delta": -35.63,
+          "cumSum": 34.61
+        },
+        {
+          "id": 12,
+          "date": "2022-01-04",
+          "player": "Zen",
+          "buyin": 80.0,
+          "buyout": 79.6,
+          "delta": -0.4,
+          "cumSum": 34.21
+        },
+        {
+          "id": 13,
+          "date": "2022-01-05",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 17.8,
+          "delta": -2.2,
+          "cumSum": 32.01
+        },
+        {
+          "id": 14,
+          "date": "2022-01-06",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 15.3,
+          "delta": -4.7,
+          "cumSum": 27.31
+        },
+        {
+          "id": 15,
+          "date": "2022-01-12",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 0.0,
+          "delta": -20.0,
+          "cumSum": 7.31
+        },
+        {
+          "id": 16,
+          "date": "2022-01-14",
+          "player": "Zen",
+          "buyin": 100.0,
+          "buyout": 32.6,
+          "delta": -67.4,
+          "cumSum": -60.09
+        }
+      ]
+    },
+    {
       "name": "Juno",
       "colourHex": "#db0046",
       "colourRgb": [
@@ -708,6 +726,24 @@
     }
   ],
   "games": [
+    {
+      "id": 16,
+      "date": "2022-01-14",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 20.0,
+          "buyout": 87.4,
+          "delta": 67.4
+        },
+        {
+          "player": "Zen",
+          "buyin": 100.0,
+          "buyout": 32.6,
+          "delta": -67.4
+        }
+      ]
+    },
     {
       "id": 15,
       "date": "2022-01-12",
