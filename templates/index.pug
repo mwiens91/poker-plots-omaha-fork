@@ -213,7 +213,7 @@ head
     .row.pt-4(id="game-" + game.id)
       div
         - const theDate = new Date(game.date.replace(/-/g, "/"));
-        h3= theDate.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+        h3= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
       div
         table.table(style={ "table-layout": "fixed" })
           thead

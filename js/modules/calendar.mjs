@@ -19,7 +19,7 @@ const drawCalendar = (data, divId, margin) => {
   });
 
   // Initialise a formatter for displaying dates
-  const parseDate = d3.timeParse("%Y-%m-%d");
+  const parseDate = d3.utcParse("%Y-%m-%d");
 
   // Massage the data so we just have (parsed) dates, total buy-ins and
   // game id
@@ -30,20 +30,20 @@ const drawCalendar = (data, divId, margin) => {
   }));
 
   // Get all dates to add in
-  const firstYearAddInDates = d3.timeDays(
-    new Date(newData[newData.length - 1].date.getFullYear(), 0, 1),
+  const firstYearAddInDates = d3.utcDays(
+    new Date(Date.UTC(newData[newData.length - 1].date.getFullYear(), 0, 1)),
     newData[newData.length - 1].date
   );
-  let lastYearAddInDates = d3.timeDays(
+  let lastYearAddInDates = d3.utcDays(
     newData[0].date,
-    new Date(newData[0].date.getFullYear() + 1, 0, 1)
+    new Date(Date.UTC(newData[0].date.getFullYear() + 1, 0, 1))
   );
   lastYearAddInDates.shift();
 
   let addInDates = [...firstYearAddInDates, ...lastYearAddInDates];
 
   newData.reduce((curr, next) => {
-    let tempDates = d3.timeDays(next.date, curr.date);
+    let tempDates = d3.utcDays(next.date, curr.date);
     tempDates.shift();
     addInDates.push(...tempDates);
     return next;
@@ -98,6 +98,7 @@ const drawCalendar = (data, divId, margin) => {
   const tooltipMouseover = (event, d) =>
     tooltip.style("opacity", 0.8).html(
       `<b>${X[d].toLocaleDateString("en-US", {
+        timeZone: "UTC",
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -175,7 +176,7 @@ const drawCalendar = (data, divId, margin) => {
   const month = year
     .append("g")
     .selectAll("g")
-    .data(([, I]) => d3.timeMonths(X[I[I.length - 1]], X[I[0]]))
+    .data(([, I]) => d3.utcMonths(X[I[I.length - 1]], X[I[0]]))
     .join("g");
 
   month

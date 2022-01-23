@@ -27,7 +27,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   });
 
   // Initialise a formatter for displaying dates
-  const parseDate = d3.timeParse("%Y-%m-%d");
+  const parseDate = d3.utcParse("%Y-%m-%d");
 
   // Parse dates in player data
   const playersNew = data.players.map((player) => ({
@@ -70,7 +70,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const maxZoomSerialized = Math.max(1, (maxGameId - 1) / maxGamesToShow);
 
   // x-scale - start slightly before the first data point
-  let xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
+  let xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
     .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
     .range([0, width - margin.left - margin.right]);
   let xScaleCopy = xScale.copy();
@@ -309,7 +309,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       useTimeSeries = useTimeSeries ? false : true;
 
       // Scale
-      xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
+      xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
         .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
         .range([0, width - margin.left - margin.right]);
       xScaleCopy = xScale.copy();
