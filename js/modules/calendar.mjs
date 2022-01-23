@@ -10,7 +10,7 @@ const drawCalendar = (data, divId, margin) => {
   const height = cellSize * 9;
 
   // Fixed width
-  const width = 950
+  const width = 950;
 
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
