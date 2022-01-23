@@ -256,6 +256,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         );
         infoBarGameTitleElement.text(
           d.date.toLocaleDateString("en-US", {
+            timeZone: "UTC",
             weekday: "long",
             year: "numeric",
             month: "long",
