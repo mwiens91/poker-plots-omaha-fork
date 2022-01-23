@@ -50,13 +50,28 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
   let height = 0.5 * width;
 
+  // Min/max zoom
+  const minZoomTimeSeries = 0.7;
+  const minZoomSerialized = 0.7;
+
+  // For time series, we want the max zoom to show a given number of
+  // dates; similarly, for serialized, we want the max zoom to show a
+  // given number of games
+  const maxDate = d3.max(allDates);
+  const maxGameId = d3.max(data.games.map((game) => game.id));
+
+  const maxDaysToShow = 14;
+  const maxGamesToShow = 10;
+
+  const maxZoomTimeSeries = Math.max(
+    1,
+    (maxDate.getTime() - minDate.getTime()) / (maxDaysToShow * 1000 * 3600 * 24)
+  );
+  const maxZoomSerialized = Math.max(1, (maxGameId - 1) / maxGamesToShow);
+
   // x-scale - start slightly before the first data point
   let xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
-    .domain(
-      useTimeSeries
-        ? [lowerDate, d3.max(allDates)]
-        : [0, d3.max(data.games.map((game) => game.id))]
-    )
+    .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
     .range([0, width - margin.left - margin.right]);
   let xScaleCopy = xScale.copy();
 
@@ -280,7 +295,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       drawArea.selectAll("path").attr("d", (d) => line(d.data));
     };
 
-    const zoom = d3.zoom().scaleExtent([0.5, 10]).on("zoom", zoomed);
+    const zoom = d3
+      .zoom()
+      .scaleExtent(
+        useTimeSeries
+          ? [minZoomTimeSeries, maxZoomTimeSeries]
+          : [minZoomSerialized, maxZoomSerialized]
+      )
+      .on("zoom", zoomed);
 
     const transitionXAxis = () => {
       // Change from time series to serializes (or vise versa)
@@ -288,13 +310,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
       // Scale
       xScale = (useTimeSeries ? d3.scaleTime : d3.scaleLinear)()
-        .domain(
-          useTimeSeries
-            ? [lowerDate, d3.max(allDates)]
-            : [0.9, d3.max(data.games.map((game) => game.id))]
-        )
+        .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
         .range([0, width - margin.left - margin.right]);
       xScaleCopy = xScale.copy();
+
+      // Zoom scale
+      useTimeSeries
+        ? zoom.scaleExtent([minZoomTimeSeries, maxZoomTimeSeries])
+        : zoom.scaleExtent([minZoomSerialized, maxZoomSerialized]);
 
       // Axis
       xAxis.scale(xScale);
