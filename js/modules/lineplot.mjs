@@ -336,7 +336,13 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         .on("end", () => svg.call(zoom.transform, d3.zoomIdentity));
     };
 
-    svg.call(zoom).on("dblclick.zoom", null).on("dblclick", transitionXAxis);
+    // Register zoom events; also prevent mousewheels exceeding min/max
+    // zoom from scrolling the page
+    svg
+      .call(zoom)
+      .on("wheel", (event) => event.preventDefault())
+      .on("dblclick.zoom", null)
+      .on("dblclick", transitionXAxis);
 
     // Add mouseover events for player cards
     for (const player of playersNew) {
