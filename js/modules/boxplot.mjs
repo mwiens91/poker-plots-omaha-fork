@@ -7,7 +7,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Display options
   const jitter = 0; // amount of random displacement for outlier dots (px)
   const outlierRadius = 3;
-  const outlierOpacity = 1;
+  const outlierOpacity = 0.5;
   const halfBoxWidth = 20;
 
   // Initialise a formatter for displaying currency
