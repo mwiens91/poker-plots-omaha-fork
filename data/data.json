@@ -141,6 +141,29 @@
       ]
     },
     {
+      "name": "Russell",
+      "colourHex": "#ab3200",
+      "colourRgb": [
+        171,
+        50,
+        0
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
+      "gameCount": 1,
+      "cumSum": 29.8,
+      "data": [
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Russell",
+          "buyin": 10.0,
+          "buyout": 39.8,
+          "delta": 29.8,
+          "cumSum": 29.8
+        }
+      ]
+    },
+    {
       "name": "Zen",
       "colourHex": "#ab7c00",
       "colourRgb": [
@@ -149,8 +172,8 @@
         0
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 25,
-      "cumSum": 30.0,
+      "gameCount": 26,
+      "cumSum": 27.0,
       "data": [
         {
           "id": 1,
@@ -376,29 +399,15 @@
           "buyout": 30.95,
           "delta": 20.95,
           "cumSum": 30.0
-        }
-      ]
-    },
-    {
-      "name": "Russell",
-      "colourHex": "#ab3200",
-      "colourRgb": [
-        171,
-        50,
-        0
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
-      "gameCount": 1,
-      "cumSum": 29.8,
-      "data": [
+        },
         {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Russell",
-          "buyin": 10.0,
-          "buyout": 39.8,
-          "delta": 29.8,
-          "cumSum": 29.8
+          "id": 26,
+          "date": "2022-02-14",
+          "player": "Zen",
+          "buyin": 3.0,
+          "buyout": 0.0,
+          "delta": -3.0,
+          "cumSum": 27.0
         }
       ]
     },
@@ -773,8 +782,8 @@
         70
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 24,
-      "cumSum": -79.95,
+      "gameCount": 25,
+      "cumSum": -76.95,
       "data": [
         {
           "id": 1,
@@ -991,11 +1000,38 @@
           "buyout": 27.62,
           "delta": 7.62,
           "cumSum": -79.95
+        },
+        {
+          "id": 26,
+          "date": "2022-02-14",
+          "player": "Juno",
+          "buyin": 2.0,
+          "buyout": 5.0,
+          "delta": 3.0,
+          "cumSum": -76.95
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 26,
+      "date": "2022-02-14",
+      "data": [
+        {
+          "player": "Juno",
+          "buyin": 2.0,
+          "buyout": 5.0,
+          "delta": 3.0
+        },
+        {
+          "player": "Zen",
+          "buyin": 3.0,
+          "buyout": 0.0,
+          "delta": -3.0
+        }
+      ]
+    },
     {
       "id": 25,
       "date": "2022-02-13",
