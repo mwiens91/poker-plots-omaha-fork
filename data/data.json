@@ -9,8 +9,8 @@
         105
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 14,
-      "cumSum": 114.28,
+      "gameCount": 15,
+      "cumSum": 106.5,
       "data": [
         {
           "id": 5,
@@ -137,29 +137,15 @@
           "buyout": 6.28,
           "delta": -28.57,
           "cumSum": 114.28
-        }
-      ]
-    },
-    {
-      "name": "Russell",
-      "colourHex": "#ab3200",
-      "colourRgb": [
-        171,
-        50,
-        0
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
-      "gameCount": 1,
-      "cumSum": 29.8,
-      "data": [
+        },
         {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Russell",
-          "buyin": 10.0,
-          "buyout": 39.8,
-          "delta": 29.8,
-          "cumSum": 29.8
+          "id": 27,
+          "date": "2022-02-15",
+          "player": "Matt",
+          "buyin": 63.07,
+          "buyout": 55.29,
+          "delta": -7.78,
+          "cumSum": 106.5
         }
       ]
     },
@@ -172,8 +158,8 @@
         0
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 26,
-      "cumSum": 27.0,
+      "gameCount": 27,
+      "cumSum": 73.4,
       "data": [
         {
           "id": 1,
@@ -408,6 +394,38 @@
           "buyout": 0.0,
           "delta": -3.0,
           "cumSum": 27.0
+        },
+        {
+          "id": 27,
+          "date": "2022-02-15",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 66.4,
+          "delta": 46.4,
+          "cumSum": 73.4
+        }
+      ]
+    },
+    {
+      "name": "Russell",
+      "colourHex": "#ab3200",
+      "colourRgb": [
+        171,
+        50,
+        0
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
+      "gameCount": 1,
+      "cumSum": 29.8,
+      "data": [
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Russell",
+          "buyin": 10.0,
+          "buyout": 39.8,
+          "delta": 29.8,
+          "cumSum": 29.8
         }
       ]
     },
@@ -420,8 +438,8 @@
         255
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
-      "gameCount": 16,
-      "cumSum": 23.1,
+      "gameCount": 17,
+      "cumSum": 1.09,
       "data": [
         {
           "id": 1,
@@ -566,6 +584,15 @@
           "buyout": 25.23,
           "delta": 15.23,
           "cumSum": 23.1
+        },
+        {
+          "id": 27,
+          "date": "2022-02-15",
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 17.99,
+          "delta": -22.01,
+          "cumSum": 1.09
         }
       ]
     },
@@ -782,8 +809,8 @@
         70
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 25,
-      "cumSum": -76.95,
+      "gameCount": 26,
+      "cumSum": -93.56,
       "data": [
         {
           "id": 1,
@@ -1009,11 +1036,50 @@
           "buyout": 5.0,
           "delta": 3.0,
           "cumSum": -76.95
+        },
+        {
+          "id": 27,
+          "date": "2022-02-15",
+          "player": "Juno",
+          "buyin": 40.0,
+          "buyout": 23.39,
+          "delta": -16.61,
+          "cumSum": -93.56
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 27,
+      "date": "2022-02-15",
+      "data": [
+        {
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 66.4,
+          "delta": 46.4
+        },
+        {
+          "player": "Matt",
+          "buyin": 63.07,
+          "buyout": 55.29,
+          "delta": -7.78
+        },
+        {
+          "player": "Juno",
+          "buyin": 40.0,
+          "buyout": 23.39,
+          "delta": -16.61
+        },
+        {
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 17.99,
+          "delta": -22.01
+        }
+      ]
+    },
     {
       "id": 26,
       "date": "2022-02-14",
