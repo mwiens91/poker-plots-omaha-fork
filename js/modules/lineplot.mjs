@@ -38,6 +38,58 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     })),
   }));
 
+  // Now we need to worry about multiple games on a date. Let N be the
+  // number of games for a given date. Then for each game
+  // n = 0, 1, ..., N - 1, we offset the nth game in time by
+  // n * 24 / (N + 1) hours.
+  //
+  // So for example, if N = 3, then the games will be offset by 0, 6,
+  // and 12 hours respectively. If N = 2, then the games will be
+  // offset by 0 and 8 hours, respectively.
+  for (const player of playersNew) {
+    // Get the total number of games for the player
+    const numGames = player.data.length;
+
+    // We'll keep track of all games we've already processed in this set
+    let visitedIdsSet = new Set();
+
+    for (let i = 0; i < numGames - 1; i++) {
+      // If we've already processed this game, skip
+      if (visitedIdsSet.has(player.data[i].id)) {
+        continue;
+      }
+
+      // Find all games that share this date
+      const targetDate = player.data[i].date;
+      const gamesWithDate = player.data.filter(
+        (game) => game.date.getTime() === targetDate.getTime()
+      );
+
+      const numGamesWithDate = gamesWithDate.length;
+
+      // Get out if there's only one game
+      if (numGamesWithDate === 1) {
+        continue;
+      }
+
+      // Offset each game sharing a date (minus the first game, which
+      // doesn't get offset). The logic of offsetting is described
+      // above.
+      const gameIdsWithDate = gamesWithDate.map((game) => game.id);
+
+      for (let j = 1; j < numGamesWithDate; j++) {
+        const offset = (j * 24) / (numGamesWithDate + 1);
+
+        player.data
+          .find((game) => game.id === gameIdsWithDate[j])
+          .date.setHours(player.data[j].date.getHours() + offset);
+      }
+
+      // Add all IDs to the visited set
+      gameIdsWithDate.forEach((id) => visitedIdsSet.add(id));
+    }
+  }
+
   // Dates for x-axis
   const allDates = playersNew
     .map((player) => player.data.map((v) => v.date))
