@@ -40,11 +40,7 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
       piePlotMargin
     );
 
-    drawCalendar(
-      data,
-      "calendar-parent",
-      calendarMargin
-    )
+    drawCalendar(data, "calendar-parent", calendarMargin);
 
     window.addEventListener("resize", redrawLinePlot);
     window.addEventListener("resize", redrawBoxPlot);
@@ -55,8 +51,8 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
 // Don't show calendar block if window is small
 window.addEventListener("resize", () => {
   if (document.documentElement.clientWidth < 950) {
-    document.getElementById("calendar").style.display = "none"
+    document.getElementById("calendar").style.display = "none";
   } else {
-    document.getElementById("calendar").style.display = "block"
+    document.getElementById("calendar").style.display = "block";
   }
 });
