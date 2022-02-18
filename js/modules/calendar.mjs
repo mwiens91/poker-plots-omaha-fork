@@ -32,6 +32,48 @@ const drawCalendar = (data, divId, margin) => {
     id: game.id,
   }));
 
+  // Merge multiple games on same date. First, we keep track of the data
+  // we've already processed.
+  const visitedIndicesSet = new Set();
+
+  // We'll remove a bunch of indices after this is done
+  const indicesToPop = [];
+
+  for (let i = 0; i < newData.length - 1; i++) {
+    // Skip over elements we've already processed
+    if (visitedIndicesSet.has(i)) {
+      continue;
+    }
+
+    // Find all elements that share this date
+    const targetDate = newData[i].date;
+
+    // Thanks to yckart for this trick here
+    // https://stackoverflow.com/a/41271541
+    const elemsWithDate = newData
+      .map((d, i) => (d.date.getTime() === targetDate.getTime() ? i : ""))
+      .filter(String);
+
+    // If there's only one element for this date get out
+    if (elemsWithDate.length === 1) {
+      continue;
+    }
+
+    // Add the total buy-ins to the "smallest" game ID, add all of the
+    // indices to the set of indices to skip, and mark all but the
+    // "smallest" game ID to remove from the newData array
+    for (let j = 1; j < elemsWithDate.length; j++) {
+      newData[i].val += newData[j].val;
+      indicesToPop.push(j);
+      visitedIndicesSet.add(j);
+    }
+
+    // Pop all extraneous elements
+    for (const j of indicesToPop.reverse()) {
+      newData.splice(j, 1);
+    }
+  }
+
   // Get all dates to add in
   const firstYearAddInDates = d3.utcDays(
     new Date(Date.UTC(newData[newData.length - 1].date.getFullYear(), 0, 1)),
@@ -135,7 +177,6 @@ const drawCalendar = (data, divId, margin) => {
       "transform",
       (d, i) => `translate(40.5,${height * i + cellSize * 1.5})`
     );
-
 
   // Bolded year text
   year
