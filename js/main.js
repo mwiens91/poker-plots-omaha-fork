@@ -68,7 +68,7 @@ const observer = new IntersectionObserver(
       circleElem.style.display = "none";
     }
   },
-  { threshold: [0] }
+  { rootMargin: "0px 0px -80% 0px", threshold: [0] }
 );
 
 observer.observe(document.querySelector("#scroll-up-visible"));

@@ -211,6 +211,9 @@ head
     h1 Games
   #calendar.row.pt-3.pb-4
     #calendar-parent.col.text-center
+  .container.fixed-top.d-flex.justify-content-center
+    button#page-up-circle.page-up-circle(onclick="window.scrollTo(0,0)")
+      | ^
   #scroll-up-visible
     each game in data.games
       .row.pt-4(id="game-" + game.id)
@@ -235,8 +238,5 @@ head
                   td= parseCurrency.format(playerData.buyin)
                   td= parseCurrency.format(playerData.buyout)
                   td= parseCurrency.format(playerData.delta)
-  .container.fixed-bottom.d-flex.justify-content-end
-    button#page-up-circle.page-up-circle(onclick="window.scrollTo(0,0)")
-      | ^
   // script(src="js/main.js", type="module")
   script(src="js/pokerplots.min.js", type="text/javascript")
