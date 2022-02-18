@@ -52,10 +52,10 @@ head
           p
             b poker-plots
             |
-            | generates a few interactive visualizations of our poker data. It also provides a log of the data.
+            | generates a few interactive visualizations of our poker data. It also includes a log of all the games played.
             br
             br
-            | Some features might not be obvious on first use, so click below to see what's available.
+            | Some interactive features of the plots might not be obvious on first use, so click below to see what's available.
           button.btn.btn-outline-primary(
             type="button",
             data-bs-toggle="collapse",
@@ -74,44 +74,46 @@ head
               li
                 b buy-in:
                 |
-                | the total amount of money a player plays with
+                | the total amount of money a player brings into the
+                | game
               li
                 b buy-out:
                 |
-                | the amount of money a player leaves with
+                | the amount of money a player leaves a game with
             h4 Features
             h5 People section
             ul
+              li the cards show each player's colour used throughout this page
               li hovering over a player's card will highlight their data on the line plot
-              li the cards also act as a legend for player colours
             h5 Multi-line chart
             ul
               li hovering over a player's trajectory will highlight their entire trajectory
               li hovering over a player's data point will show the corresponding game's info in the info panel
-              li hovering over either of the above will show the player's info in the info panel
-              li clicking on a player's data point will scroll to the corresponding game
-              li double-clicking anywhere will transform the x-axis from time to serialized games (and vice versa)
+              li hovering over either a player's trajectory or a player's data point will show the player's info in the info panel
+              li clicking on a player's data point will scroll to the corresponding game in the games log
+              li double-clicking anywhere will transform the x-axis from showing time to showing all games equally spaced (and vice versa)
               li scrolling will zoom on the x-axis
               li dragging will pan on the x-axis
             h5 Box plot
             ul
-              li hovering over a player's "box and whiskers" will show extrema and quartiles
-              li hovering over an outlier will show its value
+              li hovering over a player's "box and whiskers" will show their corresponding extrema and quartiles
+              li hovering over a player's outlier will show its value
             h5 Pie charts
             ul
-              li hovering over a player's arc or label will show their current cumulative sum and percentage of total winnings/losses
+              li hovering over a player's arc or label will show their current cumulative sum and their percentage share of the total winnings/losses
             h5 Games log
             ul
-              li hovering over a cell will show the total buy-ins
-              li clicking on a cell will scroll to the corresponding game
-              li a cell's intensity indicates the amount of total buy-ins
+              li hovering over a cell will show the sum of buy-ins for the corresponding date
+              li clicking on a cell will scroll to the corresponding game in the games log
+              li a cell's intensity is proportional to (the square root of) the sum of buy-ins for the corresponding date
             h4 About
             | This page was written by Matt Wiens.#{ ' ' }
             a(href="https://d3js.org/") D3.js
             |
-            | is used for data visualization and the most of the styling is courtesy of#{ ' ' }
+            | is used for data visualization and#{ ' ' }
             a(href="https://getbootstrap.com/") Bootstrap
-            | . Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience. The source code is available#{ ' ' }
+            |
+            | is used for styling. Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience. The source code for this page is available#{ ' ' }
             a(href="https://github.com/mwiens91/poker-plots") here
             | .
     .col-6
