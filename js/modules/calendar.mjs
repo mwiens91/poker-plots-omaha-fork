@@ -90,11 +90,11 @@ const drawCalendar = (data, divId, margin) => {
     .style("opacity", 0)
     .style("position", "absolute")
     .attr("class", "tooltip");
-  const tooltipMousemove = (event, d) =>
+  const tooltipMousemove = (event) =>
     tooltip
       .style("left", event.pageX + 30 + "px")
       .style("top", event.pageY - 20 + "px");
-  const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
+  const tooltipMouseout = () => tooltip.style("opacity", 0);
   const tooltipMouseover = (event, d) =>
     tooltip.style("opacity", 0.8).html(
       `<b>${X[d].toLocaleDateString("en-US", {
@@ -151,7 +151,7 @@ const drawCalendar = (data, divId, margin) => {
     .attr("dy", "0.31em")
     .text(formatDay);
 
-  const cell = year
+  year
     .append("g")
     .selectAll("rect")
     .data(([, I]) => I)

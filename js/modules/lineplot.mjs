@@ -197,7 +197,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .text("cumulative sum (CAD)");
 
     // Add a clipPath: everything out of this area won't be drawn
-    const clip = svgG
+    svgG
       .append("defs")
       .append("svg:clipPath")
       .attr("id", "clip")
@@ -258,7 +258,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         infoBarPlayerTitleElement.text(d.name);
         infoBarPlayerAmountElement.text(parseCurrency.format(d.cumSum));
       })
-      .on("mouseout", (event, d) => {
+      .on("mouseout", (event) => {
         d3.selectAll(".line").style("opacity", lineOpacity);
         d3.selectAll(".circle").style("opacity", circleOpacity);
         d3.select(event.currentTarget)
@@ -326,7 +326,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
             parseCurrency.format(d.cumSum)
         );
       })
-      .on("mouseout", (event, d) => {
+      .on("mouseout", (event) => {
         d3.select(event.currentTarget).transition().attr("r", circleRadius);
         infoBarGameDivElement.style("background", "#FFFFFF");
         infoBarGameTitleElement.text("");
@@ -402,7 +402,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         "player-card-" + player.name
       );
 
-      playerCardElement.addEventListener("mouseover", (event) => {
+      playerCardElement.addEventListener("mouseover", () => {
         d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
         d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
 
@@ -424,7 +424,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         infoBarPlayerTitleElement.text(player.name);
         infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
       });
-      playerCardElement.addEventListener("mouseout", (event) => {
+      playerCardElement.addEventListener("mouseout", () => {
         d3.selectAll(".line").style("opacity", lineOpacity);
         d3.selectAll(".circle").style("opacity", circleOpacity);
 

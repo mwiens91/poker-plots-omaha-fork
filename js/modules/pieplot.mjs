@@ -34,11 +34,11 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
     .style("opacity", 0)
     .style("position", "absolute")
     .attr("class", "tooltip");
-  const tooltipMousemove = (event, d) =>
+  const tooltipMousemove = (event) =>
     tooltip
       .style("left", event.pageX + 30 + "px")
       .style("top", event.pageY - 20 + "px");
-  const tooltipMouseout = (event, d) => tooltip.style("opacity", 0);
+  const tooltipMouseout = () => tooltip.style("opacity", 0);
   const tooltipMouseover = (event, d) =>
     tooltip
       .style("opacity", 0.8)
