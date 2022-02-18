@@ -1,5 +1,8 @@
 // Based off this link
 // https://observablehq.com/@d3/calendar
+//
+// A lot of the code here is hard to read. Refactoring or whatever might
+// be a good idea.
 
 // Function to draw calendar
 const drawCalendar = (data, divId, margin) => {
@@ -123,6 +126,7 @@ const drawCalendar = (data, divId, margin) => {
     .attr("font-family", "sans-serif")
     .attr("font-size", 10);
 
+  // Setup where to put years
   const year = svg
     .selectAll("g")
     .data(years)
@@ -132,6 +136,8 @@ const drawCalendar = (data, divId, margin) => {
       (d, i) => `translate(40.5,${height * i + cellSize * 1.5})`
     );
 
+
+  // Bolded year text
   year
     .append("text")
     .attr("x", -5)
@@ -140,6 +146,7 @@ const drawCalendar = (data, divId, margin) => {
     .attr("text-anchor", "end")
     .text(([key]) => key);
 
+  // Date texts (e.g., SMTWRFS)
   year
     .append("g")
     .attr("text-anchor", "end")
@@ -151,6 +158,7 @@ const drawCalendar = (data, divId, margin) => {
     .attr("dy", "0.31em")
     .text(formatDay);
 
+  // Make the cells
   year
     .append("g")
     .selectAll("rect")
@@ -173,12 +181,14 @@ const drawCalendar = (data, divId, margin) => {
         : document.getElementById("game-" + newData[d].id).scrollIntoView()
     );
 
+  // Get the months. This is highly unreadable. Sorry?
   const month = year
     .append("g")
     .selectAll("g")
     .data(([, I]) => d3.utcMonths(X[I[I.length - 1]], X[I[0]]))
     .join("g");
 
+  // Draw a white border on the grid to delineate months
   month
     .filter((d, i) => i)
     .append("path")
@@ -195,6 +205,7 @@ const drawCalendar = (data, divId, margin) => {
       }V${7 * cellSize}`;
     });
 
+  // Month text
   month
     .append("text")
     .attr(
