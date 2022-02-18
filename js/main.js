@@ -56,3 +56,19 @@ window.addEventListener("resize", () => {
     document.getElementById("calendar").style.display = "block";
   }
 });
+
+// Page up circle logic
+const observer = new IntersectionObserver(
+  (entries) => {
+    const circleElem = document.getElementById("page-up-circle");
+
+    if (entries[0].isIntersecting) {
+      circleElem.style.display = "block";
+    } else {
+      circleElem.style.display = "none";
+    }
+  },
+  { threshold: [0] }
+);
+
+observer.observe(document.querySelector("#scroll-up-visible"));

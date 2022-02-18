@@ -209,26 +209,30 @@ head
     h1 Games
   #calendar.row.pt-3.pb-4
     #calendar-parent.col.text-center
-  each game in data.games
-    .row.pt-4(id="game-" + game.id)
-      div
-        - const theDate = new Date(game.date.replace(/-/g, "/"));
-        h3= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
-      div
-        table.table(style={ "table-layout": "fixed" })
-          thead
-            tr
-              th player
-              th buy-in
-              th buy-out
-              th net
-          tbody
-            each playerData in game.data
-              - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
-              tr(style={ background: "rgb(" + playerColour + ")" })
-                th= playerData.player
-                td= parseCurrency.format(playerData.buyin)
-                td= parseCurrency.format(playerData.buyout)
-                td= parseCurrency.format(playerData.delta)
+  #scroll-up-visible
+    each game in data.games
+      .row.pt-4(id="game-" + game.id)
+        div
+          - const theDate = new Date(game.date.replace(/-/g, "/"));
+          h3= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
+        div
+          table.table(style={ "table-layout": "fixed" })
+            thead
+              tr
+                th player
+                th buy-in
+                th buy-out
+                th net
+            tbody
+              each playerData in game.data
+                - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
+                tr(style={ background: "rgb(" + playerColour + ")" })
+                  th= playerData.player
+                  td= parseCurrency.format(playerData.buyin)
+                  td= parseCurrency.format(playerData.buyout)
+                  td= parseCurrency.format(playerData.delta)
+  .container.fixed-bottom.d-flex.justify-content-end
+    button#page-up-circle.page-up-circle(onclick="window.scrollTo(0,0)")
+      | ^
   // script(src="js/main.js", type="module")
   script(src="js/pokerplots.min.js", type="text/javascript")
