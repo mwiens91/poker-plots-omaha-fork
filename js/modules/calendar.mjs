@@ -23,7 +23,7 @@ const drawCalendar = (data, divId, margin) => {
 
   // Massage the data so we just have (parsed) dates, total buy-ins and
   // game id
-  let newData = data.games.map((game) => ({
+  const newData = data.games.map((game) => ({
     date: parseDate(game.date),
     val: game.data.reduce((tot, datum) => tot + datum.buyin, 0),
     id: game.id,
@@ -34,16 +34,16 @@ const drawCalendar = (data, divId, margin) => {
     new Date(Date.UTC(newData[newData.length - 1].date.getFullYear(), 0, 1)),
     newData[newData.length - 1].date
   );
-  let lastYearAddInDates = d3.utcDays(
+  const lastYearAddInDates = d3.utcDays(
     newData[0].date,
     new Date(Date.UTC(newData[0].date.getFullYear() + 1, 0, 1))
   );
   lastYearAddInDates.shift();
 
-  let addInDates = [...firstYearAddInDates, ...lastYearAddInDates];
+  const addInDates = [...firstYearAddInDates, ...lastYearAddInDates];
 
   newData.reduce((curr, next) => {
-    let tempDates = d3.utcDays(next.date, curr.date);
+    const tempDates = d3.utcDays(next.date, curr.date);
     tempDates.shift();
     addInDates.push(...tempDates);
     return next;

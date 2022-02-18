@@ -51,7 +51,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     const numGames = player.data.length;
 
     // We'll keep track of all games we've already processed in this set
-    let visitedIdsSet = new Set();
+    const visitedIdsSet = new Set();
 
     for (let i = 0; i < numGames - 1; i++) {
       // If we've already processed this game, skip
@@ -95,7 +95,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     .map((player) => player.data.map((v) => v.date))
     .flat();
   const minDate = d3.min(allDates);
-  let lowerDate = new Date(Number(minDate));
+  const lowerDate = new Date(Number(minDate));
   lowerDate.setDate(minDate.getDate() - 1); // this is possibly not robust?
 
   // Sizes
@@ -227,7 +227,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     const infoBarGameInfoElement = d3.select("#line-plot-game-info");
 
     // Add lines
-    let lines = drawArea.append("g").attr("class", "lines");
+    const lines = drawArea.append("g").attr("class", "lines");
 
     lines
       .selectAll(".line-group")

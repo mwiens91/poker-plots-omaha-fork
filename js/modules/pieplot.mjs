@@ -120,7 +120,7 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
         const posB = textArc.centroid(d);
 
         // Line to label
-        let posC = textArc.centroid(d);
+        const posC = textArc.centroid(d);
 
         // Position based on left or right depending on position of
         // first line
