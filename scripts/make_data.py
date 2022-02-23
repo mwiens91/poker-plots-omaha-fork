@@ -69,24 +69,26 @@ AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 #
 # The two dictionaries should coincide.
 PLAYER_COLOURS_HEX = {
-    "aidan": "#4490ff",
-    "alex": "#62bc27",
-    "david": "#ff4aae",
-    "jayden": "#00d0cd",
-    "juno": "#db0046",
-    "matt": "#588f69",
-    "russell": "#ab3200",
-    "zen": "#ab7c00",
+    "aidan": "#4bafd0",
+    "alex": "#9e873d",
+    "bei": "#c55d93",
+    "david": "#7178ca",
+    "jayden": "#c8803e",
+    "juno": "#68b143",
+    "matt": "#cc5452",
+    "russell": "#55a26f",
+    "zen": "#b05cc6",
 }
 PLAYER_COLOURS_RGB = {
-    "aidan": [68, 144, 255],
-    "alex": [98, 188, 39],
-    "david": [255, 74, 174],
-    "jayden": [0, 208, 205],
-    "juno": [219, 0, 70],
-    "matt": [88, 143, 105],
-    "russell": [171, 50, 0],
-    "zen": [171, 124, 0],
+    "aidan": [75, 175, 208],
+    "alex": [158, 152, 51],
+    "bei": [197, 93, 147],
+    "david": [113, 120, 202],
+    "jayden": [200, 128, 62],
+    "juno": [104, 177, 67],
+    "matt": [208, 84, 82],
+    "russell": [85, 162, 111],
+    "zen": [176, 92, 198],
 }
 
 # Initialize list of games with the following structure
