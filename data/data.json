@@ -9,8 +9,8 @@
         82
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 20,
-      "cumSum": 208.64,
+      "gameCount": 21,
+      "cumSum": 226.09,
       "data": [
         {
           "id": 5,
@@ -191,6 +191,15 @@
           "buyout": 36.21,
           "delta": 6.21,
           "cumSum": 208.64
+        },
+        {
+          "id": 35,
+          "date": "2022-03-05",
+          "player": "Matt",
+          "buyin": 10.0,
+          "buyout": 27.45,
+          "delta": 17.45,
+          "cumSum": 226.09
         }
       ]
     },
@@ -203,8 +212,8 @@
         198
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 34,
-      "cumSum": 77.21,
+      "gameCount": 35,
+      "cumSum": 79.76,
       "data": [
         {
           "id": 1,
@@ -511,6 +520,15 @@
           "buyout": 9.67,
           "delta": 4.67,
           "cumSum": 77.21
+        },
+        {
+          "id": 35,
+          "date": "2022-03-05",
+          "player": "Zen",
+          "buyin": 10.0,
+          "buyout": 12.55,
+          "delta": 2.55,
+          "cumSum": 79.76
         }
       ]
     },
@@ -985,8 +1003,8 @@
         67
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 32,
-      "cumSum": -154.86,
+      "gameCount": 33,
+      "cumSum": -174.86,
       "data": [
         {
           "id": 1,
@@ -1275,11 +1293,44 @@
           "buyout": 0.0,
           "delta": -10.0,
           "cumSum": -154.86
+        },
+        {
+          "id": 35,
+          "date": "2022-03-05",
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 0.0,
+          "delta": -20.0,
+          "cumSum": -174.86
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 35,
+      "date": "2022-03-05",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 10.0,
+          "buyout": 27.45,
+          "delta": 17.45
+        },
+        {
+          "player": "Zen",
+          "buyin": 10.0,
+          "buyout": 12.55,
+          "delta": 2.55
+        },
+        {
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 0.0,
+          "delta": -20.0
+        }
+      ]
+    },
     {
       "id": 34,
       "date": "2022-03-03",
