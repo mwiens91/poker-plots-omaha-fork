@@ -213,6 +213,236 @@
       ]
     },
     {
+      "name": "Aidan",
+      "colourHex": "#4bafd0",
+      "colourRgb": [
+        75,
+        175,
+        208
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
+      "gameCount": 24,
+      "cumSum": 62.27,
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-09-30",
+          "player": "Aidan",
+          "buyin": 6.25,
+          "buyout": 2.0,
+          "delta": -4.25,
+          "cumSum": -4.25
+        },
+        {
+          "id": 2,
+          "date": "2021-10-01",
+          "player": "Aidan",
+          "buyin": 6.0,
+          "buyout": 7.1,
+          "delta": 1.1,
+          "cumSum": -3.15
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Aidan",
+          "buyin": 20.0,
+          "buyout": 23.01,
+          "delta": 3.01,
+          "cumSum": -0.14
+        },
+        {
+          "id": 5,
+          "date": "2021-12-23",
+          "player": "Aidan",
+          "buyin": 12.0,
+          "buyout": 0.0,
+          "delta": -12.0,
+          "cumSum": -12.14
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "player": "Aidan",
+          "buyin": 20.0,
+          "buyout": 0.0,
+          "delta": -20.0,
+          "cumSum": -32.14
+        },
+        {
+          "id": 7,
+          "date": "2021-12-27",
+          "player": "Aidan",
+          "buyin": 25.0,
+          "buyout": 50.16,
+          "delta": 25.16,
+          "cumSum": -6.98
+        },
+        {
+          "id": 8,
+          "date": "2021-12-29",
+          "player": "Aidan",
+          "buyin": 10.0,
+          "buyout": 52.44,
+          "delta": 42.44,
+          "cumSum": 35.46
+        },
+        {
+          "id": 9,
+          "date": "2021-12-30",
+          "player": "Aidan",
+          "buyin": 20.0,
+          "buyout": 20.4,
+          "delta": 0.4,
+          "cumSum": 35.86
+        },
+        {
+          "id": 10,
+          "date": "2022-01-01",
+          "player": "Aidan",
+          "buyin": 20.22,
+          "buyout": 33.77,
+          "delta": 13.55,
+          "cumSum": 49.41
+        },
+        {
+          "id": 11,
+          "date": "2022-01-03",
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 0.0,
+          "delta": -40.0,
+          "cumSum": 9.41
+        },
+        {
+          "id": 18,
+          "date": "2022-01-19",
+          "player": "Aidan",
+          "buyin": 21.0,
+          "buyout": 17.19,
+          "delta": -3.81,
+          "cumSum": 5.6
+        },
+        {
+          "id": 19,
+          "date": "2022-01-21",
+          "player": "Aidan",
+          "buyin": 30.0,
+          "buyout": 0.0,
+          "delta": -30.0,
+          "cumSum": -24.4
+        },
+        {
+          "id": 20,
+          "date": "2022-01-26",
+          "player": "Aidan",
+          "buyin": 10.0,
+          "buyout": 30.08,
+          "delta": 20.08,
+          "cumSum": -4.32
+        },
+        {
+          "id": 21,
+          "date": "2022-01-27",
+          "player": "Aidan",
+          "buyin": 10.0,
+          "buyout": 18.65,
+          "delta": 8.65,
+          "cumSum": 4.33
+        },
+        {
+          "id": 22,
+          "date": "2022-02-05",
+          "player": "Aidan",
+          "buyin": 20.0,
+          "buyout": 23.54,
+          "delta": 3.54,
+          "cumSum": 7.87
+        },
+        {
+          "id": 24,
+          "date": "2022-02-11",
+          "player": "Aidan",
+          "buyin": 10.0,
+          "buyout": 25.23,
+          "delta": 15.23,
+          "cumSum": 23.1
+        },
+        {
+          "id": 27,
+          "date": "2022-02-15",
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 17.99,
+          "delta": -22.01,
+          "cumSum": 1.09
+        },
+        {
+          "id": 28,
+          "date": "2022-02-16",
+          "player": "Aidan",
+          "buyin": 10.0,
+          "buyout": 37.6,
+          "delta": 27.6,
+          "cumSum": 28.69
+        },
+        {
+          "id": 30,
+          "date": "2022-02-22",
+          "player": "Aidan",
+          "buyin": 20.0,
+          "buyout": 29.02,
+          "delta": 9.02,
+          "cumSum": 37.71
+        },
+        {
+          "id": 32,
+          "date": "2022-02-28",
+          "player": "Aidan",
+          "buyin": 25.1,
+          "buyout": 0.0,
+          "delta": -25.1,
+          "cumSum": 12.61
+        },
+        {
+          "id": 33,
+          "date": "2022-03-02",
+          "player": "Aidan",
+          "buyin": 21.5,
+          "buyout": 0.0,
+          "delta": -21.5,
+          "cumSum": -8.89
+        },
+        {
+          "id": 34,
+          "date": "2022-03-03",
+          "player": "Aidan",
+          "buyin": 5.0,
+          "buyout": 10.33,
+          "delta": 5.33,
+          "cumSum": -3.56
+        },
+        {
+          "id": 36,
+          "date": "2022-03-10",
+          "player": "Aidan",
+          "buyin": 30.0,
+          "buyout": 87.13,
+          "delta": 57.13,
+          "cumSum": 53.57
+        },
+        {
+          "id": 37,
+          "date": "2022-03-12",
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 48.7,
+          "delta": 8.7,
+          "cumSum": 62.27
+        }
+      ]
+    },
+    {
       "name": "Zen",
       "colourHex": "#b05cc6",
       "colourRgb": [
@@ -221,8 +451,8 @@
         198
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 36,
-      "cumSum": 61.53,
+      "gameCount": 37,
+      "cumSum": 34.43,
       "data": [
         {
           "id": 1,
@@ -547,227 +777,15 @@
           "buyout": 41.77,
           "delta": -18.23,
           "cumSum": 61.53
-        }
-      ]
-    },
-    {
-      "name": "Aidan",
-      "colourHex": "#4bafd0",
-      "colourRgb": [
-        75,
-        175,
-        208
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
-      "gameCount": 23,
-      "cumSum": 53.57,
-      "data": [
-        {
-          "id": 1,
-          "date": "2021-09-30",
-          "player": "Aidan",
-          "buyin": 6.25,
-          "buyout": 2.0,
-          "delta": -4.25,
-          "cumSum": -4.25
         },
         {
-          "id": 2,
-          "date": "2021-10-01",
-          "player": "Aidan",
-          "buyin": 6.0,
-          "buyout": 7.1,
-          "delta": 1.1,
-          "cumSum": -3.15
-        },
-        {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Aidan",
-          "buyin": 20.0,
-          "buyout": 23.01,
-          "delta": 3.01,
-          "cumSum": -0.14
-        },
-        {
-          "id": 5,
-          "date": "2021-12-23",
-          "player": "Aidan",
-          "buyin": 12.0,
-          "buyout": 0.0,
-          "delta": -12.0,
-          "cumSum": -12.14
-        },
-        {
-          "id": 6,
-          "date": "2021-12-24",
-          "player": "Aidan",
-          "buyin": 20.0,
-          "buyout": 0.0,
-          "delta": -20.0,
-          "cumSum": -32.14
-        },
-        {
-          "id": 7,
-          "date": "2021-12-27",
-          "player": "Aidan",
-          "buyin": 25.0,
-          "buyout": 50.16,
-          "delta": 25.16,
-          "cumSum": -6.98
-        },
-        {
-          "id": 8,
-          "date": "2021-12-29",
-          "player": "Aidan",
-          "buyin": 10.0,
-          "buyout": 52.44,
-          "delta": 42.44,
-          "cumSum": 35.46
-        },
-        {
-          "id": 9,
-          "date": "2021-12-30",
-          "player": "Aidan",
-          "buyin": 20.0,
-          "buyout": 20.4,
-          "delta": 0.4,
-          "cumSum": 35.86
-        },
-        {
-          "id": 10,
-          "date": "2022-01-01",
-          "player": "Aidan",
-          "buyin": 20.22,
-          "buyout": 33.77,
-          "delta": 13.55,
-          "cumSum": 49.41
-        },
-        {
-          "id": 11,
-          "date": "2022-01-03",
-          "player": "Aidan",
-          "buyin": 40.0,
-          "buyout": 0.0,
-          "delta": -40.0,
-          "cumSum": 9.41
-        },
-        {
-          "id": 18,
-          "date": "2022-01-19",
-          "player": "Aidan",
-          "buyin": 21.0,
-          "buyout": 17.19,
-          "delta": -3.81,
-          "cumSum": 5.6
-        },
-        {
-          "id": 19,
-          "date": "2022-01-21",
-          "player": "Aidan",
-          "buyin": 30.0,
-          "buyout": 0.0,
-          "delta": -30.0,
-          "cumSum": -24.4
-        },
-        {
-          "id": 20,
-          "date": "2022-01-26",
-          "player": "Aidan",
-          "buyin": 10.0,
-          "buyout": 30.08,
-          "delta": 20.08,
-          "cumSum": -4.32
-        },
-        {
-          "id": 21,
-          "date": "2022-01-27",
-          "player": "Aidan",
-          "buyin": 10.0,
-          "buyout": 18.65,
-          "delta": 8.65,
-          "cumSum": 4.33
-        },
-        {
-          "id": 22,
-          "date": "2022-02-05",
-          "player": "Aidan",
-          "buyin": 20.0,
-          "buyout": 23.54,
-          "delta": 3.54,
-          "cumSum": 7.87
-        },
-        {
-          "id": 24,
-          "date": "2022-02-11",
-          "player": "Aidan",
-          "buyin": 10.0,
-          "buyout": 25.23,
-          "delta": 15.23,
-          "cumSum": 23.1
-        },
-        {
-          "id": 27,
-          "date": "2022-02-15",
-          "player": "Aidan",
-          "buyin": 40.0,
-          "buyout": 17.99,
-          "delta": -22.01,
-          "cumSum": 1.09
-        },
-        {
-          "id": 28,
-          "date": "2022-02-16",
-          "player": "Aidan",
-          "buyin": 10.0,
-          "buyout": 37.6,
-          "delta": 27.6,
-          "cumSum": 28.69
-        },
-        {
-          "id": 30,
-          "date": "2022-02-22",
-          "player": "Aidan",
-          "buyin": 20.0,
-          "buyout": 29.02,
-          "delta": 9.02,
-          "cumSum": 37.71
-        },
-        {
-          "id": 32,
-          "date": "2022-02-28",
-          "player": "Aidan",
-          "buyin": 25.1,
-          "buyout": 0.0,
-          "delta": -25.1,
-          "cumSum": 12.61
-        },
-        {
-          "id": 33,
-          "date": "2022-03-02",
-          "player": "Aidan",
-          "buyin": 21.5,
-          "buyout": 0.0,
-          "delta": -21.5,
-          "cumSum": -8.89
-        },
-        {
-          "id": 34,
-          "date": "2022-03-03",
-          "player": "Aidan",
-          "buyin": 5.0,
-          "buyout": 10.33,
-          "delta": 5.33,
-          "cumSum": -3.56
-        },
-        {
-          "id": 36,
-          "date": "2022-03-10",
-          "player": "Aidan",
-          "buyin": 30.0,
-          "buyout": 87.13,
-          "delta": 57.13,
-          "cumSum": 53.57
+          "id": 37,
+          "date": "2022-03-12",
+          "player": "Zen",
+          "buyin": 80.0,
+          "buyout": 52.9,
+          "delta": -27.1,
+          "cumSum": 34.43
         }
       ]
     },
@@ -1039,8 +1057,8 @@
         67
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 34,
-      "cumSum": -198.2,
+      "gameCount": 35,
+      "cumSum": -179.8,
       "data": [
         {
           "id": 1,
@@ -1347,11 +1365,44 @@
           "buyout": 36.66,
           "delta": -23.34,
           "cumSum": -198.2
+        },
+        {
+          "id": 37,
+          "date": "2022-03-12",
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 38.4,
+          "delta": 18.4,
+          "cumSum": -179.8
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 37,
+      "date": "2022-03-12",
+      "data": [
+        {
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 38.4,
+          "delta": 18.4
+        },
+        {
+          "player": "Aidan",
+          "buyin": 40.0,
+          "buyout": 48.7,
+          "delta": 8.7
+        },
+        {
+          "player": "Zen",
+          "buyin": 80.0,
+          "buyout": 52.9,
+          "delta": -27.1
+        }
+      ]
+    },
     {
       "id": 36,
       "date": "2022-03-10",
