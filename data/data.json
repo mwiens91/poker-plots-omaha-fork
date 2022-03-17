@@ -9,8 +9,8 @@
         82
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 22,
-      "cumSum": 222.45,
+      "gameCount": 23,
+      "cumSum": 259.58,
       "data": [
         {
           "id": 5,
@@ -209,6 +209,38 @@
           "buyout": 46.36,
           "delta": -3.64,
           "cumSum": 222.45
+        },
+        {
+          "id": 38,
+          "date": "2022-03-16",
+          "player": "Matt",
+          "buyin": 71.03,
+          "buyout": 108.16,
+          "delta": 37.13,
+          "cumSum": 259.58
+        }
+      ]
+    },
+    {
+      "name": "Russell",
+      "colourHex": "#55a26f",
+      "colourRgb": [
+        85,
+        162,
+        111
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
+      "gameCount": 1,
+      "cumSum": 29.8,
+      "data": [
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Russell",
+          "buyin": 10.0,
+          "buyout": 39.8,
+          "delta": 29.8,
+          "cumSum": 29.8
         }
       ]
     },
@@ -221,8 +253,8 @@
         208
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
-      "gameCount": 24,
-      "cumSum": 62.27,
+      "gameCount": 25,
+      "cumSum": 18.66,
       "data": [
         {
           "id": 1,
@@ -439,6 +471,15 @@
           "buyout": 48.7,
           "delta": 8.7,
           "cumSum": 62.27
+        },
+        {
+          "id": 38,
+          "date": "2022-03-16",
+          "player": "Aidan",
+          "buyin": 43.61,
+          "buyout": 0.0,
+          "delta": -43.61,
+          "cumSum": 18.66
         }
       ]
     },
@@ -451,8 +492,8 @@
         198
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 37,
-      "cumSum": 34.43,
+      "gameCount": 38,
+      "cumSum": 12.48,
       "data": [
         {
           "id": 1,
@@ -786,29 +827,15 @@
           "buyout": 52.9,
           "delta": -27.1,
           "cumSum": 34.43
-        }
-      ]
-    },
-    {
-      "name": "Russell",
-      "colourHex": "#55a26f",
-      "colourRgb": [
-        85,
-        162,
-        111
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
-      "gameCount": 1,
-      "cumSum": 29.8,
-      "data": [
+        },
         {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Russell",
-          "buyin": 10.0,
-          "buyout": 39.8,
-          "delta": 29.8,
-          "cumSum": 29.8
+          "id": 38,
+          "date": "2022-03-16",
+          "player": "Zen",
+          "buyin": 100.0,
+          "buyout": 78.05,
+          "delta": -21.95,
+          "cumSum": 12.48
         }
       ]
     },
@@ -1057,8 +1084,8 @@
         67
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 35,
-      "cumSum": -179.8,
+      "gameCount": 36,
+      "cumSum": -151.37,
       "data": [
         {
           "id": 1,
@@ -1374,11 +1401,50 @@
           "buyout": 38.4,
           "delta": 18.4,
           "cumSum": -179.8
+        },
+        {
+          "id": 38,
+          "date": "2022-03-16",
+          "player": "Juno",
+          "buyin": 84.4,
+          "buyout": 112.83,
+          "delta": 28.43,
+          "cumSum": -151.37
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 38,
+      "date": "2022-03-16",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 71.03,
+          "buyout": 108.16,
+          "delta": 37.13
+        },
+        {
+          "player": "Juno",
+          "buyin": 84.4,
+          "buyout": 112.83,
+          "delta": 28.43
+        },
+        {
+          "player": "Zen",
+          "buyin": 100.0,
+          "buyout": 78.05,
+          "delta": -21.95
+        },
+        {
+          "player": "Aidan",
+          "buyin": 43.61,
+          "buyout": 0.0,
+          "delta": -43.61
+        }
+      ]
+    },
     {
       "id": 37,
       "date": "2022-03-12",
