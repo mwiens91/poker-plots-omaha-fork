@@ -11,6 +11,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
       "gameCount": 24,
       "cumSum": 287.42,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 4,
+          "total": 171.12,
+          "start-game-id": 5,
+          "end-game-id": 9
+        },
+        "largest-losing-streak": {
+          "num-games": 4,
+          "total": -127.49,
+          "start-game-id": 20,
+          "end-game-id": 27
+        },
+        "most-won-in-single-game": {
+          "total": 139.59,
+          "game-id": 6
+        },
+        "most-lost-in-single-game": {
+          "total": -51.29,
+          "game-id": 21
+        }
+      },
       "data": [
         {
           "id": 5,
@@ -241,6 +263,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
       "gameCount": 39,
       "cumSum": 36.07,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 5,
+          "total": 171.82,
+          "start-game-id": 1,
+          "end-game-id": 5
+        },
+        "largest-losing-streak": {
+          "num-games": 11,
+          "total": -150.19,
+          "start-game-id": 8,
+          "end-game-id": 18
+        },
+        "most-won-in-single-game": {
+          "total": 115.0,
+          "game-id": 2
+        },
+        "most-lost-in-single-game": {
+          "total": -91.38,
+          "game-id": 6
+        }
+      },
       "data": [
         {
           "id": 1,
@@ -606,6 +650,20 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
       "gameCount": 1,
       "cumSum": 29.8,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 1,
+          "total": 29.8,
+          "start-game-id": 3,
+          "end-game-id": 3
+        },
+        "largest-losing-streak": null,
+        "most-won-in-single-game": {
+          "total": 29.8,
+          "game-id": 3
+        },
+        "most-lost-in-single-game": null
+      },
       "data": [
         {
           "id": 3,
@@ -629,6 +687,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
       "gameCount": 26,
       "cumSum": 17.9,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 4,
+          "total": 81.55,
+          "start-game-id": 7,
+          "end-game-id": 10
+        },
+        "largest-losing-streak": {
+          "num-games": 3,
+          "total": -73.81,
+          "start-game-id": 11,
+          "end-game-id": 19
+        },
+        "most-won-in-single-game": {
+          "total": 57.13,
+          "game-id": 36
+        },
+        "most-lost-in-single-game": {
+          "total": -43.61,
+          "game-id": 38
+        }
+      },
       "data": [
         {
           "id": 1,
@@ -877,6 +957,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/jayden.webp",
       "gameCount": 3,
       "cumSum": -1.21,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 1,
+          "total": 45.62,
+          "start-game-id": 11,
+          "end-game-id": 11
+        },
+        "largest-losing-streak": {
+          "num-games": 1,
+          "total": -25.28,
+          "start-game-id": 2,
+          "end-game-id": 2
+        },
+        "most-won-in-single-game": {
+          "total": 45.62,
+          "game-id": 11
+        },
+        "most-lost-in-single-game": {
+          "total": -25.28,
+          "game-id": 2
+        }
+      },
       "data": [
         {
           "id": 2,
@@ -918,6 +1020,20 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/bei.webp",
       "gameCount": 3,
       "cumSum": -55.53,
+      "stats": {
+        "largest-winning-streak": null,
+        "largest-losing-streak": {
+          "num-games": 3,
+          "total": -55.53,
+          "start-game-id": 30,
+          "end-game-id": 39
+        },
+        "most-won-in-single-game": null,
+        "most-lost-in-single-game": {
+          "total": -40.0,
+          "game-id": 30
+        }
+      },
       "data": [
         {
           "id": 30,
@@ -959,6 +1075,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/alex.webp",
       "gameCount": 7,
       "cumSum": -56.68,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 3,
+          "total": 66.1,
+          "start-game-id": 3,
+          "end-game-id": 7
+        },
+        "largest-losing-streak": {
+          "num-games": 2,
+          "total": -64.69,
+          "start-game-id": 9,
+          "end-game-id": 11
+        },
+        "most-won-in-single-game": {
+          "total": 44.06,
+          "game-id": 3
+        },
+        "most-lost-in-single-game": {
+          "total": -56.09,
+          "game-id": 2
+        }
+      },
       "data": [
         {
           "id": 1,
@@ -1036,6 +1174,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/david.webp",
       "gameCount": 8,
       "cumSum": -59.34,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 1,
+          "total": 95.27,
+          "start-game-id": 2,
+          "end-game-id": 2
+        },
+        "largest-losing-streak": {
+          "num-games": 3,
+          "total": -131.0,
+          "start-game-id": 3,
+          "end-game-id": 6
+        },
+        "most-won-in-single-game": {
+          "total": 95.27,
+          "game-id": 2
+        },
+        "most-lost-in-single-game": {
+          "total": -80.0,
+          "game-id": 3
+        }
+      },
       "data": [
         {
           "id": 2,
@@ -1122,6 +1282,28 @@
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
       "gameCount": 37,
       "cumSum": -192.04,
+      "stats": {
+        "largest-winning-streak": {
+          "num-games": 5,
+          "total": 133.59,
+          "start-game-id": 8,
+          "end-game-id": 12
+        },
+        "largest-losing-streak": {
+          "num-games": 4,
+          "total": -166.78,
+          "start-game-id": 1,
+          "end-game-id": 4
+        },
+        "most-won-in-single-game": {
+          "total": 111.7,
+          "game-id": 11
+        },
+        "most-lost-in-single-game": {
+          "total": -130.0,
+          "game-id": 2
+        }
+      },
       "data": [
         {
           "id": 1,

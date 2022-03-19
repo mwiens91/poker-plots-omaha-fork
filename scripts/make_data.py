@@ -25,7 +25,34 @@ This script generates JSON data using the raw data of Poker Now ledgers
                   delta: float,
                   cumSum: float,
                 }
-              ]
+              ],
+            stats:
+              {
+                "largest-winning-streak":
+                  {
+                    "num-games": int,
+                    "total": float,
+                    "start-game-id": int,
+                    "end-game-id": int,
+                  },
+                "largest-losing-streak":
+                  {
+                    "num-games": int,
+                    "total": float,
+                    "start-game-id": int,
+                    "end-game-id": int,
+                  },
+                "most-won-in-single-game":
+                  {
+                    "total": float,
+                    "game-id": int,
+                  },
+                "most-lost-in-single-game":
+                  {
+                    "total": float,
+                    "game-id": int,
+                  },
+              },
           }
         ]
       games:
@@ -182,14 +209,106 @@ for filename in raw_data_files:
     games.append(game)
 
 # Make cumulative sums for player_dict
-for player in player_dict:
-    sorted_data_points = sorted(player_dict[player], key=itemgetter("date"))
+for player, data in player_dict.items():
+    sorted_data_points = sorted(data, key=itemgetter("date"))
 
     cum_sum = 0
 
     for data_point in sorted_data_points:
         cum_sum = round(cum_sum + data_point["delta"], 2)
         data_point["cumSum"] = cum_sum
+
+
+# Get stats for players
+player_stats_dict = {}
+
+for player, data in player_dict.items():
+    sorted_data_points = sorted(data, key=itemgetter("date"))
+
+    current_winning_streak = None
+    current_losing_streak = None
+    max_winning_streak = None
+    max_losing_streak = None
+    most_won_in_single_game = None
+    most_lost_in_single_game = None
+
+    # Go through data points
+    for data_point in sorted_data_points:
+        # Unpack relevant attributes
+        game_id = data_point["id"]
+        delta = data_point["delta"]
+
+        if delta == 0:
+            current_winning_streak = None
+            current_losing_streak = None
+        elif delta > 0:
+            # Any losing streak is now dead
+            current_losing_streak = None
+
+            # Deal with the streak first
+            if current_winning_streak is None:
+                current_winning_streak = {
+                    "num-games": 1,
+                    "total": delta,
+                    "start-game-id": game_id,
+                    "end-game-id": game_id,
+                }
+            else:
+                current_winning_streak["num-games"] += 1
+                current_winning_streak["total"] = round(
+                    current_winning_streak["total"] + delta, 2
+                )
+                current_winning_streak["end-game-id"] = game_id
+
+            if (
+                max_winning_streak is None
+                or current_winning_streak["total"] > max_winning_streak["total"]
+            ):
+                max_winning_streak = current_winning_streak
+
+            # Now deal with most money won in a single game
+            if (
+                most_won_in_single_game is None
+                or delta > most_won_in_single_game["total"]
+            ):
+                most_won_in_single_game = {"total": delta, "game-id": game_id}
+        else:
+            # Here delta < 0. Mirror the steps for when delta > 0.
+            current_winning_streak = None
+
+            if current_losing_streak is None:
+                current_losing_streak = {
+                    "num-games": 1,
+                    "total": delta,
+                    "start-game-id": game_id,
+                    "end-game-id": game_id,
+                }
+            else:
+                current_losing_streak["num-games"] += 1
+                current_losing_streak["total"] = round(
+                    current_losing_streak["total"] + delta, 2
+                )
+                current_losing_streak["end-game-id"] = game_id
+
+            if (
+                max_losing_streak is None
+                or current_losing_streak["total"] < max_losing_streak["total"]
+            ):
+                max_losing_streak = current_losing_streak
+
+            if (
+                most_lost_in_single_game is None
+                or delta < most_lost_in_single_game["total"]
+            ):
+                most_lost_in_single_game = {"total": delta, "game-id": game_id}
+
+    # Store the stats
+    player_stats_dict[player] = {
+        "largest-winning-streak": max_winning_streak,
+        "largest-losing-streak": max_losing_streak,
+        "most-won-in-single-game": most_won_in_single_game,
+        "most-lost-in-single-game": most_lost_in_single_game,
+    }
 
 # Make final players list
 players = []
@@ -203,6 +322,7 @@ for player in player_dict:
             avatar=AVATAR_BASE_URL + "/" + player.lower() + ".webp",
             gameCount=len(player_dict[player]),
             cumSum=player_dict[player][-1]["cumSum"],
+            stats=player_stats_dict[player],
             data=player_dict[player],
         )
     )
