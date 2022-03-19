@@ -100,7 +100,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.5 * width;
+  let height = 0.55 * width;
 
   // Min/max zoom
   const minZoomTimeSeries = 0.7;
@@ -396,10 +396,10 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .on("dblclick.zoom", null)
       .on("dblclick", transitionXAxis);
 
-    // Add mouseover events for player cards
+    // Add mouseover events for legend avatar circles
     for (const player of playersNew) {
       const playerCardElement = document.getElementById(
-        "player-card-" + player.name
+        "legend-icon-div-" + player.name
       );
 
       playerCardElement.addEventListener("mouseover", () => {

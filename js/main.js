@@ -8,7 +8,8 @@ import { drawPiePlot } from "./modules/pieplot.mjs";
 fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
   .then((response) => response.json())
   .then((data) => {
-    const bigPlotMargin = { top: 20, bottom: 20, left: 30, right: 30 };
+    const linePlotMargin = { top: 10, bottom: 20, left: 30, right: 30 };
+    const boxPlotMargin = { top: 20, bottom: 20, left: 30, right: 30 };
     const piePlotMargin = { top: 0, bottom: 0, left: 27, right: 27 };
     const calendarMargin = { top: 0, bottom: 0, left: 0, right: 0 };
     const maxWidth = 950;
@@ -17,14 +18,14 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
       data,
       "line-plot-parent",
       maxWidth,
-      bigPlotMargin
+      linePlotMargin
     );
 
     const redrawBoxPlot = drawBoxPlot(
       data,
       "box-plot-parent",
       maxWidth,
-      bigPlotMargin
+      boxPlotMargin
     );
 
     const redrawWinnerPiePlot = drawPiePlot(

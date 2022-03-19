@@ -84,12 +84,12 @@ head
             h5 People section
             ul
               li the cards show each player's colour used throughout this page
-              li hovering over a player's card will highlight their data on the line plot
             h5 Multi-line chart
             ul
+              li hovering over a player's avatar in the legend above the plot will highlight their entire trajectory
               li hovering over a player's trajectory will highlight their entire trajectory
               li hovering over a player's data point will show the corresponding game's info in the info panel
-              li hovering over either a player's trajectory or a player's data point will show the player's info in the info panel
+              li hovering over either a player's avatar, trajectory, or data point will show the their info in the info panel
               li clicking on a player's data point will scroll to the corresponding game in the games log
               li double-clicking anywhere will transform the x-axis from representing time to showing all games equally spaced (double-clicking again will revert this)
               li scrolling will zoom on the x-axis
@@ -172,7 +172,7 @@ head
               )
                 .row.g-0.align-items-center
                   .col-md-4
-                    img.img-fluid.avatar-circle(
+                    img.img-fluid.player-card-avatar-circle(
                       src=player.avatar,
                       alt=player.name
                     )
@@ -181,11 +181,19 @@ head
                     | #{ parseCurrency.format(player.cumSum) }
   #line-chart.row.pt-5.text-center
     h1 Cumulative sums multi-line chart
+  .legend-div.mx-5.pb-0.pt-4
+    each player in data.players
+      .px-2.pt-1.pb-0(id="legend-icon-div-" + player.name)
+        img.legend-avatar-circle(
+          src=player.avatar,
+          alt=player.name,
+          style={ "border-color": player.colourHex }
+        )
   .row
     #line-plot-parent.col.text-center
   .row.mx-5
     #line-plot-avatar-div.col-2.py-1(style={ "text-align": "center" })
-      img#line-plot-avatar.img-fluid.avatar-circle(
+      img#line-plot-avatar.img-fluid.lineplot-infobar-avatar-circle(
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAABk0lEQVR4nO3SQQkAMAzAwPo3vaoIg3KnII/Mg8D8DuAmY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWiQWlnUTzYEi5dwAAAABJRU5ErkJggg=="
       )
     #line-plot-player-div.col-3.pt-2
