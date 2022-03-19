@@ -10,16 +10,18 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   const outlierOpacity = 0.5;
   const halfBoxWidth = 20;
 
+  // Minimum number of games to be eligible for box plot
+  const minNumberGames = 5;
+
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
-  // Get relevant stats from data. Also filter out any players with < 3
-  // data points
+  // Get relevant stats from data
   const playersNew = data.players
-    .filter((player) => player.data.length > 2)
+    .filter((player) => player.data.length >= minNumberGames)
     .map((player) => {
       const vals = player.data.map((d) => d.cumSum);
 
