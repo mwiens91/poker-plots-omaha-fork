@@ -397,7 +397,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .on("dblclick", transitionXAxis);
 
     // Add mouseover events for legend avatar circles
-    for (const player of playersNew) {
+    for (const player of playersNew.filter((x) => x.gameCount > 1)) {
       const playerCardElement = document.getElementById(
         "legend-icon-div-" + player.name
       );
