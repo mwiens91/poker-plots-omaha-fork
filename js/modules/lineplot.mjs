@@ -316,14 +316,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
           })
         );
         infoBarGameInfoElement.text(
-          "buy-in: " +
-            parseCurrency.format(d.buyin) +
-            ", buy-out: " +
-            parseCurrency.format(d.buyout) +
-            ", net: " +
+          "net: " +
             parseCurrency.format(d.delta) +
             ", cum-sum: " +
-            parseCurrency.format(d.cumSum)
+            parseCurrency.format(d.cumSum) +
+            ", buy-in: " +
+            parseCurrency.format(d.buyin) +
+            ", buy-out: " +
+            parseCurrency.format(d.buyout)
         );
       })
       .on("mouseout", (event) => {
