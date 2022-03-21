@@ -42,7 +42,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.65 * width;
+  let height = 0.5 * width;
 
   // Scales
   const xScale = d3

@@ -100,7 +100,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.55 * width;
+  let height = 0.5 * width;
 
   // Min/max zoom
   const minZoomTimeSeries = 0.7;
