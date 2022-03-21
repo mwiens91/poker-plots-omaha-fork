@@ -182,7 +182,7 @@ head
   #line-chart.row.pt-5.text-center
     h1 Cumulative sums multi-line chart
   .legend-div.mx-5.pb-0.pt-4
-    - const playersFiltered = data.players.filter(x => x.gameCount > 1)
+    - const playersFiltered = data.players.filter((x) => x.gameCount > 1);
     each player in playersFiltered
       .px-2.pt-1.pb-0(id="legend-icon-div-" + player.name)
         img.legend-avatar-circle(
