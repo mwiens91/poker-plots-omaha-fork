@@ -89,33 +89,32 @@ OUTFILE_MIN = DATA_DIR + "/data.min.json"
 AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 # AVATAR_BASE_URL = DATA_DIR + "/avatars"  # uncomment this to use local avatars
 
-# Colours for players. Try to keep these as distinct as possible. This
-# site is good for generating them:
-#
-# https://medialab.github.io/iwanthue/
-#
-# The two dictionaries should coincide.
+# Colours for players. Use the get_player_colours.mjs script to generate
+# these.
+
 PLAYER_COLOURS_HEX = {
-    "aidan": "#4bafd0",
-    "alex": "#9e873d",
-    "bei": "#c55d93",
-    "david": "#7178ca",
-    "jayden": "#c8803e",
-    "juno": "#68b143",
-    "matt": "#cc5452",
-    "russell": "#55a26f",
-    "zen": "#b05cc6",
+    "aidan": "#52b99d",
+    "alex": "#a15fc5",
+    "bei": "#6ebb51",
+    "david": "#b6ad4c",
+    "jayden": "#c55d8b",
+    "juno": "#557935",
+    "matt": "#6888cc",
+    "parker": "#df9446",
+    "russell": "#cf4d41",
+    "zen": "#9f683b",
 }
 PLAYER_COLOURS_RGB = {
-    "aidan": [75, 175, 208],
-    "alex": [158, 152, 51],
-    "bei": [197, 93, 147],
-    "david": [113, 120, 202],
-    "jayden": [200, 128, 62],
-    "juno": [104, 177, 67],
-    "matt": [208, 84, 82],
-    "russell": [85, 162, 111],
-    "zen": [176, 92, 198],
+    "aidan": [82, 185, 157],
+    "alex": [161, 95, 197],
+    "bei": [110, 187, 81],
+    "david": [182, 173, 76],
+    "jayden": [197, 93, 139],
+    "juno": [85, 121, 53],
+    "matt": [104, 136, 204],
+    "parker": [223, 148, 70],
+    "russell": [207, 77, 65],
+    "zen": [159, 104, 59],
 }
 
 # Initialize list of games with the following structure
