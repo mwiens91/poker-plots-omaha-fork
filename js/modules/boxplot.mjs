@@ -155,6 +155,24 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
         "d",
         (d) => `
       M${xScale(d.name)}, ${yScale(d.range[1])}
+      V${yScale(d.quartiles[2])}
+      `
+      )
+      .attr("stroke", "black")
+      .style("width", 40)
+      .on("mouseover", tooltipNormalMouseover)
+      .on("mousemove", tooltipMousemove)
+      .on("mouseout", tooltipMouseout);
+
+    svgG
+      .selectAll("vertlines")
+      .data(playersNew)
+      .enter()
+      .append("path")
+      .attr(
+        "d",
+        (d) => `
+      M${xScale(d.name)}, ${yScale(d.quartiles[0])}
       V${yScale(d.range[0])}
       `
       )
@@ -181,6 +199,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
         Z
       `
       )
+      .style("opacity", 0.75)
       .on("mouseover", tooltipNormalMouseover)
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);
