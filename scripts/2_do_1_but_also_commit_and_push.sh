@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 
-git stash
-git pull
-git stash pop
+# The prompt is thanks to Dennis here:
+# https://stackoverflow.com/a/3232082
+read -r -p "Are you sure you want to make data, HTML, and then push? [y/N] " response
+response=${response,,}    # tolower
+if [[ "$response" =~ ^(yes|y)$ ]]
+then
+  git stash
+  git pull
+  git stash pop
 
-./1_make_data_and_html.sh
+  ./1_make_data_and_html.sh
 
-git add ../index.html
-git add ../data/raw
-git add ../data/data.json
-git add ../data/data.min.json
+  git add ../index.html
+  git add ../data/raw
+  git add ../data/data.json
+  git add ../data/data.min.json
 
-git commit -m "Add new data"
-git push
+  git commit -m "Add new data"
+  git push
+else
+  :
+fi
