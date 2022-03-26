@@ -262,7 +262,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .style("stroke-width", lineStroke)
       .style("opacity", lineOpacity)
       .on("mouseover", (event, d) => {
-        trajectoryHover(d.name, true)
+        trajectoryHover(d.name, true);
 
         infoBarAvatarDivElement.style("background", "rgb(" + d.colourRgb + ")");
         infoBarPlayerDivElement.style(
@@ -302,7 +302,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         d3.select(event.currentTarget)
           .transition()
           .attr("r", circleRadiusHover)
-          .style("cursor", "pointer")
+          .style("cursor", "pointer");
 
         const player = playersNew.filter((x) => x.name === d.player)[0];
 
@@ -343,8 +343,10 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         );
       })
       .on("mouseout", (event) => {
-        d3.select(event.currentTarget).transition().attr("r", circleRadius)
-          .style("cursor", "none")
+        d3.select(event.currentTarget)
+          .transition()
+          .attr("r", circleRadius)
+          .style("cursor", "none");
         infoBarGameDivElement.style("background", "#FFFFFF");
         infoBarGameTitleElement.text("");
         infoBarGameInfoElement.text("");
@@ -420,7 +422,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       );
 
       legendElement.addEventListener("mouseover", () => {
-        trajectoryHover(player.name, false)
+        trajectoryHover(player.name, false);
 
         infoBarAvatarDivElement.style(
           "background",
