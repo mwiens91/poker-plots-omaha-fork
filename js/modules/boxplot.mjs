@@ -169,7 +169,6 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       `
       )
       .attr("stroke", "black")
-      .style("width", 40)
       .on("mouseover", tooltipNormalMouseover)
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);
@@ -187,7 +186,6 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       `
       )
       .attr("stroke", "black")
-      .style("width", 40)
       .on("mouseover", tooltipNormalMouseover)
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);
