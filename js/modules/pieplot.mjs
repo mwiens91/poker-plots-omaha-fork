@@ -110,7 +110,13 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
     // Draw labels
     const getMidAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
 
-    arcs
+    const labels = svgG
+      .selectAll("g.slice")
+      .data(bakedData.filter((x) => x.endAngle - x.startAngle > 0.1))
+      .enter()
+      .append("g");
+
+    labels
       .append("polyline")
       .attr("stroke", "black")
       .style("fill", "none")
@@ -133,7 +139,7 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);
 
-    arcs
+    labels
       .append("text")
       .attr("transform", (d) => {
         const pos = textArc.centroid(d);
