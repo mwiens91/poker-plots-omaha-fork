@@ -50,13 +50,15 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
   });
 
 // Don't show calendar block if window is small
-window.addEventListener("resize", () => {
-  if (document.documentElement.clientWidth < 950) {
+const hideCalendarIfViewportNarrow = () => {
+  if (document.documentElement.clientWidth < 992) {
     document.getElementById("calendar").style.display = "none";
   } else {
     document.getElementById("calendar").style.display = "block";
   }
-});
+};
+hideCalendarIfViewportNarrow();
+window.addEventListener("resize", hideCalendarIfViewportNarrow);
 
 // Page up circle logic
 const observer = new IntersectionObserver(
