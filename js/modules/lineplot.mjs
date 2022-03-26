@@ -5,15 +5,35 @@
 const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Tweak display settings
   const lineOpacity = 0.6;
-  const lineOpacityHover = 0.85;
-  const otherLinesOpacityHover = 0.15;
+  const lineOpacityHoverSelected = 0.7;
+  const lineOpacityHoverNotSelected = 0.1;
   const lineStroke = "0.1rem";
   const lineStrokeHover = "0.15rem";
 
   const circleOpacity = 0.85;
-  const circleOpacityOnLineHover = 0.6;
+  const circleOpacityOnLineHoverSelected = 0.85;
+  const circleOpacityOnLineHoverNotSelected = 0.1;
   const circleRadius = "0.2em";
   const circleRadiusHover = "0.4em";
+
+  // Function used to highlight a player's trajectory
+  const trajectoryHover = (playerName, useCursor) => {
+    d3.selectAll(".line").style("opacity", lineOpacityHoverNotSelected);
+    d3.selectAll(".circle").style(
+      "opacity",
+      circleOpacityOnLineHoverNotSelected
+    );
+
+    d3.selectAll(".line")
+      .filter((d) => d.name === playerName)
+      .style("opacity", lineOpacityHoverSelected)
+      .style("stroke-width", lineStrokeHover)
+      .style("cursor", () => (useCursor ? "pointer" : "none"));
+
+    d3.selectAll(".circle")
+      .filter((d) => d.player === playerName)
+      .style("opacity", circleOpacityOnLineHoverSelected);
+  };
 
   // Whether to show time series or to show game data in a (non-time)
   // series
@@ -242,12 +262,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .style("stroke-width", lineStroke)
       .style("opacity", lineOpacity)
       .on("mouseover", (event, d) => {
-        d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
-        d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
-        d3.select(event.currentTarget)
-          .style("opacity", lineOpacityHover)
-          .style("stroke-width", lineStrokeHover)
-          .style("cursor", "pointer");
+        trajectoryHover(d.name, true)
 
         infoBarAvatarDivElement.style("background", "rgb(" + d.colourRgb + ")");
         infoBarPlayerDivElement.style(
@@ -286,7 +301,8 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .on("mouseover", (event, d) => {
         d3.select(event.currentTarget)
           .transition()
-          .attr("r", circleRadiusHover);
+          .attr("r", circleRadiusHover)
+          .style("cursor", "pointer")
 
         const player = playersNew.filter((x) => x.name === d.player)[0];
 
@@ -327,7 +343,8 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         );
       })
       .on("mouseout", (event) => {
-        d3.select(event.currentTarget).transition().attr("r", circleRadius);
+        d3.select(event.currentTarget).transition().attr("r", circleRadius)
+          .style("cursor", "none")
         infoBarGameDivElement.style("background", "#FFFFFF");
         infoBarGameTitleElement.text("");
         infoBarGameInfoElement.text("");
@@ -398,19 +415,12 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
     // Add mouseover events for legend avatar circles
     for (const player of playersNew.filter((x) => x.gameCount > 1)) {
-      const playerCardElement = document.getElementById(
+      const legendElement = document.getElementById(
         "legend-icon-div-" + player.name
       );
 
-      playerCardElement.addEventListener("mouseover", () => {
-        d3.selectAll(".line").style("opacity", otherLinesOpacityHover);
-        d3.selectAll(".circle").style("opacity", circleOpacityOnLineHover);
-
-        lines
-          .selectAll("path")
-          .filter((d) => d.name === player.name)
-          .style("opacity", lineOpacityHover)
-          .style("stroke-width", lineStrokeHover);
+      legendElement.addEventListener("mouseover", () => {
+        trajectoryHover(player.name, false)
 
         infoBarAvatarDivElement.style(
           "background",
@@ -424,7 +434,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         infoBarPlayerTitleElement.text(player.name);
         infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
       });
-      playerCardElement.addEventListener("mouseout", () => {
+      legendElement.addEventListener("mouseout", () => {
         d3.selectAll(".line").style("opacity", lineOpacity);
         d3.selectAll(".circle").style("opacity", circleOpacity);
 
