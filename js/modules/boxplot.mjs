@@ -36,7 +36,9 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
         ...player,
         quartiles: [q1, q2, q3],
         range: [r0, r1],
-        outliers: vals.filter((x) => x < r0 || x > r1),
+        outliers: vals
+          .filter((x) => x < r0 || x > r1)
+          .map((x) => ({ value: x, name: player.name })),
       };
     });
 
@@ -57,7 +59,10 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       d3
         .extent(
           playersNew
-            .map((player) => [...player.outliers, ...player.range])
+            .map((player) => [
+              ...player.outliers.map((x) => x.value),
+              ...player.range,
+            ])
             .flat()
         )
         .map((x) => 1.05 * x)
@@ -83,14 +88,19 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
     tooltip
       .style("opacity", 0.8)
       .html(
-        `max: ${parseCurrency.format(d.range[1])}<br>` +
+        `<b>${d.name}</b><br>` +
+          `max: ${parseCurrency.format(d.range[1])}<br>` +
           `75% quantile: ${parseCurrency.format(d.quartiles[2])}<br>` +
           `50% quantile: ${parseCurrency.format(d.quartiles[1])}<br>` +
           `25% quantile: ${parseCurrency.format(d.quartiles[0])}<br>` +
           `min: ${parseCurrency.format(d.range[0])}`
       );
   const tooltipOutlierMouseover = (event, d) =>
-    tooltip.style("opacity", 0.8).html("outlier: " + parseCurrency.format(d));
+    tooltip
+      .style("opacity", 0.8)
+      .html(
+        `<b>${d.name}</b><br>` + `outlier: ${parseCurrency.format(d.value)}`
+      );
 
   // Function to draw plot
   const drawGraph = () => {
@@ -274,7 +284,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       .append("circle")
       .attr("r", outlierRadius)
       .attr("cx", () => (Math.random() - 0.5) * jitter)
-      .attr("cy", (d) => yScale(d))
+      .attr("cy", (d) => yScale(d.value))
       .on("mouseover", tooltipOutlierMouseover)
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);

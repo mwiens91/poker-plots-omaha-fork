@@ -43,7 +43,8 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
     tooltip
       .style("opacity", 0.8)
       .html(
-        `cumulative sum: ${parseCurrency.format(d.data.cumSum)}<br>` +
+        `<b>${d.data.name}</b><br>` +
+          `cumulative sum: ${parseCurrency.format(d.data.cumSum)}<br>` +
           `percent total ${d.data.cumSum > 0 ? "winnings" : "losses"}: ${
             Math.round((d.data.cumSum / cumSumTotal) * 100 * 10) / 10
           }%`
