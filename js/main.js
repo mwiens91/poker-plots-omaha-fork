@@ -114,7 +114,7 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
           player.name + " has never lost consecutive games";
       } else {
         peopleMostMoneyLostConsecutiveMainElement.textContent =
-          parseCurrency.format(player.stats["largest-losing-streak"].total);
+          parseCurrency.format(-player.stats["largest-losing-streak"].total);
         peopleMostMoneyLostConsecutiveSubElement.textContent =
           "on " +
           data.games.find(
@@ -151,7 +151,7 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
           player.name + " has never lost a game";
       } else {
         peopleMostMoneyLostSingleMainElement.textContent = parseCurrency.format(
-          player.stats["most-lost-in-single-game"].total
+          -player.stats["most-lost-in-single-game"].total
         );
         peopleMostMoneyLostSingleSubElement.textContent =
           "on " +
