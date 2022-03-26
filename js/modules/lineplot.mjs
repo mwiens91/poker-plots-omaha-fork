@@ -6,13 +6,13 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Tweak display settings
   const lineOpacity = 0.6;
   const lineOpacityHoverSelected = 0.7;
-  const lineOpacityHoverNotSelected = 0.1;
+  const lineOpacityHoverNotSelected = 0.15;
   const lineStroke = "0.1rem";
   const lineStrokeHover = "0.15rem";
 
   const circleOpacity = 0.85;
   const circleOpacityOnLineHoverSelected = 0.85;
-  const circleOpacityOnLineHoverNotSelected = 0.1;
+  const circleOpacityOnLineHoverNotSelected = 0.15;
   const circleRadius = "0.2em";
   const circleRadiusHover = "0.4em";
 
