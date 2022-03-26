@@ -28,6 +28,8 @@ This script generates JSON data using the raw data of Poker Now ledgers
               ],
             stats:
               {
+                "total-money-won": float,
+                "total-money-lost": float,
                 "largest-winning-streak":
                   {
                     "num-games": int,
@@ -224,6 +226,8 @@ player_stats_dict = {}
 for player, data in player_dict.items():
     sorted_data_points = sorted(data, key=itemgetter("date"))
 
+    total_money_won = 0
+    total_money_lost = 0
     current_winning_streak = None
     current_losing_streak = None
     max_winning_streak = None
@@ -241,6 +245,9 @@ for player, data in player_dict.items():
             current_winning_streak = None
             current_losing_streak = None
         elif delta > 0:
+            # Add to total money earned
+            total_money_won = round(total_money_won + delta, 2)
+
             # Any losing streak is now dead
             current_losing_streak = None
 
@@ -273,6 +280,8 @@ for player, data in player_dict.items():
                 most_won_in_single_game = {"total": delta, "game-id": game_id}
         else:
             # Here delta < 0. Mirror the steps for when delta > 0.
+            total_money_lost = round(total_money_lost - delta, 2)
+
             current_winning_streak = None
 
             if current_losing_streak is None:
@@ -303,6 +312,8 @@ for player, data in player_dict.items():
 
     # Store the stats
     player_stats_dict[player] = {
+        "total-money-won": total_money_won,
+        "total-money-lost": total_money_lost,
         "largest-winning-streak": max_winning_streak,
         "largest-losing-streak": max_losing_streak,
         "most-won-in-single-game": most_won_in_single_game,

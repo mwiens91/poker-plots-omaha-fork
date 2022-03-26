@@ -12,6 +12,8 @@
       "gameCount": 26,
       "cumSum": 405.52,
       "stats": {
+        "total-money-won": 593.07,
+        "total-money-lost": 187.55,
         "largest-winning-streak": {
           "num-games": 4,
           "total": 183.07,
@@ -282,6 +284,8 @@
       "gameCount": 28,
       "cumSum": 85.25,
       "stats": {
+        "total-money-won": 308.29,
+        "total-money-lost": 223.04,
         "largest-winning-streak": {
           "num-games": 4,
           "total": 81.55,
@@ -570,6 +574,8 @@
       "gameCount": 41,
       "cumSum": 58.65,
       "stats": {
+        "total-money-won": 440.38,
+        "total-money-lost": 381.73,
         "largest-winning-streak": {
           "num-games": 5,
           "total": 171.82,
@@ -975,6 +981,8 @@
       "gameCount": 3,
       "cumSum": 2.53,
       "stats": {
+        "total-money-won": 32.53,
+        "total-money-lost": 30.0,
         "largest-winning-streak": {
           "num-games": 1,
           "total": 29.8,
@@ -1038,6 +1046,8 @@
       "gameCount": 3,
       "cumSum": -1.21,
       "stats": {
+        "total-money-won": 45.62,
+        "total-money-lost": 46.83,
         "largest-winning-streak": {
           "num-games": 1,
           "total": 45.62,
@@ -1101,6 +1111,8 @@
       "gameCount": 1,
       "cumSum": -22.42,
       "stats": {
+        "total-money-won": 0,
+        "total-money-lost": 22.42,
         "largest-winning-streak": null,
         "largest-losing-streak": {
           "num-games": 1,
@@ -1138,6 +1150,8 @@
       "gameCount": 9,
       "cumSum": -50.26,
       "stats": {
+        "total-money-won": 140.74,
+        "total-money-lost": 191.0,
         "largest-winning-streak": {
           "num-games": 1,
           "total": 95.27,
@@ -1255,6 +1269,8 @@
       "gameCount": 7,
       "cumSum": -56.68,
       "stats": {
+        "total-money-won": 66.1,
+        "total-money-lost": 122.78,
         "largest-winning-streak": {
           "num-games": 3,
           "total": 66.1,
@@ -1354,6 +1370,8 @@
       "gameCount": 4,
       "cumSum": -95.53,
       "stats": {
+        "total-money-won": 0,
+        "total-money-lost": 95.53,
         "largest-winning-streak": null,
         "largest-losing-streak": {
           "num-games": 4,
@@ -1418,6 +1436,8 @@
       "gameCount": 39,
       "cumSum": -319.46,
       "stats": {
+        "total-money-won": 359.96,
+        "total-money-lost": 679.42,
         "largest-winning-streak": {
           "num-games": 5,
           "total": 133.59,
