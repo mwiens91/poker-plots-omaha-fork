@@ -365,10 +365,10 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
           })
         );
         infoBarGameInfoElement.text(
-          "net: " +
-            parseCurrency.format(d.delta) +
-            ", cum-sum: " +
+          "cum-sum: " +
             parseCurrency.format(d.cumSum) +
+            "; net: " +
+            parseCurrency.format(d.delta) +
             ", buy-in: " +
             parseCurrency.format(d.buyin) +
             ", buy-out: " +
