@@ -205,7 +205,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const adjustInfoBarPlayer = (player) => {
     infoBarAvatarDivElement.style(
       "background",
-      "rgb(" + player.colourRgb + ")"
+      "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.1) + ")"
     );
     infoBarPlayerDivElement.style(
       "background",
