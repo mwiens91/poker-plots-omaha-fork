@@ -16,25 +16,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const circleRadius = "0.2em";
   const circleRadiusHover = "0.4em";
 
-  // Function used to highlight a player's trajectory
-  const trajectoryHover = (playerName, useCursor) => {
-    d3.selectAll(".line").style("opacity", lineOpacityHoverNotSelected);
-    d3.selectAll(".circle").style(
-      "opacity",
-      circleOpacityOnLineHoverNotSelected
-    );
-
-    d3.selectAll(".line")
-      .filter((d) => d.name === playerName)
-      .style("opacity", lineOpacityHoverSelected)
-      .style("stroke-width", lineStrokeHover)
-      .style("cursor", () => (useCursor ? "pointer" : "none"));
-
-    d3.selectAll(".circle")
-      .filter((d) => d.player === playerName)
-      .style("opacity", circleOpacityOnLineHoverSelected);
-  };
-
   // Whether to show time series or to show game data in a (non-time)
   // series
   let useTimeSeries = true;
@@ -161,6 +142,25 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
+
+  // Function used to highlight a player's trajectory
+  const trajectoryHover = (playerName, useCursor) => {
+    svg.selectAll(".line").style("opacity", lineOpacityHoverNotSelected);
+    svg.selectAll(".circle").style(
+      "opacity",
+      circleOpacityOnLineHoverNotSelected
+    );
+
+    svg.selectAll(".line")
+      .filter((d) => d.name === playerName)
+      .style("opacity", lineOpacityHoverSelected)
+      .style("stroke-width", lineStrokeHover)
+      .style("cursor", () => (useCursor ? "pointer" : "none"));
+
+    svg.selectAll(".circle")
+      .filter((d) => d.player === playerName)
+      .style("opacity", circleOpacityOnLineHoverSelected);
+  };
 
   // Function to draw plot
   const drawGraph = () => {
