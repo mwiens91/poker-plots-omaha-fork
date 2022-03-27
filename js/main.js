@@ -48,10 +48,30 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
 
     drawCalendar(data, "calendar-parent", calendarMargin);
 
-    window.addEventListener("resize", redrawLinePlot);
-    window.addEventListener("resize", redrawBoxPlot);
-    window.addEventListener("resize", redrawWinnerPiePlot);
-    window.addEventListener("resize", redrawLoserPiePlot);
+    // For redrawing plots, we can either add event listeners to the
+    // window and check against the Bootstrap container breakpoints,
+    // or we can simply observe the container for changes to its size.
+    // We'll take the latter approach here
+    const mainContainerElement = document.getElementById("main-container");
+    let prevWidth = null;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = entry.borderBoxSize[0].inlineSize;
+
+        if (prevWidth === null) {
+          prevWidth = width;
+        } else if (width !== prevWidth) {
+          prevWidth = width;
+
+          redrawLinePlot();
+          redrawBoxPlot();
+          redrawWinnerPiePlot();
+          redrawLoserPiePlot();
+        }
+      }
+    });
+    resizeObserver.observe(mainContainerElement);
   });
 
 // Don't show calendar block if window is small
