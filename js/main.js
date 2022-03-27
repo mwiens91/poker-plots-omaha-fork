@@ -72,6 +72,23 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
       }
     });
     resizeObserver.observe(mainContainerElement);
+
+    // We also want to redraw the lineplot and boxplot at different height
+    // breakpoints; these breakpoints exist here, but we invoke them
+    // explicitly
+    let prevWindowHeightFloored =
+      Math.floor(document.documentElement.clientHeight / 100) * 100;
+    window.addEventListener("resize", () => {
+      const windowHeightFloored =
+        Math.floor(document.documentElement.clientHeight / 100) * 100;
+
+      if (windowHeightFloored !== prevWindowHeightFloored) {
+        prevWindowHeightFloored = windowHeightFloored;
+
+        redrawLinePlot();
+        redrawBoxPlot();
+      }
+    });
   });
 
 // Don't show calendar block if window is small

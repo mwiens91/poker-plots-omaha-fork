@@ -16,6 +16,20 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   const circleRadius = "0.2em";
   const circleRadiusHover = "0.4em";
 
+  // Max and min percentage of width that height is
+  const minWidthHeightFactor = 0.45;
+  const maxWidthHeightFactor = 0.65;
+
+  // Function to get height given width
+  const getHeight = (width) =>
+    Math.max(
+      Math.min(
+        Math.floor(document.documentElement.clientHeight / 100) * 100 - 420,
+        maxWidthHeightFactor * width
+      ),
+      minWidthHeightFactor * width
+    );
+
   // Whether to show time series or to show game data in a (non-time)
   // series
   let useTimeSeries = true;
@@ -101,7 +115,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.5 * width;
+  let height = getHeight(width);
 
   // Min/max zoom
   const minZoomTimeSeries = 0.7;
@@ -442,7 +456,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   return () => {
     // Reset sizes
     width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-    height = 0.5 * width;
+    height = getHeight(width);
 
     // Update scales
     xScale.range([0, width - margin.left - margin.right]);

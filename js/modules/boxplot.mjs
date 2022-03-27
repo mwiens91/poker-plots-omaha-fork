@@ -13,6 +13,20 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Minimum number of games to be eligible for box plot
   const minNumberGames = 5;
 
+  // Max and min percentage of width that height is
+  const minWidthHeightFactor = 0.45;
+  const maxWidthHeightFactor = 0.65;
+
+  // Function to get height given width
+  const getHeight = (width) =>
+    Math.max(
+      Math.min(
+        Math.floor(document.documentElement.clientHeight / 100) * 100 - 200,
+        maxWidthHeightFactor * width
+      ),
+      minWidthHeightFactor * width
+    );
+
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -44,7 +58,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
 
   // Sizes
   let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-  let height = 0.5 * width;
+  let height = getHeight(width);
 
   // Scales
   const xScale = d3
@@ -295,7 +309,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   return () => {
     // Reset sizes
     width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-    height = 0.65 * width;
+    height = getHeight(width);
 
     // Update scales
     xScale.range([0, width - margin.left - margin.right]);
