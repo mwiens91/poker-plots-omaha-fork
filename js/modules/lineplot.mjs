@@ -143,24 +143,69 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
 
-  // Function used to highlight a player's trajectory
-  const trajectoryHover = (playerName, useCursor) => {
-    svg.selectAll(".line").style("opacity", lineOpacityHoverNotSelected);
-    svg.selectAll(".circle").style(
-      "opacity",
-      circleOpacityOnLineHoverNotSelected
-    );
+  // Line plot info bar elements
+  const infoBarAvatarDivElement = d3.select("#line-plot-avatar-div");
+  const infoBarPlayerDivElement = d3.select("#line-plot-player-div");
+  const infoBarGameDivElement = d3.select("#line-plot-game-div");
+  const infoBarAvatarElement = d3.select("#line-plot-avatar");
+  const infoBarPlayerTitleElement = d3.select("#line-plot-player");
+  const infoBarPlayerAmountElement = d3.select("#line-plot-amount");
+  const infoBarGameTitleElement = d3.select("#line-plot-game-title");
+  const infoBarGameInfoElement = d3.select("#line-plot-game-info");
 
-    svg.selectAll(".line")
+  // Event listener functions
+  const trajectoryHoverSelected = (playerName, useCursor) => {
+    svg.selectAll(".line").style("opacity", lineOpacityHoverNotSelected);
+    svg
+      .selectAll(".circle")
+      .style("opacity", circleOpacityOnLineHoverNotSelected);
+
+    svg
+      .selectAll(".line")
       .filter((d) => d.name === playerName)
       .style("opacity", lineOpacityHoverSelected)
       .style("stroke-width", lineStrokeHover)
       .style("cursor", () => (useCursor ? "pointer" : "none"));
 
-    svg.selectAll(".circle")
+    svg
+      .selectAll(".circle")
       .filter((d) => d.player === playerName)
       .style("opacity", circleOpacityOnLineHoverSelected);
   };
+  const trajectoryHoverUnselected = () => {
+    svg
+      .selectAll(".line")
+      .style("opacity", lineOpacity)
+      .style("stroke-width", lineStroke)
+      .style("cursor", "none");
+    svg.selectAll(".circle").style("opacity", circleOpacity);
+  };
+  const adjustInfoBarPlayer = (player) => {
+    infoBarAvatarDivElement.style(
+      "background",
+      "rgb(" + player.colourRgb + ")"
+    );
+    infoBarPlayerDivElement.style(
+      "background",
+      "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ")"
+    );
+    infoBarAvatarElement.attr("src", player.avatar);
+    infoBarPlayerTitleElement.text(player.name);
+    infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
+  };
+
+  // Add mouseover events for legend avatar circles
+  for (const player of playersNew) {
+    const legendElement = document.getElementById(
+      "legend-icon-div-" + player.name
+    );
+
+    legendElement.addEventListener("mouseover", () => {
+      trajectoryHoverSelected(player.name, false);
+      adjustInfoBarPlayer(player);
+    });
+    legendElement.addEventListener("mouseout", trajectoryHoverUnselected);
+  }
 
   // Function to draw plot
   const drawGraph = () => {
@@ -236,16 +281,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .x((d) => xScale(getXVal(d)))
       .y((d) => yScale(d.cumSum));
 
-    // Line plot info bar elements
-    const infoBarAvatarDivElement = d3.select("#line-plot-avatar-div");
-    const infoBarPlayerDivElement = d3.select("#line-plot-player-div");
-    const infoBarGameDivElement = d3.select("#line-plot-game-div");
-    const infoBarAvatarElement = d3.select("#line-plot-avatar");
-    const infoBarPlayerTitleElement = d3.select("#line-plot-player");
-    const infoBarPlayerAmountElement = d3.select("#line-plot-amount");
-    const infoBarGameTitleElement = d3.select("#line-plot-game-title");
-    const infoBarGameInfoElement = d3.select("#line-plot-game-info");
-
     // Add lines
     const lines = drawArea.append("g").attr("class", "lines");
 
@@ -262,24 +297,10 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .style("stroke-width", lineStroke)
       .style("opacity", lineOpacity)
       .on("mouseover", (event, d) => {
-        trajectoryHover(d.name, true);
-
-        infoBarAvatarDivElement.style("background", "rgb(" + d.colourRgb + ")");
-        infoBarPlayerDivElement.style(
-          "background",
-          "rgb(" + d.colourRgb.map((x) => x + (255 - x) * 0.4) + ")"
-        );
-        infoBarAvatarElement.attr("src", d.avatar);
-        infoBarPlayerTitleElement.text(d.name);
-        infoBarPlayerAmountElement.text(parseCurrency.format(d.cumSum));
+        trajectoryHoverSelected(d.name, true);
+        adjustInfoBarPlayer(d);
       })
-      .on("mouseout", (event) => {
-        d3.selectAll(".line").style("opacity", lineOpacity);
-        d3.selectAll(".circle").style("opacity", circleOpacity);
-        d3.select(event.currentTarget)
-          .style("stroke-width", lineStroke)
-          .style("cursor", "none");
-      });
+      .on("mouseout", trajectoryHoverUnselected);
 
     // Add datapoints to lines
     lines
@@ -304,19 +325,9 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
           .attr("r", circleRadiusHover)
           .style("cursor", "pointer");
 
-        const player = playersNew.filter((x) => x.name === d.player)[0];
+        const player = playersNew.find((x) => x.name === d.player);
 
-        infoBarAvatarDivElement.style(
-          "background",
-          "rgb(" + player.colourRgb + ")"
-        );
-        infoBarPlayerDivElement.style(
-          "background",
-          "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ")"
-        );
-        infoBarAvatarElement.attr("src", player.avatar);
-        infoBarPlayerTitleElement.text(player.name);
-        infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
+        adjustInfoBarPlayer(player);
 
         infoBarGameDivElement.style(
           "background",
@@ -414,39 +425,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .on("wheel", (event) => event.preventDefault())
       .on("dblclick.zoom", null)
       .on("dblclick", transitionXAxis);
-
-    // Add mouseover events for legend avatar circles
-    for (const player of playersNew) {
-      const legendElement = document.getElementById(
-        "legend-icon-div-" + player.name
-      );
-
-      legendElement.addEventListener("mouseover", () => {
-        trajectoryHover(player.name, false);
-
-        infoBarAvatarDivElement.style(
-          "background",
-          "rgb(" + player.colourRgb + ")"
-        );
-        infoBarPlayerDivElement.style(
-          "background",
-          "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.4) + ")"
-        );
-        infoBarAvatarElement.attr("src", player.avatar);
-        infoBarPlayerTitleElement.text(player.name);
-        infoBarPlayerAmountElement.text(parseCurrency.format(player.cumSum));
-      });
-      legendElement.addEventListener("mouseout", () => {
-        d3.selectAll(".line").style("opacity", lineOpacity);
-        d3.selectAll(".circle").style("opacity", circleOpacity);
-
-        lines
-          .selectAll("path")
-          .filter((d) => d.name === player.name)
-          .style("stroke-width", lineStroke)
-          .style("cursor", "none");
-      });
-    }
   };
 
   // Call graph drawing function
