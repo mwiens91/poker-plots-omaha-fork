@@ -91,22 +91,27 @@ fetch("https://mwiens91.github.io/poker-plots/data/data.min.json")
     });
   });
 
-// Don't show calendar block if window is small
+// Don't show calendar block if window is small; also show a warning
+const calendarElement = document.getElementById("calendar");
+const alertBoxElement = document.getElementById("alert-box");
+
 const hideCalendarIfViewportNarrow = () => {
   if (document.documentElement.clientWidth < 992) {
-    document.getElementById("calendar").style.display = "none";
+    calendarElement.style.display = "none";
+    alertBoxElement.style.display = "block";
   } else {
-    document.getElementById("calendar").style.display = "block";
+    calendarElement.style.display = "block";
+    alertBoxElement.style.display = "none";
   }
 };
 hideCalendarIfViewportNarrow();
 window.addEventListener("resize", hideCalendarIfViewportNarrow);
 
 // Page up circle logic
+const circleElem = document.getElementById("page-up-circle");
+
 const observer = new IntersectionObserver(
   (entries) => {
-    const circleElem = document.getElementById("page-up-circle");
-
     if (entries[0].isIntersecting) {
       circleElem.style.display = "block";
     } else {

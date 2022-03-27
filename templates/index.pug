@@ -45,7 +45,16 @@ head
   )
   // CSS
   link(type="text/css", href="css/style.css", rel="stylesheet")
-.container.pt-3
+#main-container.container.pt-3
+  #alert-box.alert.alert-danger.fixed-top(
+    role="alert",
+    style={ display: "none" }
+  )
+    b poker plots
+    |
+    | is designed for larger screen sizes. Please consider using a
+    |
+    | resolution of at least 720p.
   .row
     .col-6
       .d-flex.justify-content-center
