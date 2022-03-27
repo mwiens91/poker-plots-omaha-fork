@@ -82,7 +82,11 @@ head
               li
                 b cumulative sum:
                 |
-                | how much money a player has accumulated at a given point in time (abbreviated "cum-sum" sometimes)
+                | how much money a player has accumulated at a given point in time
+              li
+                b net:
+                |
+                | the profit a player makes in a game
               li
                 b buy-in:
                 |
@@ -101,6 +105,27 @@ head
               li hovering over a player's avatar in the legend above the plot will highlight their entire trajectory
               li hovering over a player's trajectory will highlight their entire trajectory
               li hovering over a player's data point will show the corresponding game's info in the info panel
+                br
+                br
+                | The symbols in the game info panel represent the
+                | following:
+                ul
+                  li
+                    b Σ:
+                    |
+                    | cumulative sum
+                  li
+                    b Δ:
+                    |
+                    | net
+                  li
+                    b ↧:
+                    |
+                    | buy-in
+                  li
+                    b ↥:
+                    |
+                    | buy-out
               li clicking on a player's data point will scroll to the corresponding game in the games log
               li double-clicking anywhere will transform the x-axis from representing time to showing all games equally spaced (double-clicking again will revert this)
               li scrolling will zoom on the x-axis
@@ -248,16 +273,26 @@ head
   .row
     #line-plot-parent.col.text-center
   .row.mx-5
-    #line-plot-avatar-div.text-center.col-2.py-1
+    #line-plot-avatar-div.text-center.col-2.py-1(
+      style={ "border-radius": "3px 0 0 3px" }
+    )
       img#line-plot-avatar.img-fluid.lineplot-infobar-avatar-circle(
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAABk0lEQVR4nO3SQQkAMAzAwPo3vaoIg3KnII/Mg8D8DuAmY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWCWORMBYJY5EwFgljkTAWiQWlnUTzYEi5dwAAAABJRU5ErkJggg=="
       )
-    #line-plot-player-div.col-3.pt-2
-      h3#line-plot-player
-      #line-plot-amount
-    #line-plot-game-div.col-7.pt-2
-      h3#line-plot-game-title
-      #line-plot-game-info
+    #line-plot-player-div.col-3
+      .d-flex.flex-column.justify-content-center.h-100
+        div
+          h3#line-plot-player(
+            style={ "font-size": "1.5rem", "margin-bottom": "0.2rem" }
+          )
+        #line-plot-amount
+    #line-plot-game-div.col-7(style={ "border-radius": "0 3px 3px 0" })
+      .d-flex.flex-column.justify-content-center.h-100
+        div
+          h3#line-plot-game-title(
+            style={ "font-size": "1.5rem", "margin-bottom": "0.2rem" }
+          )
+        #line-plot-game-info
   #box-plot.row.text-center(style={ "padding-top": "5rem" })
     h1 Cumulative sums box plot
   .row

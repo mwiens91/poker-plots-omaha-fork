@@ -364,14 +364,14 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
             day: "numeric",
           })
         );
-        infoBarGameInfoElement.text(
-          "cum-sum: " +
+        infoBarGameInfoElement.html(
+          "Σ:" +
             parseCurrency.format(d.cumSum) +
-            "; net: " +
+            "&nbsp; Δ:" +
             parseCurrency.format(d.delta) +
-            ", buy-in: " +
+            "&nbsp; ↧:" +
             parseCurrency.format(d.buyin) +
-            ", buy-out: " +
+            "&nbsp; ↥:" +
             parseCurrency.format(d.buyout)
         );
       })
