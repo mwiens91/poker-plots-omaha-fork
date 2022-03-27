@@ -85,8 +85,10 @@ import os
 
 DATA_DIR = "../data"
 RAW_DATA_DIR = DATA_DIR + "/raw"
+MODULES_DIR = "../js/modules"
 OUTFILE = DATA_DIR + "/data.json"
 OUTFILE_MIN = DATA_DIR + "/data.min.json"
+OUTFILE_MODULE = MODULES_DIR + "/dataModule.mjs"
 
 AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 # AVATAR_BASE_URL = DATA_DIR + "/avatars"  # uncomment this to use local avatars
@@ -347,9 +349,22 @@ for game in games:
 games.sort(key=itemgetter("id"), reverse=True)
 
 # Dump to file
+data = dict(players=players, games=games)
+
 with open(OUTFILE, "w") as f:
-    json.dump(dict(players=players, games=games), f, indent=2)
+    json.dump(data, f, indent=2)
 
 # Dump minified version to file
 with open(OUTFILE_MIN, "w") as f:
-    json.dump(dict(players=players, games=games), f)
+    json.dump(data, f)
+
+# Dump to a JS module
+with open(OUTFILE_MODULE, "w") as f:
+    f.write(
+        "// This module is generated automatically by the make_data.py script"
+        + "\n\n"
+        + "const data = "
+        + json.dumps(data)
+        + ";\n\n"
+        + "export { data };"
+    )
