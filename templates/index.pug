@@ -276,7 +276,10 @@ head
   #calendar.row.pt-3.pb-4
     #calendar-parent.col.text-center
   .container.fixed-top.d-flex.justify-content-center
-    button#page-up-circle.page-up-circle(onclick="window.scrollTo(0,0)")
+    button#page-up-circle.page-up-circle(
+      onclick="window.scrollTo(0,0)",
+      style={ display: "none" }
+    )
       | ^
   #scroll-up-visible
     each game in data.games
