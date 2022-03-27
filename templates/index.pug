@@ -98,6 +98,27 @@ head
               li double-clicking anywhere will transform the x-axis from representing time to showing all games equally spaced (double-clicking again will revert this)
               li scrolling will zoom on the x-axis
               li dragging will pan on the x-axis
+              li passing in a value for the !{ ' ' }
+                a(href="https://en.wikipedia.org/wiki/Query_string") query parameter
+                | !{ ' ' }
+                code lineYScaleExponent
+                |
+                | will set the power scaling of the y-axis
+                br
+                br
+                | For example, the URL !{ ' ' }
+                a(
+                  href="https://mwiens91.github.io/poker-plots/?lineYScaleExponent=0.7"
+                ): code https://mwiens91.github.io/poker-plots/?lineYScaleExponent=0.7
+                |
+                | will result in the y-axis scaling !{ ' ' }
+                var y
+                |
+                | =!{ ' ' }
+                var x
+                sup 0.7
+                | . This can be useful for distinguishing
+                | trajectories when the range close to 0 gets crowded.
             h5 Box plot
             ul
               li hovering over a player's "box and whiskers" will show their corresponding extrema and quartiles

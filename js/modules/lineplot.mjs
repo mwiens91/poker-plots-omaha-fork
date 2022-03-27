@@ -128,9 +128,17 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     .range([0, width - margin.left - margin.right]);
   let xScaleCopy = xScale.copy();
 
+  // Read optional query parameter for y-scaling exponent.
+  // Method obtained here https://stackoverflow.com/a/901144 (no author)
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  const exponent = params.lineYScaleExponent;
+
   // y-scale
   const yScale = d3
-    .scaleLinear()
+    .scalePow()
+    .exponent(exponent === null ? 1 : parseFloat(exponent))
     .domain(
       d3
         .extent(
