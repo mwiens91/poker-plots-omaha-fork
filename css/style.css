@@ -53,6 +53,18 @@ ul {
   padding-bottom: 5px;
 }
 
+/* the point of this is to keep the spacing of the people
+ * body prior to the actual data being loaded in */
+.people-body-stat-main:after {
+  content: '.';
+  visibility: hidden;
+}
+
+.people-body-stat-sub:after {
+  content: '.';
+  visibility: hidden;
+}
+
 .people-body-stat-sub {
   font-style: italic;
   padding-bottom: 5px;
