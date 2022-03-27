@@ -207,7 +207,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
         Z
       `
       )
-      .style("opacity", 0.75)
+      .style("opacity", 0.8)
       .on("mouseover", tooltipNormalMouseover)
       .on("mousemove", tooltipMousemove)
       .on("mouseout", tooltipMouseout);
