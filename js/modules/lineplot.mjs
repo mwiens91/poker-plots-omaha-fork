@@ -365,13 +365,13 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
           })
         );
         infoBarGameInfoElement.html(
-          "Σ:" +
+          "Σ=" +
             parseCurrency.format(d.cumSum) +
-            "&nbsp; Δ:" +
+            "&nbsp;&nbsp; Δ=" +
             parseCurrency.format(d.delta) +
-            "&nbsp; ↧:" +
+            "&nbsp;&nbsp; ↧" +
             parseCurrency.format(d.buyin) +
-            "&nbsp; ↥:" +
+            "&nbsp;&nbsp; ↥" +
             parseCurrency.format(d.buyout)
         );
       })
