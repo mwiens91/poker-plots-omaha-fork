@@ -10,7 +10,7 @@ then
   git pull
   git stash pop
 
-  ./1_make_data_and_html.sh
+  ./1_make_data_and_html_and_min_js.sh
 
   git add ../index.html
   git add ../data/raw
