@@ -16,6 +16,7 @@ then
   git add ../data/raw
   git add ../data/data.json
   git add ../data/data.min.json
+  git add ../js/modules/dataModule.mjs
 
   git commit -m "Add new data"
   git push
