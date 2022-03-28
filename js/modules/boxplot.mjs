@@ -33,6 +33,10 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
     currency: "USD",
   });
 
+  // Extend the formatter to show plusminus
+  const parseCurrencyPlusMinus = (x) =>
+    (x > 0 ? "+" : " ") + parseCurrency.format(x);
+
   // Get relevant stats from data
   const playersNew = data.players
     .filter((player) => player.data.length >= minNumberGames)
@@ -103,11 +107,26 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       .style("opacity", 0.8)
       .html(
         `<b>${d.name}</b><br>` +
-          `max: ${parseCurrency.format(d.range[1])}<br>` +
-          `75% quantile: ${parseCurrency.format(d.quartiles[2])}<br>` +
-          `50% quantile: ${parseCurrency.format(d.quartiles[1])}<br>` +
-          `25% quantile: ${parseCurrency.format(d.quartiles[0])}<br>` +
-          `min: ${parseCurrency.format(d.range[0])}`
+          '<span class="tooltip-boxplot-first-item">' +
+          "max:" +
+          "</span>" +
+          `${parseCurrencyPlusMinus(d.range[1])}<br>` +
+          '<span class="tooltip-boxplot-first-item">' +
+          "Q<sub>3</sub>:" +
+          "</span>" +
+          `${parseCurrencyPlusMinus(d.quartiles[2])}<br>` +
+          '<span class="tooltip-boxplot-first-item">' +
+          "Q<sub>2</sub>:" +
+          "</span>" +
+          `${parseCurrencyPlusMinus(d.quartiles[1])}<br>` +
+          '<span class="tooltip-boxplot-first-item">' +
+          "Q<sub>1</sub>:" +
+          "</span>" +
+          `${parseCurrencyPlusMinus(d.quartiles[0])}<br>` +
+          '<span class="tooltip-boxplot-first-item">' +
+          "min:" +
+          "</span>" +
+          `${parseCurrencyPlusMinus(d.range[0])}`
       );
   const tooltipOutlierMouseover = (event, d) =>
     tooltip

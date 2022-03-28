@@ -24,6 +24,11 @@
   padding: 15px;
 }
 
+.tooltip-boxplot-first-item {
+  display: inline-block;
+  width: 41px;
+}
+
 /* page stuff */
 body,
 input,
