@@ -203,6 +203,7 @@ head
               )
                 | Games log
   - const parseCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+  - const parseCurrencyPlusMinus = (x) => (x >= 0 ? "+" : "") + parseCurrency.format(x).replace("-", "−");
   #people.row.pt-5.text-center
     h1 People
   .row.pt-3.pb-3
@@ -315,23 +316,23 @@ head
         div
           - const theDate = new Date(game.date.replace(/-/g, "/"));
           h3= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
-        div
+        .pt-1
           table.table(style={ "table-layout": "fixed" })
             thead
               tr
                 th player
+                th(style={ "padding-left": "1em" }) net
                 th buy-in
                 th buy-out
-                th net
             tbody
               each playerData in game.data
-                - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
+                - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.75);
                 tr(
                   style={ background: "rgb(" + playerColour + ")", "border-color": "rgb(" + playerColour + ")" }
                 )
-                  th= playerData.player
-                  td= parseCurrency.format(playerData.buyin)
-                  td= parseCurrency.format(playerData.buyout)
-                  td= parseCurrency.format(playerData.delta)
+                  td(style={ "font-weight": "bold" })= playerData.player
+                  td.font-tabular-numbers= parseCurrencyPlusMinus(playerData.delta)
+                  td.font-tabular-numbers= parseCurrency.format(playerData.buyin)
+                  td.font-tabular-numbers= parseCurrency.format(playerData.buyout)
   // script(src="js/main.js", type="module")
   script(src="js/pokerplots.min.js", type="text/javascript")

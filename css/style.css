@@ -41,6 +41,16 @@ text,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.font-tabular-numbers {
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  font-variant-numeric: lining-nums tabular-nums;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
+  font-feature-settings: "kern", "liga", "clig", "calt", "lnum", "tnum";
+}
+
 ul {
   padding-left: 1em;
   margin-bottom: 0.5em;
