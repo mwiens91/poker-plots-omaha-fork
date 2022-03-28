@@ -2,7 +2,7 @@
 
 # The prompt is thanks to Dennis here:
 # https://stackoverflow.com/a/3232082
-read -r -p "Are you sure you want to make data, HTML, and then push? [y/N] " response
+read -r -p "You are about to push a commit upstream. Is this what you want? [y/N] " response
 response=${response,,}    # tolower
 if [[ "$response" =~ ^(yes|y)$ ]]
 then
