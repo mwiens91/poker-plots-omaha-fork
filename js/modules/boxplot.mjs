@@ -36,7 +36,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Extend the formatter to show plusminus, using the minus sign that
   // has the same width as a plus sign
   const parseCurrencyPlusMinus = (x) =>
-    (x >= 0 ? "+" : "") + parseCurrency.format(x).replace("-", "−");
+    (x >= 0 ? "+" : "") + parseCurrency.format(x);
 
   // Get relevant stats from data
   const playersNew = data.players
@@ -103,7 +103,13 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       .style("left", event.pageX + 30 + "px")
       .style("top", event.pageY - 20 + "px");
   const tooltipMouseout = () => tooltip.style("opacity", 0);
-  const tooltipNormalMouseover = (event, d) =>
+  const tooltipNormalMouseover = (event, d) => {
+    const q4Str = parseCurrencyPlusMinus(d.range[1]);
+    const q3Str = parseCurrencyPlusMinus(d.quartiles[2]);
+    const q2Str = parseCurrencyPlusMinus(d.quartiles[1]);
+    const q1Str = parseCurrencyPlusMinus(d.quartiles[0]);
+    const q0Str = parseCurrencyPlusMinus(d.range[0]);
+
     tooltip
       .style("opacity", 0.8)
       .html(
@@ -111,34 +117,39 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
           '<span class="tooltip-boxplot-first-item">' +
           "max:" +
           "</span>" +
-          '<span class="font-tabular-numbers">' +
-          `${parseCurrencyPlusMinus(d.range[1])}<br>` +
+          '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
+          q4Str +
           "</span>" +
+          "<br>" +
           '<span class="tooltip-boxplot-first-item">' +
           "Q<sub>3</sub>:" +
           "</span>" +
-          '<span class="font-tabular-numbers">' +
-          `${parseCurrencyPlusMinus(d.quartiles[2])}<br>` +
+          '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
+          q3Str +
           "</span>" +
+          "<br>" +
           '<span class="tooltip-boxplot-first-item">' +
           "Q<sub>2</sub>:" +
           "</span>" +
-          '<span class="font-tabular-numbers">' +
-          `${parseCurrencyPlusMinus(d.quartiles[1])}<br>` +
+          '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
+          q2Str +
           "</span>" +
+          "<br>" +
           '<span class="tooltip-boxplot-first-item">' +
           "Q<sub>1</sub>:" +
           "</span>" +
-          '<span class="font-tabular-numbers">' +
-          `${parseCurrencyPlusMinus(d.quartiles[0])}<br>` +
+          '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
+          q1Str +
           "</span>" +
+          "<br>" +
           '<span class="tooltip-boxplot-first-item">' +
           "min:" +
           "</span>" +
-          '<span class="font-tabular-numbers">' +
-          `${parseCurrencyPlusMinus(d.range[0])}` +
+          '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
+          q0Str +
           "</span>"
       );
+  };
   const tooltipOutlierMouseover = (event, d) =>
     tooltip
       .style("opacity", 0.8)

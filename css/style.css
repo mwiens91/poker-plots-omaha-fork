@@ -26,7 +26,13 @@
 
 .tooltip-boxplot-first-item {
   display: inline-block;
-  width: 3em;
+  width: 2.5em;
+}
+
+.tooltip-boxplot-second-item {
+  display: inline-block;
+  text-align: right;
+  width: 5.5em;
 }
 
 /* page stuff */
