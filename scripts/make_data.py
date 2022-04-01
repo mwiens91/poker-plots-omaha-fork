@@ -93,9 +93,8 @@ OUTFILE_MODULE = MODULES_DIR + "/dataModule.mjs"
 AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 # AVATAR_BASE_URL = DATA_DIR + "/avatars"  # uncomment this to use local avatars
 
-# Colours for players. Use the get_player_colours.mjs script to generate
-# these.
-
+# Colours for players. These are generated automatically and inserted
+# into this script by the make_player_colours.mjs script.
 PLAYER_COLOURS_HEX = {
     "aidan": "#52b99d",
     "alex": "#a15fc5",
