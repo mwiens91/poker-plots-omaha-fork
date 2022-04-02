@@ -51,6 +51,18 @@ const containerElement = document.getElementById("main-container");
 const calendarElement = document.getElementById("calendar");
 const alertBoxElement = document.getElementById("alert-box");
 
+const narrowViewportHandle = (windowWidth) => {
+  // Hide calendar element and show alertbox if viewport too narrow
+  if (windowWidth < MIN_ACCEPTABLE_WIDTH) {
+    calendarElement.style.display = "none";
+    alertBoxElement.style.display = "block";
+  } else {
+    calendarElement.style.display = "block";
+    alertBoxElement.style.display = "none";
+  }
+}
+narrowViewportHandle(document.documentElement.clientWidth);
+
 let prevContainerWidth = containerElement.clientWidth;
 let prevWindowHeightFloored =
   Math.floor(document.documentElement.clientHeight / 100) * 100;
@@ -61,6 +73,9 @@ const windowResizeListener = () => {
 
   const containerWidth = containerElement.clientWidth;
   const windowHeightFloored = Math.floor(windowHeight / 100) * 100;
+
+  // Handle narrow viewport actions
+  narrowViewportHandle(windowWidth);
 
   // If only the height has changed, we only need to redraw some of the
   // plots
@@ -88,15 +103,6 @@ const windowResizeListener = () => {
   } else if (redrawSomePlots) {
     redrawLinePlot();
     redrawBoxPlot();
-  }
-
-  // Hide calendar element and show alertbox if viewport too narrow
-  if (windowWidth < MIN_ACCEPTABLE_WIDTH) {
-    calendarElement.style.display = "none";
-    alertBoxElement.style.display = "block";
-  } else {
-    calendarElement.style.display = "block";
-    alertBoxElement.style.display = "none";
   }
 };
 
