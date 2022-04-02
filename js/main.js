@@ -36,20 +36,33 @@ const MIN_ACCEPTABLE_WIDTH = 992;
 const containerElement = document.getElementById("main-container");
 const calendarElement = document.getElementById("calendar");
 const alertBoxElement = document.getElementById("alert-box");
+const pageUpCircleElement = document.getElementById("page-up-circle");
+
+const pageUpCircleNormalTopMargin = parseInt(
+  getComputedStyle(pageUpCircleElement).marginTop.slice(0, -2)
+);
 
 const narrowViewportHandle = (windowWidth) => {
   // Hide calendar element and show alertbox if viewport too narrow
   if (windowWidth < MIN_ACCEPTABLE_WIDTH) {
     calendarElement.style.display = "none";
     alertBoxElement.style.display = "block";
+
+    pageUpCircleElement.style.marginTop =
+      pageUpCircleNormalTopMargin +
+      Math.round(alertBoxElement.offsetHeight) +
+      "px";
   } else {
     calendarElement.style.display = "block";
     alertBoxElement.style.display = "none";
+
+    pageUpCircleElement.style.marginTop = pageUpCircleNormalTopMargin + "px";
   }
-}
+};
 narrowViewportHandle(document.documentElement.clientWidth);
 
 let prevContainerWidth = containerElement.clientWidth;
+let prevWindowWidth = document.documentElement.clientWidth;
 let prevWindowHeightFloored =
   Math.floor(document.documentElement.clientHeight / 100) * 100;
 
@@ -61,7 +74,15 @@ const windowResizeListener = () => {
   const windowHeightFloored = Math.floor(windowHeight / 100) * 100;
 
   // Handle narrow viewport actions
-  narrowViewportHandle(windowWidth);
+  if (
+    (windowWidth - MIN_ACCEPTABLE_WIDTH) *
+      (prevWindowWidth - MIN_ACCEPTABLE_WIDTH) <=
+    0
+  ) {
+    prevWindowWidth = windowWidth;
+
+    narrowViewportHandle(windowWidth);
+  }
 
   // If only the height has changed, we only need to redraw some of the
   // plots
