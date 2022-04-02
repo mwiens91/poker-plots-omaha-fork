@@ -17,6 +17,7 @@ then
   git add ../data/data.json
   git add ../data/data.min.json
   git add ../js/modules/dataModule.mjs
+  git add ../js/pokerplots.min.js
 
   git commit -m "Add new data"
   git push
