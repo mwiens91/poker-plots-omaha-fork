@@ -42,7 +42,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   const playersNew = data.players
     .filter((player) => player.data.length >= minNumberGames)
     .map((player) => {
-      const vals = player.data.map((d) => d.cumSum);
+      const vals = player.data.map((d) => d.delta);
 
       const q1 = d3.quantile(vals, 0.25);
       const q2 = d3.quantile(vals, 0.5);
@@ -208,7 +208,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       .attr("y", 15)
       .attr("transform", "rotate(-90)")
       .attr("fill", "#000")
-      .text("cumulative sum (CAD)");
+      .text("winnings/losses (CAD)");
 
     // Show the main vertical lines
     svgG
