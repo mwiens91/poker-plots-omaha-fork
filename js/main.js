@@ -44,54 +44,54 @@ const redrawLoserPiePlot = drawPiePlot(
 
 drawCalendar(data, "calendar-parent", calendarMargin);
 
-// For redrawing plots, we can either add event listeners to the
-// window and check against the Bootstrap container breakpoints,
-// or we can simply observe the container for changes to its size.
-// We'll take the latter approach here
-const mainContainerElement = document.getElementById("main-container");
-let prevWidth = null;
+// Viewport size dependent stuff; mostly redrawing plots
+const MIN_ACCEPTABLE_WIDTH = 992;
 
-const resizeObserver = new ResizeObserver((entries) => {
-  for (const entry of entries) {
-    const width = entry.borderBoxSize[0].inlineSize;
+const containerElement = document.getElementById("main-container");
+const calendarElement = document.getElementById("calendar");
+const alertBoxElement = document.getElementById("alert-box");
 
-    if (prevWidth === null) {
-      prevWidth = width;
-    } else if (width !== prevWidth) {
-      prevWidth = width;
-
-      redrawLinePlot();
-      redrawBoxPlot();
-      redrawWinnerPiePlot();
-      redrawLoserPiePlot();
-    }
-  }
-});
-resizeObserver.observe(mainContainerElement);
-
-// We also want to redraw the lineplot and boxplot at different height
-// breakpoints; these breakpoints exist here, but we invoke them
-// explicitly
+let prevContainerWidth = containerElement.clientWidth;
 let prevWindowHeightFloored =
   Math.floor(document.documentElement.clientHeight / 100) * 100;
-window.addEventListener("resize", () => {
-  const windowHeightFloored =
-    Math.floor(document.documentElement.clientHeight / 100) * 100;
+
+const windowResizeListener = () => {
+  const windowHeight = document.documentElement.clientHeight;
+  const windowWidth = document.documentElement.clientWidth;
+
+  const containerWidth = containerElement.clientWidth;
+  const windowHeightFloored = Math.floor(windowHeight / 100) * 100;
+
+  // If only the height has changed, we only need to redraw some of the
+  // plots
+  let redrawAllPlots = false;
+  let redrawSomePlots = false;
+
+  if (containerWidth !== prevContainerWidth) {
+    prevContainerWidth = containerWidth;
+
+    redrawAllPlots = true;
+  }
 
   if (windowHeightFloored !== prevWindowHeightFloored) {
     prevWindowHeightFloored = windowHeightFloored;
 
+    redrawSomePlots = true;
+  }
+
+  // Redraw the plots if necessary
+  if (redrawAllPlots) {
+    redrawLinePlot();
+    redrawBoxPlot();
+    redrawWinnerPiePlot();
+    redrawLoserPiePlot();
+  } else if (redrawSomePlots) {
     redrawLinePlot();
     redrawBoxPlot();
   }
-});
 
-// Don't show calendar block if window is small; also show a warning
-const calendarElement = document.getElementById("calendar");
-const alertBoxElement = document.getElementById("alert-box");
-
-const hideCalendarIfViewportNarrow = () => {
-  if (document.documentElement.clientWidth < 992) {
+  // Hide calendar element and show alertbox if viewport too narrow
+  if (windowWidth < MIN_ACCEPTABLE_WIDTH) {
     calendarElement.style.display = "none";
     alertBoxElement.style.display = "block";
   } else {
@@ -99,8 +99,8 @@ const hideCalendarIfViewportNarrow = () => {
     alertBoxElement.style.display = "none";
   }
 };
-hideCalendarIfViewportNarrow();
-window.addEventListener("resize", hideCalendarIfViewportNarrow);
+
+window.addEventListener("resize", windowResizeListener);
 
 // Page up circle logic
 const circleElem = document.getElementById("page-up-circle");
