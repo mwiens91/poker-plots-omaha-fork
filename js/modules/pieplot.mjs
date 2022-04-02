@@ -50,13 +50,12 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
           }%`
       );
 
+  // Width
+  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+
   // Function to draw plot
   const drawGraph = () => {
     // Sizes
-    const width = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
     const height = width;
     const maxRadius =
       Math.min(
@@ -160,8 +159,19 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
 
   // Return function to redraw graph
   return () => {
-    svg.selectAll("*").remove();
-    drawGraph();
+    // Get new proposed width
+    const newWidth = Math.min(
+      maxWidth,
+      document.getElementById(divId).clientWidth
+    );
+
+    // Don't redraw if width remains unchanged
+    if (newWidth !== width) {
+      width = newWidth;
+
+      svg.selectAll("*").remove();
+      drawGraph();
+    }
   };
 };
 

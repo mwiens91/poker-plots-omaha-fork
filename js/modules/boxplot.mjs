@@ -348,17 +348,26 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
 
   // Return function to redraw graph
   return () => {
-    // Reset sizes
-    width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
-    height = getHeight(width);
+    // Get new proposed size
+    const newWidth = Math.min(
+      maxWidth,
+      document.getElementById(divId).clientWidth
+    );
+    const newHeight = getHeight(width);
 
-    // Update scales
-    xScale.range([0, width - margin.left - margin.right]);
-    yScale.range([height - margin.top - margin.bottom, 0]);
+    // Don't redraw if width and height remain unchanged
+    if (newWidth !== width || newHeight !== height) {
+      width = newWidth;
+      height = newHeight;
 
-    // Remove everything and redraw
-    svg.selectAll("*").remove();
-    drawGraph();
+      // Update scales
+      xScale.range([0, width - margin.left - margin.right]);
+      yScale.range([height - margin.top - margin.bottom, 0]);
+
+      // Remove everything and redraw
+      svg.selectAll("*").remove();
+      drawGraph();
+    }
   };
 };
 
