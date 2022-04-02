@@ -9,40 +9,34 @@ import { drawPiePlot } from "./modules/pieplot.mjs";
 initializePeopleSection(data);
 
 // Plot stuff
-const linePlotMargin = { top: 10, bottom: 20, left: 30, right: 30 };
-const boxPlotMargin = { top: 20, bottom: 20, left: 30, right: 30 };
-const piePlotMargin = { top: 0, bottom: 0, left: 27, right: 27 };
-const calendarMargin = { top: 0, bottom: 0, left: 0, right: 0 };
-const maxWidth = 950;
+const linePlotMargin = { top: 10, bottom: 40, left: 35, right: 35 };
+const boxPlotMargin = { top: 20, bottom: 40, left: 35, right: 35 };
+const piePlotMargin = { top: 0, bottom: 0, left: 47, right: 47 };
 
 const redrawLinePlot = drawLinePlot(
   data,
   "line-plot-parent",
-  maxWidth,
   linePlotMargin
 );
 
 const redrawBoxPlot = drawBoxPlot(
   data,
   "box-plot-parent",
-  maxWidth,
   boxPlotMargin
 );
 
 const redrawWinnerPiePlot = drawPiePlot(
   data.players.filter((x) => x.cumSum > 0),
   "winner-pie-chart-parent",
-  maxWidth,
   piePlotMargin
 );
 const redrawLoserPiePlot = drawPiePlot(
   data.players.filter((x) => x.cumSum < 0),
   "loser-pie-chart-parent",
-  maxWidth,
   piePlotMargin
 );
 
-drawCalendar(data, "calendar-parent", calendarMargin);
+drawCalendar(data, "calendar-parent");
 
 // Viewport size dependent stuff; mostly redrawing plots
 const MIN_ACCEPTABLE_WIDTH = 992;

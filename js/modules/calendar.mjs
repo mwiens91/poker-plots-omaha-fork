@@ -5,12 +5,12 @@
 // be a good idea.
 
 // Function to draw calendar
-const drawCalendar = (data, divId, margin) => {
+const drawCalendar = (data, divId) => {
   // Display options
   const dayAbbrevs = "SMTWRFS";
   const cellSize = 17;
 
-  const height = cellSize * 9;
+  const yearHeight = cellSize * 9;
 
   // Fixed width
   const width = 950;
@@ -155,16 +155,12 @@ const drawCalendar = (data, divId, margin) => {
     );
 
   // svg stuff
+  const height = yearHeight * years.length;
+
   svg
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height * years.length + margin.top + margin.bottom)
-    .attr(
-      "viewBox",
-      "0 0 " +
-        (width + margin.left + margin.right) +
-        " " +
-        (height * years.length + margin.top + margin.bottom)
-    )
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
     .attr("font-family", "sans-serif")
     .attr("font-size", 10);
 
@@ -175,7 +171,7 @@ const drawCalendar = (data, divId, margin) => {
     .join("g")
     .attr(
       "transform",
-      (d, i) => `translate(40.5,${height * i + cellSize * 1.5})`
+      (d, i) => `translate(40.5,${yearHeight * i + cellSize * 1.5})`
     );
 
   // Bolded year text

@@ -2,7 +2,7 @@
 // https://www.d3-graph-gallery.com/graph/donut_label.html
 
 // Function to draw pie chart. Returns a redraw function
-const drawPiePlot = (playerData, divId, maxWidth, margin) => {
+const drawPiePlot = (playerData, divId, margin) => {
   // Display options - radii factors are fractions of max radius
   const innerRadiusFactor = 0.5;
   const outerRadiusFactor = 0.8;
@@ -51,36 +51,27 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
       );
 
   // Width
-  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+  const parentColumnElement = document.getElementById(divId);
+  const getWidth = () => parentColumnElement.clientWidth;
+
+  let width = getWidth();
 
   // Function to draw plot
   const drawGraph = () => {
     // Sizes
-    const height = width;
-    const maxRadius =
-      Math.min(
-        width - margin.left - margin.right,
-        height - margin.top - margin.bottom
-      ) / 2;
+    const maxRadius = Math.min(
+      width / 2 - margin.left,
+      width / 2 - margin.right,
+      width / 2 - margin.top,
+      width / 2 - margin.bottom
+    );
+    const height = maxRadius * 2;
 
     // Make SVG ... G
     const svgG = svg
-      .attr(
-        "viewBox",
-        "0 0 " +
-          (width + margin.left + margin.right) +
-          " " +
-          (height + margin.top + margin.bottom)
-      )
+      .attr("viewBox", [0, 0, width, height])
       .append("g")
-      .attr(
-        "transform",
-        "translate(" +
-          (width + margin.left + margin.right) / 2 +
-          "," +
-          (height + margin.top + margin.bottom) / 2 +
-          ")"
-      );
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
     // Generate arcs
     const arc = d3
@@ -160,10 +151,7 @@ const drawPiePlot = (playerData, divId, maxWidth, margin) => {
   // Return function to redraw graph
   return () => {
     // Get new proposed width
-    const newWidth = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
+    const newWidth = getWidth();
 
     // Don't redraw if width remains unchanged
     if (newWidth !== width) {

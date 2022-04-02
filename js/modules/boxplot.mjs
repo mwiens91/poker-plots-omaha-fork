@@ -3,12 +3,15 @@
 // https://observablehq.com/@d3/box-plot
 
 // Function to draw box plot. Returns a redraw function.
-const drawBoxPlot = (data, divId, maxWidth, margin) => {
+const drawBoxPlot = (data, divId, margin) => {
   // Display options
   const jitter = 0; // amount of random displacement for outlier dots (px)
-  const outlierRadius = 3;
+  const outlierRadius = "0.22em";
   const outlierOpacity = 0.5;
-  const halfBoxWidth = 20;
+  const halfBoxWidth = 22;
+
+  // Offset for the currency text
+  const currencyTextOffset = 20;
 
   // Minimum number of games to be eligible for box plot
   const minNumberGames = 5;
@@ -17,7 +20,9 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   const minWidthHeightFactor = 0.45;
   const maxWidthHeightFactor = 0.65;
 
-  // Function to get height given width
+  // Size functions
+  const containerElement = document.getElementById("main-container");
+  const getWidth = () => containerElement.clientWidth;
   const getHeight = (width) =>
     Math.max(
       Math.min(
@@ -62,7 +67,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
     });
 
   // Sizes
-  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+  let width = getWidth();
   let height = getHeight(width);
 
   // Scales
@@ -71,7 +76,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
     .domain(playersNew.map((player) => player.name))
     .paddingInner(1)
     .paddingOuter(0.5)
-    .range([0, width - margin.left - margin.right]);
+    .range([margin.left, width - margin.right]);
   const yScale = d3
     .scaleLinear()
     .domain(
@@ -86,7 +91,7 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
         )
         .map((x) => 1.05 * x)
     )
-    .range([height - margin.top - margin.bottom, 0]);
+    .range([height - margin.bottom, margin.top]);
 
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
@@ -161,52 +166,48 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   const drawGraph = () => {
     // Make the SVG ... G
     const svgG = svg
-      .attr(
-        "viewBox",
-        "0 0 " +
-          (width + margin.left + margin.right) +
-          " " +
-          (height + margin.top + margin.bottom)
-      )
+      .attr("viewBox", [0, 0, width, height])
       .append("g")
-      .attr(
-        "transform",
-        `translate(${margin.left + margin.right}, ${
-          margin.top + margin.bottom
-        })`
-      );
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     // Axes
+    const numYAxisTicks = 10;
+
     const xAxis = d3.axisBottom(xScale);
     const yAxis = d3
       .axisLeft(yScale)
       .tickFormat((d) => parseCurrency.format(d))
-      .ticks(10);
+      .ticks(numYAxisTicks);
 
     // Grids
     const yAxisGrid = d3
       .axisLeft(yScale)
       .tickSize(margin.left + margin.right - width)
       .tickFormat("")
-      .ticks(10)
+      .ticks(numYAxisTicks)
       .tickSizeOuter(0);
 
     // Draw grids first, then axes
-    svgG.append("g").attr("class", "y axis-grid").call(yAxisGrid);
+    svgG
+      .append("g")
+      .attr("class", "y axis-grid")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .call(yAxisGrid);
 
     svgG
       .append("g")
       .attr("class", "x axis")
-      .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+      .attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(xAxis);
 
     svgG
       .append("g")
       .attr("class", "y axis")
+      .attr("transform", `translate(${margin.left}, 0)`)
       .call(yAxis)
       .append("text")
       .attr("y", 15)
-      .attr("transform", "rotate(-90)")
+      .attr("transform", `rotate(-90) translate(-${currencyTextOffset}, 0.2)`)
       .attr("fill", "#000")
       .text("winnings/losses (CAD)");
 
@@ -349,11 +350,8 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
   // Return function to redraw graph
   return () => {
     // Get new proposed size
-    const newWidth = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
-    const newHeight = getHeight(width);
+    const newWidth = getWidth();
+    const newHeight = getHeight(newWidth);
 
     // Don't redraw if width and height remain unchanged
     if (newWidth !== width || newHeight !== height) {
@@ -361,8 +359,8 @@ const drawBoxPlot = (data, divId, maxWidth, margin) => {
       height = newHeight;
 
       // Update scales
-      xScale.range([0, width - margin.left - margin.right]);
-      yScale.range([height - margin.top - margin.bottom, 0]);
+      xScale.range([margin.left, width - margin.right]);
+      yScale.range([height - margin.bottom, margin.top]);
 
       // Remove everything and redraw
       svg.selectAll("*").remove();

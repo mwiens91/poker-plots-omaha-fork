@@ -1,30 +1,40 @@
 // Credit for the basis of this code goes to Zakaria Chowdhury here:
 // https://codepen.io/zakariachowdhury/pen/JEmjwq
+//
+// This module is a bit of a mess. There are lots of comments, some of
+// which hopefully are helpful, but the organization is lacking.
 
 // Function to draw multi-line plot. Returns a redraw function.
-const drawLinePlot = (data, divId, maxWidth, margin) => {
+const drawLinePlot = (data, divId, margin) => {
   // Tweak display settings
   const lineOpacity = 0.6;
   const lineOpacityHoverSelected = 0.7;
   const lineOpacityHoverNotSelected = 0.15;
-  const lineStroke = "0.1rem";
-  const lineStrokeHover = "0.15rem";
+  const lineStroke = "0.14rem";
+  const lineStrokeHover = "0.18rem";
 
   const circleOpacity = 0.85;
   const circleOpacityOnLineHoverSelected = 0.85;
   const circleOpacityOnLineHoverNotSelected = 0.15;
-  const circleRadius = "0.2em";
-  const circleRadiusHover = "0.4em";
+  const circleRadius = "0.23em";
+  const circleRadiusHover = "0.46em";
+
+  // Offsets for the text on the plot and the x-axis (such that it ends
+  // "prematurely")
+  const currencyTextOffset = 10;
+  const xAxisOffset = 50;
 
   // Max and min percentage of width that height is
   const minWidthHeightFactor = 0.45;
   const maxWidthHeightFactor = 0.65;
 
-  // Function to get height given width
+  // Size functions
+  const containerElement = document.getElementById("main-container");
+  const getWidth = () => containerElement.clientWidth;
   const getHeight = (width) =>
     Math.max(
       Math.min(
-        Math.floor(document.documentElement.clientHeight / 100) * 100 - 420,
+        Math.floor(document.documentElement.clientHeight / 100) * 100 - 220,
         maxWidthHeightFactor * width
       ),
       minWidthHeightFactor * width
@@ -114,7 +124,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   lowerDate.setDate(minDate.getDate() - 1); // this is possibly not robust?
 
   // Sizes
-  let width = Math.min(maxWidth, document.getElementById(divId).clientWidth);
+  let width = getWidth();
   let height = getHeight(width);
 
   // Min/max zoom
@@ -139,7 +149,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   // x-scale - start slightly before the first data point
   let xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
     .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
-    .range([0, width - margin.left - margin.right]);
+    .range([margin.left, width - margin.right - xAxisOffset]);
   let xScaleCopy = xScale.copy();
 
   // Read optional query parameter for y-scaling exponent.
@@ -160,7 +170,7 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
         )
         .map((x) => 1.05 * x)
     )
-    .range([height - margin.top - margin.bottom, 0]);
+    .range([height - margin.bottom, margin.top]);
 
   // Make the SVG
   const svg = d3.select("#" + divId).append("svg");
@@ -229,57 +239,125 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
     legendElement.addEventListener("mouseout", trajectoryHoverUnselected);
   }
 
+  // Set up the svg
+  svg
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", [0, 0, width, height]);
+
+  // We're going to initialize a bunch of variables here for the zoom
+  // functions, which are defined outside of the drawing function where
+  // these variables are actually assigned values
+  let xAxis;
+  let xAxisG;
+  let drawArea;
+  let line;
+
+  // Zooming and axis transition
+  const zoomed = ({ transform }) => {
+    // Axis
+    xScale = transform.rescaleX(xScaleCopy);
+    xAxis.scale(xScale);
+    xAxisG.call(xAxis);
+
+    // Lines and data points
+    drawArea.selectAll("circle").attr("cx", (d) => xScale(getXVal(d)));
+    drawArea.selectAll("path").attr("d", (d) => line(d.data));
+  };
+
+  const zoom = d3
+    .zoom()
+    .scaleExtent(
+      useTimeSeries
+        ? [minZoomTimeSeries, maxZoomTimeSeries]
+        : [minZoomSerialized, maxZoomSerialized]
+    )
+    .on("zoom", zoomed);
+
+  const transitionXAxis = () => {
+    // Change from time series to serializes (or vise versa)
+    useTimeSeries = useTimeSeries ? false : true;
+
+    // Scale
+    xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
+      .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
+      .range([margin.left, width - margin.right - xAxisOffset]);
+    xScaleCopy = xScale.copy();
+
+    // Zoom scale
+    useTimeSeries
+      ? zoom.scaleExtent([minZoomTimeSeries, maxZoomTimeSeries])
+      : zoom.scaleExtent([minZoomSerialized, maxZoomSerialized]);
+
+    // Axis
+    xAxis.scale(xScale);
+    xAxisG.transition().call(xAxis);
+
+    // Lines and data points
+    drawArea
+      .selectAll("circle")
+      .transition()
+      .attr("cx", (d) => xScale(getXVal(d)));
+    drawArea
+      .selectAll("path")
+      .transition()
+      .attr("d", (d) => line(d.data))
+      .on("end", () => svg.call(zoom.transform, d3.zoomIdentity));
+  };
+
+  // Register zoom events; also prevent mousewheels exceeding min/max
+  // zoom from scrolling the page
+  svg
+    .call(zoom)
+    .on("wheel", (event) => event.preventDefault())
+    .on("dblclick.zoom", null)
+    .on("dblclick", transitionXAxis);
+
   // Function to draw plot
   const drawGraph = () => {
     // Make the SVG... G
     const svgG = svg
-      .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr(
-        "viewBox",
-        "0 0 " +
-          (width + margin.left + margin.right) +
-          " " +
-          (height + margin.top + margin.bottom)
-      )
       .append("g")
-      .attr(
-        "transform",
-        `translate(${margin.left + margin.right}, ${
-          margin.top + margin.bottom
-        })`
-      );
+      .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     // Axes
-    const xAxis = d3.axisBottom(xScale);
+    const numYAxisTicks = 10;
+
+    xAxis = d3.axisBottom(xScale);
     const yAxis = d3
       .axisLeft(yScale)
       .tickFormat((d) => parseCurrency.format(d))
-      .ticks(10);
+      .ticks(numYAxisTicks);
 
-    // Grids
+    // Grids. I followed the following reference:
+    // https://www.essycode.com/posts/adding-gridlines-chart-d3/
     const yAxisGrid = d3
       .axisLeft(yScale)
       .tickSize(margin.left + margin.right - width)
       .tickFormat("")
-      .ticks(10)
+      .ticks(numYAxisTicks)
       .tickSizeOuter(0);
 
     // Draw grids first, then axes
-    svgG.append("g").attr("class", "y axis-grid").call(yAxisGrid);
+    svgG
+      .append("g")
+      .attr("class", "y axis-grid")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .call(yAxisGrid);
 
-    const xAxisG = svgG
+    xAxisG = svgG
       .append("g")
       .attr("class", "x axis")
-      .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+      .attr("transform", `translate(0, ${height - margin.bottom})`)
       .call(xAxis);
 
     svgG
       .append("g")
       .attr("class", "y axis")
+      .attr("transform", `translate(${margin.left}, 0)`)
       .call(yAxis)
       .append("text")
       .attr("y", 15)
-      .attr("transform", "rotate(-90)")
+      .attr("transform", `rotate(-90) translate(-${currencyTextOffset}, 0.2)`)
       .attr("fill", "#000")
       .text("cumulative sum (CAD)");
 
@@ -289,16 +367,16 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .append("svg:clipPath")
       .attr("id", "clip")
       .append("svg:rect")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("x", 0)
-      .attr("y", 0);
+      .attr("width", width - margin.left - margin.right)
+      .attr("height", height - margin.top - margin.bottom)
+      .attr("x", margin.left)
+      .attr("y", margin.top);
 
     // Use the clipPath to define the drawing area
-    const drawArea = svgG.append("g").attr("clip-path", "url(#clip)");
+    drawArea = svgG.append("g").attr("clip-path", "url(#clip)");
 
     // Line function
-    const line = d3
+    line = d3
       .line()
       .x((d) => xScale(getXVal(d)))
       .y((d) => yScale(d.cumSum));
@@ -387,66 +465,6 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
       .on("click", (event, d) =>
         document.getElementById("game-" + d.id).scrollIntoView()
       );
-
-    // Zooming and axis transition
-    const zoomed = ({ transform }) => {
-      // Axis
-      xScale = transform.rescaleX(xScaleCopy);
-      xAxis.scale(xScale);
-      xAxisG.call(xAxis);
-
-      // Lines and data points
-      drawArea.selectAll("circle").attr("cx", (d) => xScale(getXVal(d)));
-      drawArea.selectAll("path").attr("d", (d) => line(d.data));
-    };
-
-    const zoom = d3
-      .zoom()
-      .scaleExtent(
-        useTimeSeries
-          ? [minZoomTimeSeries, maxZoomTimeSeries]
-          : [minZoomSerialized, maxZoomSerialized]
-      )
-      .on("zoom", zoomed);
-
-    const transitionXAxis = () => {
-      // Change from time series to serializes (or vise versa)
-      useTimeSeries = useTimeSeries ? false : true;
-
-      // Scale
-      xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
-        .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
-        .range([0, width - margin.left - margin.right]);
-      xScaleCopy = xScale.copy();
-
-      // Zoom scale
-      useTimeSeries
-        ? zoom.scaleExtent([minZoomTimeSeries, maxZoomTimeSeries])
-        : zoom.scaleExtent([minZoomSerialized, maxZoomSerialized]);
-
-      // Axis
-      xAxis.scale(xScale);
-      xAxisG.transition().call(xAxis);
-
-      // Lines and data points
-      drawArea
-        .selectAll("circle")
-        .transition()
-        .attr("cx", (d) => xScale(getXVal(d)));
-      drawArea
-        .selectAll("path")
-        .transition()
-        .attr("d", (d) => line(d.data))
-        .on("end", () => svg.call(zoom.transform, d3.zoomIdentity));
-    };
-
-    // Register zoom events; also prevent mousewheels exceeding min/max
-    // zoom from scrolling the page
-    svg
-      .call(zoom)
-      .on("wheel", (event) => event.preventDefault())
-      .on("dblclick.zoom", null)
-      .on("dblclick", transitionXAxis);
   };
 
   // Call graph drawing function
@@ -455,24 +473,38 @@ const drawLinePlot = (data, divId, maxWidth, margin) => {
   // Return function to redraw graph
   return () => {
     // Get new proposed size
-    const newWidth = Math.min(
-      maxWidth,
-      document.getElementById(divId).clientWidth
-    );
-    const newHeight = getHeight(width);
+    const newWidth = getWidth();
+    const newHeight = getHeight(newWidth);
 
     // Don't redraw if width and height remain unchanged
     if (newWidth !== width || newHeight !== height) {
+      const zoomScaleFactor =
+        (newWidth - margin.left - margin.right) /
+        (width - margin.left - margin.right);
+
       width = newWidth;
       height = newHeight;
 
+      // Cache the zoom tranform, and reset it for now
+      const cachedZoomTransform = d3.zoomTransform(svg.node());
+      svg.call(zoom.transform, d3.zoomIdentity);
+
+      svg.attr("viewBox", [0, 0, width, height]);
+
       // Update scales
-      xScale.range([0, width - margin.left - margin.right]);
-      yScale.range([height - margin.top - margin.bottom, 0]);
+      xScale.range([margin.left, width - margin.right - xAxisOffset]);
+      xScaleCopy = xScale.copy();
+
+      yScale.range([height - margin.bottom, margin.top]);
 
       // Remove everything and redraw
       svg.selectAll("*").remove();
       drawGraph();
+
+      // Re-apply the zoom transform with scaling
+      cachedZoomTransform.x *= zoomScaleFactor;
+      cachedZoomTransform.y *= zoomScaleFactor;
+      svg.call(zoom.transform, cachedZoomTransform);
     }
   };
 };
