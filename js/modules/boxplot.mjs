@@ -8,7 +8,6 @@ const drawBoxPlot = (data, divId, margin) => {
   const jitter = 0; // amount of random displacement for outlier dots (px)
   const outlierRadius = "0.22em";
   const outlierOpacity = 0.5;
-  const halfBoxWidth = 22;
 
   // Offset for the currency text
   const currencyTextOffset = 20;
@@ -31,6 +30,9 @@ const drawBoxPlot = (data, divId, margin) => {
       ),
       minWidthHeightFactor * width
     );
+
+  // Scale the boxplot boxes' width based on viewport
+  const getHalfBoxWidth = (width) => (width * 22) / 1296;
 
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
@@ -69,6 +71,9 @@ const drawBoxPlot = (data, divId, margin) => {
   // Sizes
   let width = getWidth();
   let height = getHeight(width);
+
+  // Width of boxplot ... boxes
+  let halfBoxWidth = getHalfBoxWidth(width);
 
   // Scales
   const xScale = d3
@@ -357,6 +362,8 @@ const drawBoxPlot = (data, divId, margin) => {
     if (newWidth !== width || newHeight !== height) {
       width = newWidth;
       height = newHeight;
+
+      halfBoxWidth = getHalfBoxWidth(width);
 
       // Update scales
       xScale.range([margin.left, width - margin.right]);
