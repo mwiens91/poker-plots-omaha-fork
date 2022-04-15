@@ -123,7 +123,7 @@ const drawBoxPlot = (data, divId, margin) => {
     tooltip
       .style("opacity", 0.8)
       .html(
-        `<b>${d.name}</b><br>` +
+        `<b>${d.name}</b> (N=${d.gameCount})<br>` +
           '<span class="tooltip-boxplot-first-item">' +
           "max:" +
           "</span>" +
