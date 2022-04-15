@@ -320,7 +320,7 @@ const drawLinePlot = (data, divId, margin) => {
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     // Axes
-    const numYAxisTicks = 12;
+    const numYAxisTicks = 13;
 
     xAxis = d3.axisBottom(xScale);
     const yAxis = d3
