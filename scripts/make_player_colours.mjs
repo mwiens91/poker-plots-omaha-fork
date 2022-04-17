@@ -6,12 +6,41 @@ import { exec } from "child_process";
 import * as fs from "fs";
 import hexRgb from "hex-rgb";
 import iwanthue from "iwanthue";
+import * as path from "path";
 
-const playerNames = JSON.parse(
-  fs.readFileSync("../data/data.json", "utf8")
-).players.map((player) => player.name.toLowerCase());
+// Get player names and order from raw data files
+const rawDataDirPath = "../data/raw/";
+const playersWithCumSum = {};
+
+fs.readdirSync(rawDataDirPath).forEach((file) => {
+  const fullFilePath = path.join(rawDataDirPath, file);
+
+  // Read the files
+  const fullText = fs.readFileSync(fullFilePath, "utf8");
+  const lines = fullText.split(/[\r\n]+/).filter((line) => line);
+
+  // Read the data
+  for (let i = 0; i < lines.length; i += 2) {
+    const playerName = lines[i].split(/(\s+)/)[0].toLowerCase();
+    const net = parseFloat(lines[i + 1].split(/(\s+)/)[6]);
+
+    if (playerName in playersWithCumSum) {
+      playersWithCumSum[playerName] += net;
+    } else {
+      playersWithCumSum[playerName] = net;
+    }
+  }
+});
+
+// Get the player names in order of cumulative sum (descending)
+const playerNames = Object.keys(playersWithCumSum);
+playerNames.sort((a, b) =>
+  playersWithCumSum[a] > playersWithCumSum[b] ? -1 : 1
+);
+
 const numPlayers = playerNames.length;
 
+// Get the colours
 const paletteHex = iwanthue(numPlayers, {
   clustering: "k-means",
   quality: 100,
