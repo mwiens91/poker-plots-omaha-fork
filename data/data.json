@@ -2,18 +2,18 @@
   "players": [
     {
       "name": "Matt",
-      "colourHex": "#6888cc",
+      "colourHex": "#c77aa5",
       "colourRgb": [
-        104,
-        136,
-        204
+        199,
+        122,
+        165
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 32,
-      "cumSum": 467.15,
+      "gameCount": 33,
+      "cumSum": 458.56,
       "stats": {
         "total-money-won": 670.93,
-        "total-money-lost": 203.78,
+        "total-money-lost": 212.37,
         "largest-winning-streak": {
           "num-games": 4,
           "total": 183.07,
@@ -323,23 +323,32 @@
           "buyout": 20.28,
           "delta": 0.28,
           "cumSum": 467.15
+        },
+        {
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "Matt",
+          "buyin": 55.3,
+          "buyout": 46.71,
+          "delta": -8.59,
+          "cumSum": 458.56
         }
       ]
     },
     {
       "name": "Aidan",
-      "colourHex": "#52b99d",
+      "colourHex": "#7fba46",
       "colourRgb": [
-        82,
-        185,
-        157
+        127,
+        186,
+        70
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/aidan.webp",
-      "gameCount": 31,
-      "cumSum": 41.96,
+      "gameCount": 32,
+      "cumSum": 41.9,
       "stats": {
         "total-money-won": 316.0,
-        "total-money-lost": 274.04,
+        "total-money-lost": 274.1,
         "largest-winning-streak": {
           "num-games": 4,
           "total": 81.55,
@@ -640,16 +649,25 @@
           "buyout": 47.71,
           "delta": 7.71,
           "cumSum": 41.96
+        },
+        {
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "Aidan",
+          "buyin": 60.0,
+          "buyout": 59.94,
+          "delta": -0.06,
+          "cumSum": 41.9
         }
       ]
     },
     {
       "name": "Russell",
-      "colourHex": "#cf4d41",
+      "colourHex": "#7a64ca",
       "colourRgb": [
-        207,
-        77,
-        65
+        122,
+        100,
+        202
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/russell.webp",
       "gameCount": 3,
@@ -710,11 +728,11 @@
     },
     {
       "name": "Jayden",
-      "colourHex": "#c55d8b",
+      "colourHex": "#be4daa",
       "colourRgb": [
-        197,
-        93,
-        139
+        190,
+        77,
+        170
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/jayden.webp",
       "gameCount": 3,
@@ -774,57 +792,18 @@
       ]
     },
     {
-      "name": "Parker",
-      "colourHex": "#df9446",
-      "colourRgb": [
-        223,
-        148,
-        70
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/parker.webp",
-      "gameCount": 1,
-      "cumSum": -22.42,
-      "stats": {
-        "total-money-won": 0,
-        "total-money-lost": 22.42,
-        "largest-winning-streak": null,
-        "largest-losing-streak": {
-          "num-games": 1,
-          "total": -22.42,
-          "start-game-id": 40,
-          "end-game-id": 40
-        },
-        "most-won-in-single-game": null,
-        "most-lost-in-single-game": {
-          "total": -22.42,
-          "game-id": 40
-        }
-      },
-      "data": [
-        {
-          "id": 40,
-          "date": "2022-03-21",
-          "player": "Parker",
-          "buyin": 22.42,
-          "buyout": 0.0,
-          "delta": -22.42,
-          "cumSum": -22.42
-        }
-      ]
-    },
-    {
       "name": "Zen",
-      "colourHex": "#9f683b",
+      "colourHex": "#d5a73c",
       "colourRgb": [
-        159,
-        104,
-        59
+        213,
+        167,
+        60
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 47,
-      "cumSum": -40.05,
+      "gameCount": 48,
+      "cumSum": -19.36,
       "stats": {
-        "total-money-won": 453.9,
+        "total-money-won": 474.59,
         "total-money-lost": 493.95,
         "largest-winning-streak": {
           "num-games": 5,
@@ -1270,23 +1249,211 @@
           "buyout": 20.07,
           "delta": 0.07,
           "cumSum": -40.05
+        },
+        {
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 40.69,
+          "delta": 20.69,
+          "cumSum": -19.36
+        }
+      ]
+    },
+    {
+      "name": "Parker",
+      "colourHex": "#5abb94",
+      "colourRgb": [
+        90,
+        187,
+        148
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/parker.webp",
+      "gameCount": 1,
+      "cumSum": -22.42,
+      "stats": {
+        "total-money-won": 0,
+        "total-money-lost": 22.42,
+        "largest-winning-streak": null,
+        "largest-losing-streak": {
+          "num-games": 1,
+          "total": -22.42,
+          "start-game-id": 40,
+          "end-game-id": 40
+        },
+        "most-won-in-single-game": null,
+        "most-lost-in-single-game": {
+          "total": -22.42,
+          "game-id": 40
+        }
+      },
+      "data": [
+        {
+          "id": 40,
+          "date": "2022-03-21",
+          "player": "Parker",
+          "buyin": 22.42,
+          "buyout": 0.0,
+          "delta": -22.42,
+          "cumSum": -22.42
+        }
+      ]
+    },
+    {
+      "name": "Josh",
+      "colourHex": "#537c37",
+      "colourRgb": [
+        83,
+        124,
+        55
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/josh.webp",
+      "gameCount": 1,
+      "cumSum": -33.21,
+      "stats": {
+        "total-money-won": 0,
+        "total-money-lost": 33.21,
+        "largest-winning-streak": null,
+        "largest-losing-streak": {
+          "num-games": 1,
+          "total": -33.21,
+          "start-game-id": 49,
+          "end-game-id": 49
+        },
+        "most-won-in-single-game": null,
+        "most-lost-in-single-game": {
+          "total": -33.21,
+          "game-id": 49
+        }
+      },
+      "data": [
+        {
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "Josh",
+          "buyin": 40.0,
+          "buyout": 6.79,
+          "delta": -33.21,
+          "cumSum": -33.21
+        }
+      ]
+    },
+    {
+      "name": "Alex",
+      "colourHex": "#c84461",
+      "colourRgb": [
+        200,
+        68,
+        97
+      ],
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/alex.webp",
+      "gameCount": 7,
+      "cumSum": -56.68,
+      "stats": {
+        "total-money-won": 66.1,
+        "total-money-lost": 122.78,
+        "largest-winning-streak": {
+          "num-games": 3,
+          "total": 66.1,
+          "start-game-id": 3,
+          "end-game-id": 7
+        },
+        "largest-losing-streak": {
+          "num-games": 2,
+          "total": -64.69,
+          "start-game-id": 9,
+          "end-game-id": 11
+        },
+        "most-won-in-single-game": {
+          "total": 44.06,
+          "game-id": 3
+        },
+        "most-lost-in-single-game": {
+          "total": -56.09,
+          "game-id": 2
+        }
+      },
+      "data": [
+        {
+          "id": 1,
+          "date": "2021-09-30",
+          "player": "Alex",
+          "buyin": 2.0,
+          "buyout": 0.0,
+          "delta": -2.0,
+          "cumSum": -2.0
+        },
+        {
+          "id": 2,
+          "date": "2021-10-01",
+          "player": "Alex",
+          "buyin": 116.0,
+          "buyout": 59.91,
+          "delta": -56.09,
+          "cumSum": -58.09
+        },
+        {
+          "id": 3,
+          "date": "2021-11-05",
+          "player": "Alex",
+          "buyin": 20.0,
+          "buyout": 64.06,
+          "delta": 44.06,
+          "cumSum": -14.03
+        },
+        {
+          "id": 6,
+          "date": "2021-12-24",
+          "player": "Alex",
+          "buyin": 40.0,
+          "buyout": 41.73,
+          "delta": 1.73,
+          "cumSum": -12.3
+        },
+        {
+          "id": 7,
+          "date": "2021-12-27",
+          "player": "Alex",
+          "buyin": 20.0,
+          "buyout": 40.31,
+          "delta": 20.31,
+          "cumSum": 8.01
+        },
+        {
+          "id": 9,
+          "date": "2021-12-30",
+          "player": "Alex",
+          "buyin": 30.0,
+          "buyout": 10.4,
+          "delta": -19.6,
+          "cumSum": -11.59
+        },
+        {
+          "id": 11,
+          "date": "2022-01-03",
+          "player": "Alex",
+          "buyin": 60.0,
+          "buyout": 6.48,
+          "delta": -45.09,
+          "cumSum": -56.68
         }
       ]
     },
     {
       "name": "David",
-      "colourHex": "#b6ad4c",
+      "colourHex": "#6991ce",
       "colourRgb": [
-        182,
-        173,
-        76
+        105,
+        145,
+        206
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/david.webp",
-      "gameCount": 9,
-      "cumSum": -50.26,
+      "gameCount": 10,
+      "cumSum": -62.26,
       "stats": {
         "total-money-won": 140.74,
-        "total-money-lost": 191.0,
+        "total-money-lost": 203.0,
         "largest-winning-streak": {
           "num-games": 1,
           "total": 95.27,
@@ -1389,117 +1556,25 @@
           "buyout": 49.08,
           "delta": 9.08,
           "cumSum": -50.26
-        }
-      ]
-    },
-    {
-      "name": "Alex",
-      "colourHex": "#a15fc5",
-      "colourRgb": [
-        161,
-        95,
-        197
-      ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/alex.webp",
-      "gameCount": 7,
-      "cumSum": -56.68,
-      "stats": {
-        "total-money-won": 66.1,
-        "total-money-lost": 122.78,
-        "largest-winning-streak": {
-          "num-games": 3,
-          "total": 66.1,
-          "start-game-id": 3,
-          "end-game-id": 7
         },
-        "largest-losing-streak": {
-          "num-games": 2,
-          "total": -64.69,
-          "start-game-id": 9,
-          "end-game-id": 11
-        },
-        "most-won-in-single-game": {
-          "total": 44.06,
-          "game-id": 3
-        },
-        "most-lost-in-single-game": {
-          "total": -56.09,
-          "game-id": 2
-        }
-      },
-      "data": [
         {
-          "id": 1,
-          "date": "2021-09-30",
-          "player": "Alex",
-          "buyin": 2.0,
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "David",
+          "buyin": 12.0,
           "buyout": 0.0,
-          "delta": -2.0,
-          "cumSum": -2.0
-        },
-        {
-          "id": 2,
-          "date": "2021-10-01",
-          "player": "Alex",
-          "buyin": 116.0,
-          "buyout": 59.91,
-          "delta": -56.09,
-          "cumSum": -58.09
-        },
-        {
-          "id": 3,
-          "date": "2021-11-05",
-          "player": "Alex",
-          "buyin": 20.0,
-          "buyout": 64.06,
-          "delta": 44.06,
-          "cumSum": -14.03
-        },
-        {
-          "id": 6,
-          "date": "2021-12-24",
-          "player": "Alex",
-          "buyin": 40.0,
-          "buyout": 41.73,
-          "delta": 1.73,
-          "cumSum": -12.3
-        },
-        {
-          "id": 7,
-          "date": "2021-12-27",
-          "player": "Alex",
-          "buyin": 20.0,
-          "buyout": 40.31,
-          "delta": 20.31,
-          "cumSum": 8.01
-        },
-        {
-          "id": 9,
-          "date": "2021-12-30",
-          "player": "Alex",
-          "buyin": 30.0,
-          "buyout": 10.4,
-          "delta": -19.6,
-          "cumSum": -11.59
-        },
-        {
-          "id": 11,
-          "date": "2022-01-03",
-          "player": "Alex",
-          "buyin": 60.0,
-          "buyout": 6.48,
-          "delta": -45.09,
-          "cumSum": -56.68
+          "delta": -12.0,
+          "cumSum": -62.26
         }
       ]
     },
     {
       "name": "Bei",
-      "colourHex": "#6ebb51",
+      "colourHex": "#a68346",
       "colourRgb": [
-        110,
-        187,
-        81
+        166,
+        131,
+        70
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/bei.webp",
       "gameCount": 4,
@@ -1561,17 +1636,17 @@
     },
     {
       "name": "Juno",
-      "colourHex": "#557935",
+      "colourHex": "#cc603e",
       "colourRgb": [
-        85,
-        121,
-        53
+        204,
+        96,
+        62
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 46,
-      "cumSum": -239.1,
+      "gameCount": 47,
+      "cumSum": -205.93,
       "stats": {
-        "total-money-won": 458.5,
+        "total-money-won": 491.67,
         "total-money-lost": 697.6,
         "largest-winning-streak": {
           "num-games": 5,
@@ -2008,11 +2083,62 @@
           "buyout": 19.65,
           "delta": -0.35,
           "cumSum": -239.1
+        },
+        {
+          "id": 49,
+          "date": "2022-04-16",
+          "player": "Juno",
+          "buyin": 30.0,
+          "buyout": 63.17,
+          "delta": 33.17,
+          "cumSum": -205.93
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 49,
+      "date": "2022-04-16",
+      "data": [
+        {
+          "player": "Juno",
+          "buyin": 30.0,
+          "buyout": 63.17,
+          "delta": 33.17
+        },
+        {
+          "player": "Zen",
+          "buyin": 20.0,
+          "buyout": 40.69,
+          "delta": 20.69
+        },
+        {
+          "player": "Aidan",
+          "buyin": 60.0,
+          "buyout": 59.94,
+          "delta": -0.06
+        },
+        {
+          "player": "Matt",
+          "buyin": 55.3,
+          "buyout": 46.71,
+          "delta": -8.59
+        },
+        {
+          "player": "David",
+          "buyin": 12.0,
+          "buyout": 0.0,
+          "delta": -12.0
+        },
+        {
+          "player": "Josh",
+          "buyin": 40.0,
+          "buyout": 6.79,
+          "delta": -33.21
+        }
+      ]
+    },
     {
       "id": 48,
       "date": "2022-04-14",
