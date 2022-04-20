@@ -123,6 +123,47 @@ const drawLinePlot = (data, divId, margin) => {
   const lowerDate = new Date(Number(minDate));
   lowerDate.setDate(minDate.getDate() - 1); // this is possibly not robust?
 
+  // Y-axis domain
+  const yAxisDomain = d3
+    .extent(playersNew.map((player) => player.data.map((v) => v.cumSum)).flat())
+    .map((x) => 1.05 * x);
+
+  // Now split a player's data into clusters of closely grouped data
+  // points; this is to avoid drawing long lines on the chart which make
+  // it more difficult to view
+  const maxGameDifference = 9;
+  const playerChunksToPush = [];
+
+  for (const player of playersNew) {
+    // Get out if player only has one game
+    if (player.data.length === 1) {
+      continue;
+    }
+
+    const playerDataCopy = [...player.data];
+
+    let currentPlayerObj = player;
+    let currentStartIdx = 0;
+
+    for (let i = 1; i < playerDataCopy.length; i++) {
+      // Split up the data if two games exceeds the maximum game
+      // difference (based on game ID, not time/date)
+      if (playerDataCopy[i].id - playerDataCopy[i - 1].id > maxGameDifference) {
+        // Process old cluster
+        currentPlayerObj.data = playerDataCopy.slice(currentStartIdx, i);
+
+        // Start new cluster
+        currentPlayerObj = { ...currentPlayerObj };
+        currentPlayerObj.data = playerDataCopy.slice(i);
+        playerChunksToPush.push(currentPlayerObj);
+
+        currentStartIdx = i;
+      }
+    }
+  }
+
+  playersNew.push(...playerChunksToPush);
+
   // Sizes
   let width = getWidth();
   let height = getHeight(width);
@@ -163,13 +204,7 @@ const drawLinePlot = (data, divId, margin) => {
   const yScale = d3
     .scalePow()
     .exponent(exponent === null ? 1 : parseFloat(exponent))
-    .domain(
-      d3
-        .extent(
-          playersNew.map((player) => player.data.map((v) => v.cumSum)).flat()
-        )
-        .map((x) => 1.05 * x)
-    )
+    .domain(yAxisDomain)
     .range([height - margin.bottom, margin.top]);
 
   // Make the SVG
