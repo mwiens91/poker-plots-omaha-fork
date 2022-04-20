@@ -71,48 +71,45 @@ const drawLinePlot = (data, divId, margin) => {
   // So for example, if N = 3, then the games will be offset by 0, 6,
   // and 12 hours respectively. If N = 2, then the games will be
   // offset by 0 and 8 hours, respectively.
-  for (const player of playersNew) {
-    // Get the total number of games for the player
-    const numGames = player.data.length;
 
-    // We'll keep track of all games we've already processed in this set
-    const visitedIdsSet = new Set();
+  // We'll keep track of all games we've already processed in this set
+  const visitedIdsSet = new Set();
 
-    for (let i = 0; i < numGames - 1; i++) {
-      // If we've already processed this game, skip
-      if (visitedIdsSet.has(player.data[i].id)) {
-        continue;
-      }
+  for (let i = 0; i < data.games.length - 1; i++) {
+    // If we've already processed this game, skip
+    if (visitedIdsSet.has(data.games[i].id)) {
+      continue;
+    }
 
-      // Find all games that share this date
-      const targetDate = player.data[i].date;
-      const gamesWithDate = player.data.filter(
-        (game) => game.date.getTime() === targetDate.getTime()
-      );
+    // Find all games that share this date
+    const gameIdsWithDate = data.games
+      .filter((game) => game.date === data.games[i].date)
+      .map((game) => game.id);
 
-      const numGamesWithDate = gamesWithDate.length;
+    // Get out if there's only one game
+    if (gameIdsWithDate.length === 1) {
+      continue;
+    }
 
-      // Get out if there's only one game
-      if (numGamesWithDate === 1) {
-        continue;
-      }
+    // The games in the data are sorted in ascending order, so we need
+    // to reverse the order when applying offets
+    gameIdsWithDate.reverse();
 
-      // Offset each game sharing a date (minus the first game, which
-      // doesn't get offset). The logic of offsetting is described
-      // above.
-      const gameIdsWithDate = gamesWithDate.map((game) => game.id);
+    // Offset each game sharing a date (minus the first game, which
+    // doesn't get offset). The logic of offsetting is described
+    // above.
+    for (let j = 1; j < gameIdsWithDate.length; j++) {
+      const offset = (j * 24) / (gameIdsWithDate.length + 1);
 
-      for (let j = 1; j < numGamesWithDate; j++) {
-        const offset = (j * 24) / (numGamesWithDate + 1);
-
+      playersNew.forEach((player) =>
         player.data
           .find((game) => game.id === gameIdsWithDate[j])
-          .date.setHours(player.data[j].date.getHours() + offset);
-      }
-
-      // Add all IDs to the visited set
-      gameIdsWithDate.forEach((id) => visitedIdsSet.add(id));
+          ?.date.setHours(player.data[j].date.getHours() + offset)
+      );
     }
+
+    // Add all IDs to the visited set
+    gameIdsWithDate.forEach((id) => visitedIdsSet.add(id));
   }
 
   // Dates for x-axis
