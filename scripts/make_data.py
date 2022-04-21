@@ -82,6 +82,7 @@ by cumulative sum.
 import json
 from operator import itemgetter
 import os
+import sys
 
 DATA_DIR = "../data"
 RAW_DATA_DIR = DATA_DIR + "/raw"
@@ -162,6 +163,9 @@ raw_data_files = sorted([f for f in os.listdir(RAW_DATA_DIR) if f[-3:] == "txt"]
 # Start game ID counter
 current_id = 1
 
+# Make a set of recognized players
+valid_player_names = set([name.title() for name in PLAYER_COLOURS_HEX])
+
 # Parse the raw data files
 for filename in raw_data_files:
     # Initialize dict for this game - the date is encoded in the file
@@ -181,7 +185,14 @@ for filename in raw_data_files:
 
     # Go through the lines pairwise and get player data
     for l1, l2 in zip(*[iter(lines)] * 2):
-        player = l1.split()[0].lower().title()
+        player_raw = l1.split()[0]
+        player = player_raw.lower().title()
+
+        # Make sure player is valid; if not, exit
+        if not player in valid_player_names:
+            print('Invalid player name "%s" encounted in %s' % (player_raw, filename))
+            sys.exit(1)
+
         player_data = [float(x) for x in l2.split("\t")]
 
         # Parse data
