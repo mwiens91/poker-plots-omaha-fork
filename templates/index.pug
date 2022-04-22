@@ -57,7 +57,7 @@ head
 #main-container.container.pt-3
   .row
     .col-6
-      .d-flex.justify-content-center
+      .d-flex.justify-content-end.me-5
         div(style={ width: "410px" })
           img(
             src="favicon/android-chrome-192x192.png",
@@ -77,8 +77,45 @@ head
             aria-expanded="false",
             aria-controls="collapseHelp"
           ) more info
-          #collapseHelp.collapse.pt-4
-            h2 More info
+    .col-6
+      .d-flex.justify-content-start.h-100.ms-5
+        div(style={ width: "410px", "padding-top": "45px" })
+          h2 Quick links
+          .page-link-div
+            | >
+            button.btn.btn-link.p-1.ms-2(
+              onclick="document.getElementById('people').scrollIntoView();"
+            )
+              | People
+          .page-link-div
+            | >
+            button.btn.btn-link.p-1.ms-2(
+              onclick="document.getElementById('line-chart').scrollIntoView();"
+            )
+              | Line chart
+          .page-link-div
+            | >
+            button.btn.btn-link.p-1.ms-2(
+              onclick="document.getElementById('box-plot').scrollIntoView();"
+            )
+              | Box plot
+          .page-link-div
+            | >
+            button.btn.btn-link.p-1.ms-2(
+              onclick="document.getElementById('pie-charts').scrollIntoView();"
+            )
+              | Pie charts
+          .page-link-div
+            | >
+            button.btn.btn-link.p-1.ms-2(
+              onclick="document.getElementById('games').scrollIntoView();"
+            )
+              | Games log
+  #collapseHelp.row.collapse
+    .col-6
+      .d-flex.justify-content-end.me-5
+        div(style={ width: "410px" })
+          .pt-4
             h4 Terms
             ul
               li
@@ -144,6 +181,11 @@ head
                 sup 0.7
                 | . This can be useful for distinguishing
                 | trajectories when the range close to 0 gets crowded.
+    .col-6
+      .d-flex.justify-content-start.ms-5
+        div(style={ width: "410px" })
+          .pt-4
+            h4 Features (cont.)
             h5 Box plot
             ul
               li hovering over a player's "box and whiskers" will show their corresponding extrema and quartiles
@@ -166,42 +208,6 @@ head
             | is used for styling. Ancient browsers and Safari might not be supported. Mobile is going to be a terrible experience. The source code for this page is available#{ ' ' }
             a(href="https://github.com/mwiens91/poker-plots") here
             | .
-    .col-6
-      .d-flex.justify-content-center.h-100
-        .h-100(style={ width: "410px" })
-          .d-flex.flex-column.justify-content-center.h-100
-            div
-              h2 Quick links
-            .page-link-div
-              | >
-              button.btn.btn-link.p-1.ms-2(
-                onclick="document.getElementById('people').scrollIntoView();"
-              )
-                | People
-            .page-link-div
-              | >
-              button.btn.btn-link.p-1.ms-2(
-                onclick="document.getElementById('line-chart').scrollIntoView();"
-              )
-                | Line chart
-            .page-link-div
-              | >
-              button.btn.btn-link.p-1.ms-2(
-                onclick="document.getElementById('box-plot').scrollIntoView();"
-              )
-                | Box plot
-            .page-link-div
-              | >
-              button.btn.btn-link.p-1.ms-2(
-                onclick="document.getElementById('pie-charts').scrollIntoView();"
-              )
-                | Pie charts
-            .page-link-div
-              | >
-              button.btn.btn-link.p-1.ms-2(
-                onclick="document.getElementById('games').scrollIntoView();"
-              )
-                | Games log
   - const parseCurrency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
   - const parseCurrencyPlusMinus = (x) => (x >= 0 ? "+" : "") + parseCurrency.format(x);
   #people.row.pt-5.text-center
