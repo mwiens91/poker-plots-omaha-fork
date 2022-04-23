@@ -15,7 +15,11 @@ const piePlotMargin = { top: 0, bottom: 0, left: 47, right: 47 };
 
 const redrawLinePlot = drawLinePlot(data, "line-plot-parent", linePlotMargin);
 
-const redrawBoxPlot = drawBoxPlot(data, "box-plot-parent", boxPlotMargin);
+const redrawBoxPlot = drawBoxPlot(
+  data.players,
+  "box-plot-parent",
+  boxPlotMargin
+);
 
 const redrawWinnerPiePlot = drawPiePlot(
   data.players.filter((x) => x.cumSum > 0),
@@ -28,7 +32,7 @@ const redrawLoserPiePlot = drawPiePlot(
   piePlotMargin
 );
 
-drawCalendar(data, "calendar-parent");
+drawCalendar(data.games, "calendar-parent");
 
 // Viewport size dependent stuff; mostly redrawing plots
 const MIN_ACCEPTABLE_WIDTH = 992;

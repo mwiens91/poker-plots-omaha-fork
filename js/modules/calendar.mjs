@@ -5,7 +5,7 @@
 // be a good idea.
 
 // Function to draw calendar
-const drawCalendar = (data, divId) => {
+const drawCalendar = (gameData, divId) => {
   // Display options
   const dayAbbrevs = "SMTWRFS";
   const cellSize = 17;
@@ -26,7 +26,7 @@ const drawCalendar = (data, divId) => {
 
   // Massage the data so we just have (parsed) dates, total buy-ins and
   // game id
-  const newData = data.games.map((game) => ({
+  const newData = gameData.map((game) => ({
     date: parseDate(game.date),
     val: game.data.reduce((tot, datum) => tot + datum.buyin, 0),
     id: game.id,

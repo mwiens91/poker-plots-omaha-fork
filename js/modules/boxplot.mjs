@@ -3,7 +3,7 @@
 // https://observablehq.com/@d3/box-plot
 
 // Function to draw box plot. Returns a redraw function.
-const drawBoxPlot = (data, divId, margin) => {
+const drawBoxPlot = (playerData, divId, margin) => {
   // Display options
   const jitter = 0; // amount of random displacement for outlier dots (px)
   const outlierRadius = "0.22em";
@@ -46,7 +46,7 @@ const drawBoxPlot = (data, divId, margin) => {
     (x >= 0 ? "+" : "") + parseCurrency.format(x);
 
   // Get relevant stats from data
-  const playersNew = data.players
+  const playersNew = playerData
     .filter((player) => player.data.length >= minNumberGames)
     .map((player) => {
       const vals = player.data.map((d) => d.delta);
