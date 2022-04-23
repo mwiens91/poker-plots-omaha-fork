@@ -31,7 +31,9 @@ const drawBoxPlot = (playerData, divId, margin) => {
       minWidthHeightFactor * width
     );
 
-  // Scale the boxplot boxes' width based on viewport
+  // Scale the boxplot boxes' width based on viewport width. Note that
+  // the ratio of box height to width will not be preserved when the
+  // viewport height changes with this method.
   const getHalfBoxWidth = (width) => (width * 22) / 1296;
 
   // Initialise a formatter for displaying currency
