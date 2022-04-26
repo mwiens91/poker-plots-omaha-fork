@@ -9,8 +9,8 @@
         165
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 36,
-      "cumSum": 433.98,
+      "gameCount": 37,
+      "cumSum": 434.03,
       "matchupData": [
         {
           "player": "Matt",
@@ -66,6 +66,15 @@
           ],
           "gameCount": 2,
           "cumSum": 69.4
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
+            "Juno"
+          ],
+          "gameCount": 2,
+          "cumSum": -0.65
         },
         {
           "player": "Matt",
@@ -153,19 +162,10 @@
           ],
           "gameCount": 1,
           "cumSum": 2.57
-        },
-        {
-          "player": "Matt",
-          "players": [
-            "Matt",
-            "Juno"
-          ],
-          "gameCount": 1,
-          "cumSum": -0.7
         }
       ],
       "stats": {
-        "total-money-won": 670.93,
+        "total-money-won": 670.98,
         "total-money-lost": 236.95,
         "largest-winning-streak": {
           "num-games": 4,
@@ -512,6 +512,15 @@
           "buyout": 50.08,
           "delta": -10.79,
           "cumSum": 433.98
+        },
+        {
+          "id": 53,
+          "date": "2022-04-25",
+          "player": "Matt",
+          "buyin": 51.5,
+          "buyout": 51.55,
+          "delta": 0.05,
+          "cumSum": 434.03
         }
       ]
     },
@@ -2602,8 +2611,8 @@
         62
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/juno.webp",
-      "gameCount": 49,
-      "cumSum": -212.23,
+      "gameCount": 50,
+      "cumSum": -212.28,
       "matchupData": [
         {
           "player": "Juno",
@@ -2669,6 +2678,15 @@
           ],
           "gameCount": 2,
           "cumSum": -48.94
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Matt"
+          ],
+          "gameCount": 2,
+          "cumSum": 0.65
         },
         {
           "player": "Juno",
@@ -2815,20 +2833,11 @@
           ],
           "gameCount": 1,
           "cumSum": 2.41
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "Juno",
-            "Matt"
-          ],
-          "gameCount": 1,
-          "cumSum": 0.7
         }
       ],
       "stats": {
         "total-money-won": 493.59,
-        "total-money-lost": 705.82,
+        "total-money-lost": 705.87,
         "largest-winning-streak": {
           "num-games": 5,
           "total": 133.59,
@@ -3291,11 +3300,38 @@
           "buyout": 41.92,
           "delta": 1.92,
           "cumSum": -212.23
+        },
+        {
+          "id": 53,
+          "date": "2022-04-25",
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 19.95,
+          "delta": -0.05,
+          "cumSum": -212.28
         }
       ]
     }
   ],
   "games": [
+    {
+      "id": 53,
+      "date": "2022-04-25",
+      "data": [
+        {
+          "player": "Matt",
+          "buyin": 51.5,
+          "buyout": 51.55,
+          "delta": 0.05
+        },
+        {
+          "player": "Juno",
+          "buyin": 20.0,
+          "buyout": 19.95,
+          "delta": -0.05
+        }
+      ]
+    },
     {
       "id": 52,
       "date": "2022-04-22",
