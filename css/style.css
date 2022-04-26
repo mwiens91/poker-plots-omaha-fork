@@ -149,8 +149,17 @@ ul {
 }
 
 .game-div {
-  max-width: 600px;
-  scroll-margin-top: 120px;
+  max-width: 500px;
+}
+
+.expanded-game-div-parent-left {
+  justify-content: end;
+  padding-right: 50px;
+}
+
+.expanded-game-div-parent-right {
+  justify-content: start;
+  padding-left: 50px;
 }
 
 .page-up-circle {

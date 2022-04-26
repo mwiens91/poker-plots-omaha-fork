@@ -4,8 +4,10 @@
 // A lot of the code here is hard to read. Refactoring or whatever might
 // be a good idea.
 
+import { changeSelectedGame } from "./util.mjs";
+
 // Function to draw calendar
-const drawCalendar = (gameData, divId) => {
+const drawCalendar = (data, divId) => {
   // Display options
   const dayAbbrevs = "SMTWRFS";
   const cellSize = 17;
@@ -26,7 +28,7 @@ const drawCalendar = (gameData, divId) => {
 
   // Massage the data so we just have (parsed) dates, total buy-ins and
   // game id
-  const newData = gameData.map((game) => ({
+  const newData = data.games.map((game) => ({
     date: parseDate(game.date),
     val: game.data.reduce((tot, datum) => tot + datum.buyin, 0),
     id: game.id,
@@ -213,9 +215,7 @@ const drawCalendar = (gameData, divId) => {
     .on("mousemove", tooltipMousemove)
     .on("mouseout", tooltipMouseout)
     .on("click", (event, d) =>
-      newData[d].id === null
-        ? null
-        : document.getElementById("game-" + newData[d].id).scrollIntoView()
+      newData[d].id === null ? null : changeSelectedGame(data, newData[d].id)
     );
 
   // Get the months. This is highly unreadable. Sorry?

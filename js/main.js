@@ -32,7 +32,7 @@ const redrawLoserPiePlot = drawPiePlot(
   piePlotMargin
 );
 
-drawCalendar(data.games, "calendar-parent");
+drawCalendar(data, "calendar-parent");
 
 // Viewport size dependent stuff; mostly redrawing plots
 const MIN_ACCEPTABLE_WIDTH = 992;
@@ -120,17 +120,27 @@ const windowResizeListener = () => {
 window.addEventListener("resize", windowResizeListener);
 
 // Page up circle logic
-const circleElem = document.getElementById("page-up-circle");
+const circleElement = document.getElementById("page-up-circle");
 
 const observer = new IntersectionObserver(
   (entries) => {
     if (entries[0].isIntersecting) {
-      circleElem.style.display = "block";
+      circleElement.style.display = "block";
     } else {
-      circleElem.style.display = "none";
+      circleElement.style.display = "none";
     }
   },
-  { rootMargin: "0px 0px -80% 0px", threshold: [0] }
+  { rootMargin: "0px 0px -100% 0px", threshold: [0] }
 );
 
-observer.observe(document.querySelector("#scroll-up-visible"));
+observer.observe(document.getElementById("page-up-circle-trigger"));
+
+// Expand games button logic
+const expandGamesButtonElement = document.getElementById("expand-games-button");
+const collapseGamesElement = document.getElementById("collapse-games");
+
+expandGamesButtonElement.onclick = () => {
+  if (collapseGamesElement.offsetHeight > 100) {
+    collapseGamesElement.scrollIntoView();
+  }
+};

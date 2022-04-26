@@ -4,6 +4,8 @@
 // This module is a bit of a mess. There are lots of comments, some of
 // which hopefully are helpful, but the organization is lacking.
 
+import { changeSelectedGame } from "./util.mjs";
+
 // Function to draw multi-line plot. Returns a redraw function.
 const drawLinePlot = (data, divId, margin) => {
   // Tweak display settings
@@ -494,9 +496,10 @@ const drawLinePlot = (data, divId, margin) => {
         infoBarGameTitleElement.text("");
         infoBarGameInfoElement.text("");
       })
-      .on("click", (event, d) =>
-        document.getElementById("game-" + d.id).scrollIntoView()
-      );
+      .on("click", (event, d) => {
+        changeSelectedGame(data, d.id);
+        document.getElementById("selected-game-div").scrollIntoView();
+      });
   };
 
   // Call graph drawing function
