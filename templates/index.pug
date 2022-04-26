@@ -42,7 +42,7 @@ head
   link(rel="preconnect", href="https://fonts.googleapis.com")
   link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin="")
   link(
-    href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Inter:wght@300;400;500;600;700&family=Kalam&display=swap",
+    href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Inter:wght@300;400;500;600;700&display=swap",
     rel="stylesheet"
   )
   // CSS
@@ -213,9 +213,20 @@ head
   #people.row.pt-5.text-center
     h1 People
   .row.pt-3.pb-3
+    .d-flex.flex-row.justify-content-center
+      .people-legend-avatar-div(style={ "max-width": "1044px" })
+        each player in data.players
+          .px-1.pt-1.pb-1(id="people-icon-div-" + player.name)
+            img.people-legend-avatar-circle(
+              src=player.avatar,
+              alt=player.name,
+              style={ "border-color": player.colourHex }
+            )
+  .row.pt-2
+    - const colWidth = "510px";
     .col-6
-      .d-flex.flex-row.justify-content-end.pt-2
-        #people-body-parent-div(style={ width: "522px" })
+      .d-flex.justify-content-end
+        #people-body-parent-div(style={ width: colWidth })
           .d-flex.flex-row.align-items-center
             .pe-2
               img#people-body-avatar.img-fluid.people-body-avatar-circle(
@@ -230,6 +241,11 @@ head
           hr#people-body-hr(
             style={ "max-width": "400px", height: "5px", opacity: "100%" }
           )
+    .col-6
+  .row.pb-3
+    .col-6
+      .d-flex.justify-content-end
+        div(style={ width: colWidth })
           .people-body-stat-title Games played:
           h3#people-body-games-played.people-body-stat-main
           .people-body-stat-title Total money won:
@@ -249,17 +265,10 @@ head
           h3#people-body-most-money-lost-single-main.people-body-stat-main
           #people-body-most-money-lost-single-sub.people-body-stat-sub
     .col-6
-      .d-flex.flex-row.justify-content-start
-        div(style={ width: "522px" })
-          .people-legend-mouseover-me-div 🡧 mouse-over these
-          .people-legend-avatar-div
-            each player in data.players
-              .px-1.pt-1.pb-1(id="people-icon-div-" + player.name)
-                img.people-legend-avatar-circle(
-                  src=player.avatar,
-                  alt=player.name,
-                  style={ "border-color": player.colourHex }
-                )
+      .d-flex.justify-content-start
+        div(style={ width: colWidth })
+          #people-matchup-title.people-body-stat-title Matchup cumulative sums:
+          #people-matchups-div
   #line-chart.row.pt-5.text-center
     h1 Cumulative sums multi-line chart
   .lineplot-legend-div.mx-5.pb-0.pt-4

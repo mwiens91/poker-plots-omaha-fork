@@ -102,13 +102,6 @@ ul {
   padding-bottom: 5px;
 }
 
-.people-legend-mouseover-me-div {
-  text-align: right;
-  font-size: small;
-  font-family: Kalam, serif;
-  margin-right: 10px;
-}
-
 .people-legend-avatar-div {
   display: flex;
   flex-direction: row;
@@ -125,6 +118,15 @@ ul {
   max-width: 50px;
 }
 
+.people-matchup-div {
+  max-width: 450px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
 .lineplot-legend-div {
   display: flex;
   flex-direction: row;
@@ -136,8 +138,8 @@ ul {
   border: 7px;
   border-style: double;
   border-radius: 50%;
-  max-height: 62px;
-  max-width: 62px;
+  max-height: 59px;
+  max-width: 59px;
 }
 
 .lineplot-infobar-avatar-circle {

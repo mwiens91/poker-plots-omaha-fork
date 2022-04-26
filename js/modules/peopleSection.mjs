@@ -1,6 +1,9 @@
-// Sets up the people section of the page
-
+// Sets up the people section of the page and returns the starting
+// player's name that was randomly selected
 const initializePeopleSection = (data) => {
+  // Minimum number of games to be randomly selected
+  const minGames = 3;
+
   // Initialise a formatter for displaying currency
   const parseCurrency = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -52,9 +55,13 @@ const initializePeopleSection = (data) => {
   const peopleMostMoneyLostSingleSubElement = document.getElementById(
     "people-body-most-money-lost-single-sub"
   );
+  const peopleMatchupsDivElement = document.getElementById(
+    "people-matchups-div"
+  );
 
   // Function to adjust the above elements to a specific player
   const adjustPeopleBody = (player) => {
+    // Adjust left hand side elements
     peopleAvatarElement.setAttribute("src", player.avatar);
     peoplePlayerTitleNameElement.textContent = player.name;
     peoplePlayerTitleDividerElement.style.color = player.colourHex;
@@ -150,6 +157,40 @@ const initializePeopleSection = (data) => {
           (x) => x.id === player.stats["most-lost-in-single-game"]["game-id"]
         ).date;
     }
+
+    // Adjust right hand side elements, first clean up any existing
+    // matchup divs
+    peopleMatchupsDivElement.innerHTML = "";
+
+    // Add matchups
+    const maxMatchups = 6;
+
+    for (const [idx, matchup] of player.matchupData.entries()) {
+      if (idx > maxMatchups - 1) {
+        break;
+      }
+
+      const div = document.createElement("div");
+
+      div.classList.add("people-matchup-div");
+      div.style.background =
+        "rgb(" + player.colourRgb.map((x) => x + (255 - x) * 0.7) + ")";
+
+      div.innerHTML =
+        '<div style="padding-bottom: 6px">' +
+        `<b>${matchup.players.join(", ")}</b><br>` +
+        "<em>" +
+        `${matchup.gameCount} game${matchup.gameCount > 1 ? "s" : ""}` +
+        ", " +
+        `${matchup.players.length} players` +
+        "</em>" +
+        "</div>" +
+        `<span style="font-size: 16px"<>${parseCurrency.format(
+          matchup.cumSum
+        )}</span>`;
+
+      peopleMatchupsDivElement.appendChild(div);
+    }
   };
 
   // Add mouseover listeners to people legend avatars
@@ -163,9 +204,14 @@ const initializePeopleSection = (data) => {
 
   // Randomly select one of the players to activate in the people
   // section
+  const filteredPlayers = data.players.filter(
+    (player) => player.gameCount >= minGames
+  );
   const randomPlayer =
-    data.players[Math.floor(Math.random() * data.players.length)];
+    filteredPlayers[Math.floor(Math.random() * filteredPlayers.length)];
   adjustPeopleBody(randomPlayer);
+
+  return randomPlayer.name;
 };
 
 export { initializePeopleSection };

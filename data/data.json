@@ -15,88 +15,9 @@
         {
           "player": "Matt",
           "players": [
-            "Aidan",
-            "Juno",
             "Matt",
-            "Zen"
-          ],
-          "colourHex": "#bc9363",
-          "colourRgb": [
-            188,
-            147,
-            99
-          ],
-          "gameCount": 10,
-          "cumSum": 1.9
-        },
-        {
-          "player": "Matt",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
             "Juno",
-            "Matt",
             "Zen"
-          ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
-          ],
-          "gameCount": 2,
-          "cumSum": 146.02
-        },
-        {
-          "player": "Matt",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#bf8762",
-          "colourRgb": [
-            191,
-            135,
-            98
-          ],
-          "gameCount": 1,
-          "cumSum": 24.49
-        },
-        {
-          "player": "Matt",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Jayden",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
-          ],
-          "gameCount": 1,
-          "cumSum": -36.6
-        },
-        {
-          "player": "Matt",
-          "players": [
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#cd836b",
-          "colourRgb": [
-            205,
-            131,
-            107
           ],
           "gameCount": 11,
           "cumSum": 37.33
@@ -105,49 +26,21 @@
           "player": "Matt",
           "players": [
             "Matt",
-            "Zen"
-          ],
-          "colourHex": "#ce927c",
-          "colourRgb": [
-            206,
-            146,
-            124
-          ],
-          "gameCount": 2,
-          "cumSum": 69.4
-        },
-        {
-          "player": "Matt",
-          "players": [
             "Aidan",
-            "David",
             "Juno",
-            "Matt",
             "Zen"
           ],
-          "colourHex": "#af9280",
-          "colourRgb": [
-            175,
-            146,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": 12.23
+          "gameCount": 10,
+          "cumSum": 1.9
         },
         {
           "player": "Matt",
           "players": [
+            "Matt",
             "Aidan",
             "Bei",
             "Juno",
-            "Matt",
             "Zen"
-          ],
-          "colourHex": "#b8905e",
-          "colourRgb": [
-            184,
-            144,
-            94
           ],
           "gameCount": 3,
           "cumSum": 73.57
@@ -155,18 +48,34 @@
         {
           "player": "Matt",
           "players": [
+            "Matt",
+            "Aidan",
+            "Alex",
+            "David",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 2,
+          "cumSum": 146.02
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 2,
+          "cumSum": 69.4
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
             "Aidan",
             "Juno",
-            "Matt",
             "Parker",
             "Russell",
             "Zen"
-          ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
           ],
           "gameCount": 1,
           "cumSum": 115.53
@@ -174,53 +83,49 @@
         {
           "player": "Matt",
           "players": [
-            "Aidan",
-            "Bei",
-            "David",
-            "Juno",
             "Matt",
-            "Russell",
+            "Aidan",
+            "Alex",
+            "Jayden",
+            "Juno",
             "Zen"
           ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
-          ],
           "gameCount": 1,
-          "cumSum": 2.57
+          "cumSum": -36.6
         },
         {
           "player": "Matt",
           "players": [
+            "Matt",
+            "Aidan",
+            "Alex",
             "Juno",
-            "Matt"
-          ],
-          "colourHex": "#c96d7c",
-          "colourRgb": [
-            201,
-            109,
-            124
+            "Zen"
           ],
           "gameCount": 1,
-          "cumSum": -0.7
+          "cumSum": 24.49
         },
         {
           "player": "Matt",
           "players": [
+            "Matt",
+            "Aidan",
+            "David",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 12.23
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
             "Aidan",
             "David",
             "Josh",
             "Juno",
-            "Matt",
             "Zen"
-          ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
           ],
           "gameCount": 1,
           "cumSum": -8.59
@@ -228,18 +133,35 @@
         {
           "player": "Matt",
           "players": [
-            "Aidan",
             "Matt",
+            "Aidan",
             "Zen"
-          ],
-          "colourHex": "#b7a06d",
-          "colourRgb": [
-            183,
-            160,
-            109
           ],
           "gameCount": 1,
           "cumSum": -3.17
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
+            "Aidan",
+            "Bei",
+            "David",
+            "Juno",
+            "Russell",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 2.57
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
+            "Juno"
+          ],
+          "gameCount": 1,
+          "cumSum": -0.7
         }
       ],
       "stats": {
@@ -609,70 +531,9 @@
           "player": "Aidan",
           "players": [
             "Aidan",
-            "Alex",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#bd8a49",
-          "colourRgb": [
-            189,
-            138,
-            73
-          ],
-          "gameCount": 1,
-          "cumSum": -4.25
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
-          ],
-          "gameCount": 1,
-          "cumSum": 1.1
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
-          ],
-          "gameCount": 1,
-          "cumSum": 3.01
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
             "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#bc9363",
-          "colourRgb": [
-            188,
-            147,
-            99
           ],
           "gameCount": 10,
           "cumSum": -62.53
@@ -681,108 +542,11 @@
           "player": "Aidan",
           "players": [
             "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
-          ],
-          "gameCount": 2,
-          "cumSum": 5.16
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "David",
             "Juno",
             "Zen"
-          ],
-          "colourHex": "#a89875",
-          "colourRgb": [
-            168,
-            152,
-            117
-          ],
-          "gameCount": 1,
-          "cumSum": 42.44
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#bf8762",
-          "colourRgb": [
-            191,
-            135,
-            98
-          ],
-          "gameCount": 1,
-          "cumSum": 0.4
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Jayden",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
-          ],
-          "gameCount": 1,
-          "cumSum": -40.0
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b99a40",
-          "colourRgb": [
-            185,
-            154,
-            64
           ],
           "gameCount": 7,
           "cumSum": -6.11
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "David",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#af9280",
-          "colourRgb": [
-            175,
-            146,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": -30.0
         },
         {
           "player": "Aidan",
@@ -793,14 +557,21 @@
             "Matt",
             "Zen"
           ],
-          "colourHex": "#b8905e",
-          "colourRgb": [
-            184,
-            144,
-            94
-          ],
           "gameCount": 3,
           "cumSum": 65.39
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "David",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 2,
+          "cumSum": 5.16
         },
         {
           "player": "Aidan",
@@ -812,14 +583,91 @@
             "Russell",
             "Zen"
           ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
-          ],
           "gameCount": 1,
           "cumSum": 66.41
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "David",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 42.44
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "Jayden",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -40.0
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "David",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -30.0
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 21.25
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -4.25
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "David",
+            "Juno",
+            "Russell",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 3.01
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "David",
+            "Jayden",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 1.1
         },
         {
           "player": "Aidan",
@@ -832,14 +680,20 @@
             "Russell",
             "Zen"
           ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
-          ],
           "gameCount": 1,
           "cumSum": 0.94
+        },
+        {
+          "player": "Aidan",
+          "players": [
+            "Aidan",
+            "Alex",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 0.4
         },
         {
           "player": "Aidan",
@@ -851,30 +705,8 @@
             "Matt",
             "Zen"
           ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
-          ],
           "gameCount": 1,
           "cumSum": -0.06
-        },
-        {
-          "player": "Aidan",
-          "players": [
-            "Aidan",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b7a06d",
-          "colourRgb": [
-            183,
-            160,
-            109
-          ],
-          "gameCount": 1,
-          "cumSum": 21.25
         }
       ],
       "stats": {
@@ -1216,37 +1048,12 @@
         {
           "player": "Russell",
           "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
             "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
-          ],
-          "gameCount": 1,
-          "cumSum": 29.8
-        },
-        {
-          "player": "Russell",
-          "players": [
             "Aidan",
             "Juno",
             "Matt",
             "Parker",
-            "Russell",
             "Zen"
-          ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
           ],
           "gameCount": 1,
           "cumSum": -30.0
@@ -1254,19 +1061,26 @@
         {
           "player": "Russell",
           "players": [
+            "Russell",
+            "Aidan",
+            "Alex",
+            "David",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 29.8
+        },
+        {
+          "player": "Russell",
+          "players": [
+            "Russell",
             "Aidan",
             "Bei",
             "David",
             "Juno",
             "Matt",
-            "Russell",
             "Zen"
-          ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
           ],
           "gameCount": 1,
           "cumSum": 2.73
@@ -1341,37 +1155,12 @@
         {
           "player": "Jayden",
           "players": [
+            "Jayden",
             "Aidan",
             "Alex",
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
-          ],
-          "gameCount": 1,
-          "cumSum": -25.28
-        },
-        {
-          "player": "Jayden",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Jayden",
             "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
           ],
           "gameCount": 1,
           "cumSum": 45.62
@@ -1379,16 +1168,23 @@
         {
           "player": "Jayden",
           "players": [
-            "David",
             "Jayden",
+            "Aidan",
+            "Alex",
+            "David",
             "Juno",
             "Zen"
           ],
-          "colourHex": "#b77e8c",
-          "colourRgb": [
-            183,
-            126,
-            140
+          "gameCount": 1,
+          "cumSum": -25.28
+        },
+        {
+          "player": "Jayden",
+          "players": [
+            "Jayden",
+            "David",
+            "Juno",
+            "Zen"
           ],
           "gameCount": 1,
           "cumSum": -21.55
@@ -1463,208 +1259,9 @@
         {
           "player": "Zen",
           "players": [
-            "Aidan",
-            "Alex",
+            "Zen",
             "Juno",
-            "Zen"
-          ],
-          "colourHex": "#bd8a49",
-          "colourRgb": [
-            189,
-            138,
-            73
-          ],
-          "gameCount": 1,
-          "cumSum": 14.25
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
-          ],
-          "gameCount": 1,
-          "cumSum": 115.0
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
-          ],
-          "gameCount": 1,
-          "cumSum": 23.13
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "David",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b48b80",
-          "colourRgb": [
-            180,
-            139,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": 18.78
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#bc9363",
-          "colourRgb": [
-            188,
-            147,
-            99
-          ],
-          "gameCount": 10,
-          "cumSum": -68.4
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
-          ],
-          "gameCount": 2,
-          "cumSum": -88.63
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "David",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#a89875",
-          "colourRgb": [
-            168,
-            152,
-            117
-          ],
-          "gameCount": 1,
-          "cumSum": -1.67
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#bf8762",
-          "colourRgb": [
-            191,
-            135,
-            98
-          ],
-          "gameCount": 1,
-          "cumSum": -7.7
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Aidan",
-            "Alex",
-            "Jayden",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
-          ],
-          "gameCount": 1,
-          "cumSum": -35.63
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#d0883d",
-          "colourRgb": [
-            208,
-            136,
-            61
-          ],
-          "gameCount": 3,
-          "cumSum": 6.6
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b77e8c",
-          "colourRgb": [
-            183,
-            126,
-            140
-          ],
-          "gameCount": 1,
-          "cumSum": -2.2
-        },
-        {
-          "player": "Zen",
-          "players": [
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#cd836b",
-          "colourRgb": [
-            205,
-            131,
-            107
+            "Matt"
           ],
           "gameCount": 11,
           "cumSum": 48.06
@@ -1672,30 +1269,20 @@
         {
           "player": "Zen",
           "players": [
-            "Matt",
-            "Zen"
+            "Zen",
+            "Aidan",
+            "Juno",
+            "Matt"
           ],
-          "colourHex": "#ce927c",
-          "colourRgb": [
-            206,
-            146,
-            124
-          ],
-          "gameCount": 2,
-          "cumSum": -69.4
+          "gameCount": 10,
+          "cumSum": -68.4
         },
         {
           "player": "Zen",
           "players": [
+            "Zen",
             "Aidan",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b99a40",
-          "colourRgb": [
-            185,
-            154,
-            64
+            "Juno"
           ],
           "gameCount": 7,
           "cumSum": -28.2
@@ -1703,35 +1290,11 @@
         {
           "player": "Zen",
           "players": [
-            "Aidan",
-            "David",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#af9280",
-          "colourRgb": [
-            175,
-            146,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": 10.98
-        },
-        {
-          "player": "Zen",
-          "players": [
+            "Zen",
             "Aidan",
             "Bei",
             "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b8905e",
-          "colourRgb": [
-            184,
-            144,
-            94
+            "Matt"
           ],
           "gameCount": 3,
           "cumSum": 30.11
@@ -1739,57 +1302,82 @@
         {
           "player": "Zen",
           "players": [
-            "Aidan",
-            "Juno",
-            "Matt",
-            "Parker",
-            "Russell",
-            "Zen"
+            "Zen",
+            "Juno"
           ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
-          ],
-          "gameCount": 1,
-          "cumSum": 10.47
+          "gameCount": 3,
+          "cumSum": 6.6
         },
         {
           "player": "Zen",
           "players": [
+            "Zen",
             "Aidan",
-            "Bei",
+            "Alex",
             "David",
             "Juno",
-            "Matt",
-            "Russell",
-            "Zen"
+            "Matt"
           ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
-          ],
-          "gameCount": 1,
-          "cumSum": 12.11
+          "gameCount": 2,
+          "cumSum": -88.63
         },
         {
           "player": "Zen",
           "players": [
+            "Zen",
+            "Matt"
+          ],
+          "gameCount": 2,
+          "cumSum": -69.4
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Alex",
+            "David",
+            "Jayden",
+            "Juno"
+          ],
+          "gameCount": 1,
+          "cumSum": 115.0
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Alex",
+            "Jayden",
+            "Juno",
+            "Matt"
+          ],
+          "gameCount": 1,
+          "cumSum": -35.63
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Alex",
+            "David",
+            "Juno",
+            "Russell"
+          ],
+          "gameCount": 1,
+          "cumSum": 23.13
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
             "Aidan",
             "David",
             "Josh",
             "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
+            "Matt"
           ],
           "gameCount": 1,
           "cumSum": 20.69
@@ -1797,18 +1385,106 @@
         {
           "player": "Zen",
           "players": [
-            "Aidan",
-            "Matt",
-            "Zen"
+            "Zen",
+            "David",
+            "Juno"
           ],
-          "colourHex": "#b7a06d",
-          "colourRgb": [
-            183,
-            160,
-            109
+          "gameCount": 1,
+          "cumSum": 18.78
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Matt"
           ],
           "gameCount": 1,
           "cumSum": -18.08
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Alex",
+            "Juno"
+          ],
+          "gameCount": 1,
+          "cumSum": 14.25
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Bei",
+            "David",
+            "Juno",
+            "Matt",
+            "Russell"
+          ],
+          "gameCount": 1,
+          "cumSum": 12.11
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "David",
+            "Juno",
+            "Matt"
+          ],
+          "gameCount": 1,
+          "cumSum": 10.98
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Juno",
+            "Matt",
+            "Parker",
+            "Russell"
+          ],
+          "gameCount": 1,
+          "cumSum": 10.47
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "Alex",
+            "Juno",
+            "Matt"
+          ],
+          "gameCount": 1,
+          "cumSum": -7.7
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "David",
+            "Jayden",
+            "Juno"
+          ],
+          "gameCount": 1,
+          "cumSum": -2.2
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
+            "Aidan",
+            "David",
+            "Juno"
+          ],
+          "gameCount": 1,
+          "cumSum": -1.67
         }
       ],
       "stats": {
@@ -2312,18 +1988,12 @@
         {
           "player": "Parker",
           "players": [
+            "Parker",
             "Aidan",
             "Juno",
             "Matt",
-            "Parker",
             "Russell",
             "Zen"
-          ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
           ],
           "gameCount": 1,
           "cumSum": -22.42
@@ -2372,18 +2042,12 @@
         {
           "player": "Josh",
           "players": [
+            "Josh",
             "Aidan",
             "David",
-            "Josh",
             "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
           ],
           "gameCount": 1,
           "cumSum": -33.21
@@ -2432,73 +2096,12 @@
         {
           "player": "Alex",
           "players": [
-            "Aidan",
             "Alex",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#bd8a49",
-          "colourRgb": [
-            189,
-            138,
-            73
-          ],
-          "gameCount": 1,
-          "cumSum": -2.0
-        },
-        {
-          "player": "Alex",
-          "players": [
             "Aidan",
-            "Alex",
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
-          ],
-          "gameCount": 1,
-          "cumSum": -56.09
-        },
-        {
-          "player": "Alex",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
-          ],
-          "gameCount": 1,
-          "cumSum": 44.06
-        },
-        {
-          "player": "Alex",
-          "players": [
-            "Aidan",
-            "Alex",
             "David",
             "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
           ],
           "gameCount": 2,
           "cumSum": 22.04
@@ -2506,17 +2109,50 @@
         {
           "player": "Alex",
           "players": [
-            "Aidan",
             "Alex",
+            "Aidan",
+            "David",
+            "Jayden",
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -56.09
+        },
+        {
+          "player": "Alex",
+          "players": [
+            "Alex",
+            "Aidan",
+            "Jayden",
             "Juno",
             "Matt",
             "Zen"
           ],
-          "colourHex": "#bf8762",
-          "colourRgb": [
-            191,
-            135,
-            98
+          "gameCount": 1,
+          "cumSum": -45.09
+        },
+        {
+          "player": "Alex",
+          "players": [
+            "Alex",
+            "Aidan",
+            "David",
+            "Juno",
+            "Russell",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 44.06
+        },
+        {
+          "player": "Alex",
+          "players": [
+            "Alex",
+            "Aidan",
+            "Juno",
+            "Matt",
+            "Zen"
           ],
           "gameCount": 1,
           "cumSum": -19.6
@@ -2524,21 +2160,13 @@
         {
           "player": "Alex",
           "players": [
-            "Aidan",
             "Alex",
-            "Jayden",
+            "Aidan",
             "Juno",
-            "Matt",
             "Zen"
           ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
-          ],
           "gameCount": 1,
-          "cumSum": -45.09
+          "cumSum": -2.0
         }
       ],
       "stats": {
@@ -2646,18 +2274,25 @@
         {
           "player": "David",
           "players": [
+            "David",
             "Aidan",
             "Alex",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 2,
+          "cumSum": -35.65
+        },
+        {
+          "player": "David",
+          "players": [
             "David",
+            "Aidan",
+            "Alex",
             "Jayden",
             "Juno",
             "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
           ],
           "gameCount": 1,
           "cumSum": 95.27
@@ -2665,18 +2300,12 @@
         {
           "player": "David",
           "players": [
+            "David",
             "Aidan",
             "Alex",
-            "David",
             "Juno",
             "Russell",
             "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
           ],
           "gameCount": 1,
           "cumSum": -80.0
@@ -2685,50 +2314,9 @@
           "player": "David",
           "players": [
             "David",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b48b80",
-          "colourRgb": [
-            180,
-            139,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": -10.0
-        },
-        {
-          "player": "David",
-          "players": [
             "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
-          ],
-          "gameCount": 2,
-          "cumSum": -35.65
-        },
-        {
-          "player": "David",
-          "players": [
-            "Aidan",
-            "David",
             "Juno",
             "Zen"
-          ],
-          "colourHex": "#a89875",
-          "colourRgb": [
-            168,
-            152,
-            117
           ],
           "gameCount": 1,
           "cumSum": -50.0
@@ -2741,29 +2329,28 @@
             "Juno",
             "Zen"
           ],
-          "colourHex": "#b77e8c",
-          "colourRgb": [
-            183,
-            126,
-            140
-          ],
           "gameCount": 1,
           "cumSum": 31.04
         },
         {
           "player": "David",
           "players": [
-            "Aidan",
             "David",
+            "Aidan",
+            "Josh",
             "Juno",
             "Matt",
             "Zen"
           ],
-          "colourHex": "#af9280",
-          "colourRgb": [
-            175,
-            146,
-            128
+          "gameCount": 1,
+          "cumSum": -12.0
+        },
+        {
+          "player": "David",
+          "players": [
+            "David",
+            "Juno",
+            "Zen"
           ],
           "gameCount": 1,
           "cumSum": -10.0
@@ -2771,41 +2358,28 @@
         {
           "player": "David",
           "players": [
+            "David",
+            "Aidan",
+            "Juno",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -10.0
+        },
+        {
+          "player": "David",
+          "players": [
+            "David",
             "Aidan",
             "Bei",
-            "David",
             "Juno",
             "Matt",
             "Russell",
             "Zen"
           ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
-          ],
           "gameCount": 1,
           "cumSum": 9.08
-        },
-        {
-          "player": "David",
-          "players": [
-            "Aidan",
-            "David",
-            "Josh",
-            "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
-          ],
-          "gameCount": 1,
-          "cumSum": -12.0
         }
       ],
       "stats": {
@@ -2940,17 +2514,11 @@
         {
           "player": "Bei",
           "players": [
-            "Aidan",
             "Bei",
+            "Aidan",
             "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#b8905e",
-          "colourRgb": [
-            184,
-            144,
-            94
           ],
           "gameCount": 3,
           "cumSum": -55.53
@@ -2958,19 +2526,13 @@
         {
           "player": "Bei",
           "players": [
-            "Aidan",
             "Bei",
+            "Aidan",
             "David",
             "Juno",
             "Matt",
             "Russell",
             "Zen"
-          ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
           ],
           "gameCount": 1,
           "cumSum": -40.0
@@ -3046,87 +2608,20 @@
         {
           "player": "Juno",
           "players": [
-            "Aidan",
-            "Alex",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#bd8a49",
-          "colourRgb": [
-            189,
-            138,
-            73
-          ],
-          "gameCount": 1,
-          "cumSum": -8.0
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Jayden",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b2837c",
-          "colourRgb": [
-            178,
-            131,
-            124
-          ],
-          "gameCount": 1,
-          "cumSum": -130.0
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "Aidan",
-            "Alex",
-            "David",
-            "Juno",
-            "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a78584",
-          "colourRgb": [
-            167,
-            133,
-            132
-          ],
-          "gameCount": 1,
-          "cumSum": -20.0
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "David",
-            "Juno",
-            "Zen"
-          ],
-          "colourHex": "#b48b80",
-          "colourRgb": [
-            180,
-            139,
-            128
-          ],
-          "gameCount": 1,
-          "cumSum": -8.78
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "Aidan",
             "Juno",
             "Matt",
             "Zen"
           ],
-          "colourHex": "#bc9363",
-          "colourRgb": [
-            188,
-            147,
-            99
+          "gameCount": 11,
+          "cumSum": -85.39
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Aidan",
+            "Matt",
+            "Zen"
           ],
           "gameCount": 10,
           "cumSum": 129.03
@@ -3134,18 +2629,43 @@
         {
           "player": "Juno",
           "players": [
-            "Aidan",
-            "Alex",
-            "David",
             "Juno",
+            "Aidan",
+            "Zen"
+          ],
+          "gameCount": 7,
+          "cumSum": 34.31
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Aidan",
+            "Bei",
             "Matt",
             "Zen"
           ],
-          "colourHex": "#b3887b",
-          "colourRgb": [
-            179,
-            136,
-            123
+          "gameCount": 3,
+          "cumSum": -107.15
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Zen"
+          ],
+          "gameCount": 3,
+          "cumSum": -6.6
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Aidan",
+            "Alex",
+            "David",
+            "Matt",
+            "Zen"
           ],
           "gameCount": 2,
           "cumSum": -48.94
@@ -3153,53 +2673,38 @@
         {
           "player": "Juno",
           "players": [
-            "Aidan",
-            "David",
             "Juno",
+            "Aidan",
+            "Matt",
+            "Parker",
+            "Russell",
             "Zen"
           ],
-          "colourHex": "#a89875",
-          "colourRgb": [
-            168,
-            152,
-            117
-          ],
           "gameCount": 1,
-          "cumSum": 9.23
+          "cumSum": -139.99
         },
         {
           "player": "Juno",
           "players": [
+            "Juno",
             "Aidan",
             "Alex",
-            "Juno",
-            "Matt",
+            "David",
+            "Jayden",
             "Zen"
           ],
-          "colourHex": "#bf8762",
-          "colourRgb": [
-            191,
-            135,
-            98
-          ],
           "gameCount": 1,
-          "cumSum": 2.41
+          "cumSum": -130.0
         },
         {
           "player": "Juno",
           "players": [
+            "Juno",
             "Aidan",
             "Alex",
             "Jayden",
-            "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#be7f71",
-          "colourRgb": [
-            190,
-            127,
-            113
           ],
           "gameCount": 1,
           "cumSum": 111.7
@@ -3208,80 +2713,36 @@
           "player": "Juno",
           "players": [
             "Juno",
-            "Zen"
-          ],
-          "colourHex": "#d0883d",
-          "colourRgb": [
-            208,
-            136,
-            61
-          ],
-          "gameCount": 3,
-          "cumSum": -6.6
-        },
-        {
-          "player": "Juno",
-          "players": [
+            "Aidan",
             "David",
-            "Jayden",
-            "Juno",
+            "Josh",
+            "Matt",
             "Zen"
-          ],
-          "colourHex": "#b77e8c",
-          "colourRgb": [
-            183,
-            126,
-            140
           ],
           "gameCount": 1,
-          "cumSum": -7.29
+          "cumSum": 33.17
         },
         {
           "player": "Juno",
           "players": [
             "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#cd836b",
-          "colourRgb": [
-            205,
-            131,
-            107
-          ],
-          "gameCount": 11,
-          "cumSum": -85.39
-        },
-        {
-          "player": "Juno",
-          "players": [
             "Aidan",
-            "Juno",
+            "Alex",
+            "David",
+            "Russell",
             "Zen"
           ],
-          "colourHex": "#b99a40",
-          "colourRgb": [
-            185,
-            154,
-            64
-          ],
-          "gameCount": 7,
-          "cumSum": 34.31
+          "gameCount": 1,
+          "cumSum": -20.0
         },
         {
           "player": "Juno",
           "players": [
+            "Juno",
             "Aidan",
             "David",
-            "Juno",
             "Matt",
             "Zen"
-          ],
-          "colourHex": "#af9280",
-          "colourRgb": [
-            175,
-            146,
-            128
           ],
           "gameCount": 1,
           "cumSum": 16.79
@@ -3289,56 +2750,13 @@
         {
           "player": "Juno",
           "players": [
-            "Aidan",
-            "Bei",
             "Juno",
-            "Matt",
-            "Zen"
-          ],
-          "colourHex": "#b8905e",
-          "colourRgb": [
-            184,
-            144,
-            94
-          ],
-          "gameCount": 3,
-          "cumSum": -107.15
-        },
-        {
-          "player": "Juno",
-          "players": [
-            "Aidan",
-            "Juno",
-            "Matt",
-            "Parker",
-            "Russell",
-            "Zen"
-          ],
-          "colourHex": "#a69482",
-          "colourRgb": [
-            166,
-            148,
-            130
-          ],
-          "gameCount": 1,
-          "cumSum": -139.99
-        },
-        {
-          "player": "Juno",
-          "players": [
             "Aidan",
             "Bei",
             "David",
-            "Juno",
             "Matt",
             "Russell",
             "Zen"
-          ],
-          "colourHex": "#a78a87",
-          "colourRgb": [
-            167,
-            138,
-            135
           ],
           "gameCount": 1,
           "cumSum": 12.57
@@ -3347,35 +2765,65 @@
           "player": "Juno",
           "players": [
             "Juno",
-            "Matt"
-          ],
-          "colourHex": "#c96d7c",
-          "colourRgb": [
-            201,
-            109,
-            124
+            "Aidan",
+            "David",
+            "Zen"
           ],
           "gameCount": 1,
-          "cumSum": 0.7
+          "cumSum": 9.23
         },
         {
           "player": "Juno",
           "players": [
-            "Aidan",
-            "David",
-            "Josh",
             "Juno",
+            "David",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -8.78
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Aidan",
+            "Alex",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -8.0
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "David",
+            "Jayden",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -7.29
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Aidan",
+            "Alex",
             "Matt",
             "Zen"
           ],
-          "colourHex": "#a38f77",
-          "colourRgb": [
-            163,
-            143,
-            119
+          "gameCount": 1,
+          "cumSum": 2.41
+        },
+        {
+          "player": "Juno",
+          "players": [
+            "Juno",
+            "Matt"
           ],
           "gameCount": 1,
-          "cumSum": 33.17
+          "cumSum": 0.7
         }
       ],
       "stats": {

@@ -1,7 +1,7 @@
 // Based off this link
 // https://www.d3-graph-gallery.com/graph/donut_label.html
 
-// Function to draw pie chart. Returns a redraw function
+// Function to draw pie chart. Returns a redraw function.
 const drawPiePlot = (playerData, divId, margin) => {
   // Display options - radii factors are fractions of max radius
   const innerRadiusFactor = 0.5;

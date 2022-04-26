@@ -33,8 +33,6 @@ This script generates JSON data using the raw data of Poker Now ledgers
                 {
                   player: str,
                   players: [ str ],
-                  colourHex: str,
-                  colourRgb: [ int ],
                   gameCount: int,
                   cumSum: float
                 }
@@ -93,10 +91,8 @@ by cumulative sum.
 """
 
 import json
-import math
 from operator import itemgetter
 import os
-import statistics
 import sys
 from typing import Union
 
@@ -138,51 +134,6 @@ PLAYER_COLOURS_RGB = {
     "bei": [166, 131, 70],
     "juno": [204, 96, 62],
 }
-
-
-def convert_rgb_to_hex(rgb: list[int]) -> str:
-    """Converts RGB values to a hex string.
-
-    Args:
-      rgb: A list containing RGB values.
-
-    Returns:
-      The hex string associated with the passed in RGB values.
-    """
-    return "#%02x%02x%02x" % tuple(rgb)
-
-
-def average_rgb_colours(
-    colours: list[list[int]], correct_method: bool = True
-) -> list[int]:
-    """Averages colours.
-
-    This takes the average of the colour components of the passed in colours.
-
-    Args:
-      colours: A list of colour lists containing RGB values.
-      correct_method: Determines whether to use the "correct" way
-        of averaging colours. The correct way is to take the average of
-        the squares of each colour's component, and take the square root
-        of the result. If this argument is false, we simply take the
-        arithmetic mean of each component when averaging colours.
-
-    Returns:
-      The average of the colours using the method specified.
-    """
-    # Construct a three-element list where each element contains a list
-    # of one the colour components (RGB) of the passed in colours
-    combined_rgb_list = [[colour[idx] for colour in colours] for idx in range(3)]
-
-    # Average the colours
-    if correct_method:
-        return [
-            int(math.sqrt(statistics.mean([x ** 2 for x in combined_rgb_list[idx]])))
-            for idx in range(3)
-        ]
-
-    # Use naive method
-    return [int(statistics.mean(combined_rgb_list[idx])) for idx in range(3)]
 
 
 def process_raw_data() -> tuple[
@@ -325,25 +276,12 @@ def process_player_matchup_data(
     games_data_list: list[
         dict[str, Union[str, int, list[dict[str, Union[str, float]]]]]
     ],
-    use_correct_colour_average: bool = True,
 ) -> dict[str, list[dict[str, Union[str, int, float, list[str], list[int]]]]]:
     """Processes stats for each player.
 
     Args:
       games_data_list: The games data list returned from the raw data
         processing function.
-      use_correct_colour_average: Determines whether to use the
-        "correct" way of averaging colours. The correct way involves
-        squaring each colour component prior to averaging them, and then
-        taking the square root of the result. This link explains the
-        method much better:
-
-        https://sighack.com/post/averaging-rgb-colors-the-right-way
-
-        (or just Google "how to average colours correctly" and you'll
-        get lots of results). If this argument is false, then we will
-        take the naive approach of simply take the average of each
-        colour component when averaging colours.
 
     Returns:
       A dictionary with players as keys and their matchups as values.
@@ -355,16 +293,16 @@ def process_player_matchup_data(
             {
               player: str,
               players: [ str ],
-              colourHex: str,
-              colourRgb: [ int ],
               gameCount: int,
               cumSum: float
             }
           ]
        }
 
-       The players in each matchup are sorted alphanumerically; the
-       matchups themselves are not sorted.
+       The players in each matchup are such that the selected player is
+       first, and the rest of the players are sorted alphanumerically;
+       the matchups themselves are sorted first by number of games, then
+       by absolute value of the cumulative sum for the matchup.
     """
     # This has a different structure from what we'll eventually return.
     # The structure is as follow:
@@ -376,19 +314,12 @@ def process_player_matchup_data(
     #         {
     #           player: str,
     #           players: [ str ],
-    #           colourHex: str,
-    #           colourRgb: [ int ],
     #           gameCount: int,
     #           cumSum: float
     #         }
     #     }
     #  }
     player_matchups_dict = {}
-
-    # Will contain frozensets of player matchups as keys and colours as
-    # values
-    matchup_colours_hex_dict = {}
-    matchup_colours_rgb_dict = {}
 
     # Iterate through all games
     for game in games_data_list:
@@ -397,25 +328,6 @@ def process_player_matchup_data(
             [player_data["player"] for player_data in game["data"]]
         )
         player_name_set = frozenset(player_name_list)
-
-        # Get the colour for the matchup
-        if player_name_set in matchup_colours_hex_dict:
-            matchup_colour_hex = matchup_colours_hex_dict[player_name_set]
-            matchup_colour_rgb = matchup_colours_rgb_dict[player_name_set]
-        else:
-            # Calculate the colours for the matchup
-            matchup_colour_rgb = average_rgb_colours(
-                [
-                    PLAYER_COLOURS_RGB[player_name.lower()]
-                    for player_name in player_name_list
-                ],
-                use_correct_colour_average,
-            )
-            matchup_colour_hex = convert_rgb_to_hex(matchup_colour_rgb)
-
-            # Assign them in the dictionary
-            matchup_colours_hex_dict[player_name_set] = matchup_colour_hex
-            matchup_colours_rgb_dict[player_name_set] = matchup_colour_rgb
 
         # Now iterate through all players and build the player matchups dict
         for player_data in game["data"]:
@@ -438,19 +350,34 @@ def process_player_matchup_data(
                 # We need to construct the player matchups dict entry
                 player_matchups_dict[player_name][player_name_set] = {
                     "player": player_name,
-                    "players": player_name_list,
-                    "colourHex": matchup_colour_hex,
-                    "colourRgb": matchup_colour_rgb,
+                    "players": player_name_list[:],
                     "gameCount": 1,
                     "cumSum": delta,
                 }
 
+    # Sort each player's matchup's players list so that the player is
+    # first (the rest are already in alphanumeric order)
+    for matchups_dict in player_matchups_dict.values():
+        for matchup_dict in matchups_dict.values():
+            player = matchup_dict["player"]
+            matchup_dict["players"].remove(player)
+            matchup_dict["players"].insert(0, player)
+
     # Now we need to remove the frozenset keys from the player matchups
-    # dict and return the result
-    return {
-        name: list(matchup_dict.values())
-        for name, matchup_dict in player_matchups_dict.items()
+    # dict (since this will eventually be converted to JSON)
+    new_matchups_dict = {
+        name: list(matchups_dict.values())
+        for name, matchups_dict in player_matchups_dict.items()
     }
+
+    # Now sort the matchups by number of games, then by absolute value
+    # of the cumulative sum for the matchup
+    for matchup_list in new_matchups_dict.values():
+        matchup_list.sort(
+            key=lambda x: (x["gameCount"], abs(x["cumSum"])), reverse=True
+        )
+
+    return new_matchups_dict
 
 
 def process_player_stats(
@@ -611,9 +538,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Get matchup data
-    player_matchup_dict = process_player_matchup_data(
-        game_list, use_correct_colour_average=True
-    )
+    player_matchup_dict = process_player_matchup_data(game_list)
 
     # Get player stats
     player_stats_dict = process_player_stats(player_dict)

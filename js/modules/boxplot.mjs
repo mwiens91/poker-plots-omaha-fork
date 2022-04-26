@@ -126,6 +126,7 @@ const drawBoxPlot = (playerData, divId, margin) => {
       .style("opacity", 0.8)
       .html(
         `<b>${d.name}</b> (N=${d.gameCount})<br>` +
+          '<div style="line-height: 135%">' +
           '<span class="tooltip-boxplot-first-item">' +
           "max:" +
           "</span>" +
@@ -159,7 +160,8 @@ const drawBoxPlot = (playerData, divId, margin) => {
           "</span>" +
           '<span class="font-tabular-numbers tooltip-boxplot-second-item">' +
           q0Str +
-          "</span>"
+          "</span>" +
+          "</div>"
       );
   };
   const tooltipOutlierMouseover = (event, d) =>
