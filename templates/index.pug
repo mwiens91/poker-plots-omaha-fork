@@ -340,7 +340,7 @@ head
               span
                 h4#selected-game-table-date-h4(style={ display: "inline" })= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
               span
-                button.btn.btn-link.shadow-none.p-0.m-0(
+                button.btn.btn-link.shadow-none.text-decoration-none.p-0.m-0(
                   onclick="document.getElementById('line-chart').scrollIntoView();",
                   title="scroll to line plot"
                 )
