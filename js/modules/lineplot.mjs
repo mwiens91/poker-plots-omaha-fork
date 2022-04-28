@@ -497,7 +497,7 @@ const drawLinePlot = (data, divId, margin) => {
         infoBarGameInfoElement.text("");
       })
       .on("click", (event, d) => {
-        changeSelectedGame(data, d.id);
+        changeSelectedGame(data, [d.id]);
         document.getElementById("selected-game-div").scrollIntoView();
       });
   };

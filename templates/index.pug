@@ -332,7 +332,7 @@ head
     .col-6
       .d-flex.justify-content-end
         div(style={ width: gamesColWidth, "padding-right": "50px" })
-          h3(style={ "text-align": "center" }) Selected game
+          h3#selected-game-title(style={ "text-align": "center" }) Selected game
           - const firstGame = data.games[0];
           #selected-game-div.game-div.pt-4
             - const theDate = new Date(firstGame.date.replace(/-/g, "/"));
@@ -345,7 +345,7 @@ head
                   title="scroll to line plot"
                 )
                   | ↑
-            .pt-1
+            #selected-game-table-div.pt-1
               table.table(style={ "table-layout": "fixed" })
                 thead
                   tr
@@ -353,7 +353,7 @@ head
                     th.text-end net
                     th.text-end buy-in
                     th.text-end buy-out
-                tbody#selected-game-table-tbody
+                tbody
                   each playerData in firstGame.data
                     - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
                     tr(

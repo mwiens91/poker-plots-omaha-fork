@@ -34,11 +34,9 @@ const drawCalendar = (data, divId) => {
     id: game.id,
   }));
 
-  // Merge multiple games on same date. First, we keep track of the data
-  // we've already processed.
+  // Merge multiple games on same date
+  const mergedGameIdsMap = {};
   const visitedIndicesSet = new Set();
-
-  // We'll remove a bunch of indices after this is done
   const indicesToPop = [];
 
   for (let i = 0; i < newData.length - 1; i++) {
@@ -50,30 +48,41 @@ const drawCalendar = (data, divId) => {
     // Find all elements that share this date
     const targetDate = newData[i].date;
 
-    // Thanks to yckart for this trick here
-    // https://stackoverflow.com/a/41271541
     const elemsWithDate = newData
       .map((d, i) => (d.date.getTime() === targetDate.getTime() ? i : ""))
       .filter(String);
+
+    // Add the game IDs to the merged game IDs map (the key will be the
+    // game ID of the element which we will merge all other elements
+    // into)
+    const gameIdsWithDate = elemsWithDate.map((i) => newData[i].id);
+    mergedGameIdsMap[gameIdsWithDate[0]] = gameIdsWithDate.slice().reverse();
 
     // If there's only one element for this date get out
     if (elemsWithDate.length === 1) {
       continue;
     }
 
-    // Add the total buy-ins to the "smallest" game ID, add all of the
-    // indices to the set of indices to skip, and mark all but the
-    // "smallest" game ID to remove from the newData array
+    // (1) add the total buy-ins to the smallest game index (i.e, the
+    // largest/latest game ID)
+    // (2) and mark all but the smallest game index to remove from the
+    // newData array
+    // (3) add all of the indices to the set of indices to skip
     for (let j = 1; j < elemsWithDate.length; j++) {
       newData[i].val += newData[j].val;
-      indicesToPop.push(j);
-      visitedIndicesSet.add(j);
+      indicesToPop.push(elemsWithDate[j]);
+      visitedIndicesSet.add(elemsWithDate[j]);
     }
 
-    // Pop all extraneous elements
-    for (const j of indicesToPop.reverse()) {
-      newData.splice(j, 1);
-    }
+    // Set the date of the smallest game index to the largest game
+    // index (this is necessary for the merged game to render in the
+    // correct cell)
+    newData[i].date = newData[elemsWithDate[elemsWithDate.length - 1]].date;
+  }
+
+  // Pop all extraneous elements
+  for (const i of indicesToPop.reverse()) {
+    newData.splice(i, 1);
   }
 
   // Get all dates to add in
@@ -214,9 +223,13 @@ const drawCalendar = (data, divId) => {
     .on("mouseover", tooltipMouseover)
     .on("mousemove", tooltipMousemove)
     .on("mouseout", tooltipMouseout)
-    .on("click", (event, d) =>
-      newData[d].id === null ? null : changeSelectedGame(data, newData[d].id)
-    );
+    .on("click", (event, d) => {
+      console.log(mergedGameIdsMap);
+      console.log(newData[d].id);
+      return newData[d].id === null
+        ? null
+        : changeSelectedGame(data, mergedGameIdsMap[newData[d].id]);
+    });
 
   // Get the months. This is highly unreadable. Sorry?
   const month = year
