@@ -39,7 +39,7 @@ const drawCalendar = (data, divId) => {
   const visitedIndicesSet = new Set();
   const indicesToPop = [];
 
-  for (let i = 0; i < newData.length - 1; i++) {
+  for (let i = 0; i < newData.length; i++) {
     // Skip over elements we've already processed
     if (visitedIndicesSet.has(i)) {
       continue;
