@@ -332,10 +332,13 @@ head
     .col-6
       .d-flex.justify-content-end
         div(style={ width: gamesColWidth, "padding-right": "50px" })
-          h3#selected-game-title(style={ "text-align": "center" }) Selected game
-          - const firstGame = data.games[0];
+          // Display *all* games played on the most recent date
+          - const lastGame = data.games[0];
+          - const gamesToDisplay = data.games.map((d) => (d.date === lastGame.date ? d : "")).filter(String);
+          - gamesToDisplay.sort((a, b) => a.id - b.id);
+          h3#selected-game-title(style={ "text-align": "center", "scroll-margin": "200px" })= "Selected game" + (gamesToDisplay.length > 1 ? "s" : "")
           #selected-game-div.game-div.pt-4
-            - const theDate = new Date(firstGame.date.replace(/-/g, "/"));
+            - const theDate = new Date(lastGame.date.replace(/-/g, "/"));
             .d-flex.justify-content-between
               span
                 h4#selected-game-table-date-h4(style={ display: "inline" })= theDate.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", year: "numeric", month: "long", day: "numeric" })
@@ -346,23 +349,24 @@ head
                 )
                   | ↑
             #selected-game-table-div.pt-1
-              table.table(style={ "table-layout": "fixed" })
-                thead
-                  tr
-                    th player
-                    th.text-end net
-                    th.text-end buy-in
-                    th.text-end buy-out
-                tbody
-                  each playerData in firstGame.data
-                    - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
-                    tr(
-                      style={ background: "rgb(" + playerColour + ")", "border-color": "rgb(" + playerColour + ")" }
-                    )
-                      td(style={ "font-weight": "bold" })= playerData.player
-                      td.font-tabular-numbers.text-end= parseCurrencyPlusMinus(playerData.delta)
-                      td.font-tabular-numbers.text-end= parseCurrency.format(playerData.buyin)
-                      td.font-tabular-numbers.text-end= parseCurrency.format(playerData.buyout)
+              each game in gamesToDisplay
+                table.table(style={ "table-layout": "fixed" })
+                  thead
+                    tr
+                      th player
+                      th.text-end net
+                      th.text-end buy-in
+                      th.text-end buy-out
+                  tbody
+                    each playerData in game.data
+                      - const playerColour = data.players.filter((x) => x.name === playerData.player)[0].colourRgb.map((x) => x + (255 - x) * 0.8);
+                      tr(
+                        style={ background: "rgb(" + playerColour + ")", "border-color": "rgb(" + playerColour + ")" }
+                      )
+                        td(style={ "font-weight": "bold" })= playerData.player
+                        td.font-tabular-numbers.text-end= parseCurrencyPlusMinus(playerData.delta)
+                        td.font-tabular-numbers.text-end= parseCurrency.format(playerData.buyin)
+                        td.font-tabular-numbers.text-end= parseCurrency.format(playerData.buyout)
     .col-6
       .d-flex.justify-content-start
         div(style={ width: gamesColWidth, "padding-left": "50px" })

@@ -73,11 +73,14 @@ const changeSelectedGame = (data, gameIds) => {
     games.length > 1 ? "Selected games" : "Selected game";
 
   // Add the tables
-  tablesDivElement.innerHTML = "";
+  let fullInnerHTML = "";
 
   for (const game of games) {
-    tablesDivElement.innerHTML += getTableHTML(getTbodyHTML(data, game.data));
+    fullInnerHTML += getTableHTML(getTbodyHTML(data, game.data));
   }
+
+  // Set the inner HtML for the tables
+  tablesDivElement.innerHTML = fullInnerHTML;
 };
 
 export { changeSelectedGame };

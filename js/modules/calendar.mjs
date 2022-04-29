@@ -223,11 +223,12 @@ const drawCalendar = (data, divId) => {
     .on("mouseover", tooltipMouseover)
     .on("mousemove", tooltipMousemove)
     .on("mouseout", tooltipMouseout)
-    .on("click", (event, d) =>
+    .on("click", (event, d) => {
       newData[d].id === null
         ? null
-        : changeSelectedGame(data, mergedGameIdsMap[newData[d].id])
-    );
+        : changeSelectedGame(data, mergedGameIdsMap[newData[d].id]);
+      document.getElementById("selected-game-title").scrollIntoView();
+    });
 
   // Get the months. This is highly unreadable. Sorry?
   const month = year
