@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
-const { writeFile } = require("fs");
-const minify = require("html-minifier").minify;
-const pug = require("pug");
+import { writeFile } from "fs";
+import { minify } from "html-minifier";
+import * as pug from "pug";
+import data from "../data/data.json" assert { type: "json" };
 
 // File to write to
 const filepath = "../index.html";
-
-// Data
-const data = require("../data/data.json");
 
 // Compile the source code
 const compiledFunction = pug.compileFile("../templates/index.pug");
