@@ -21,6 +21,10 @@ const drawLinePlot = (data, divId, margin) => {
   const circleRadius = "0.23em";
   const circleRadiusHover = "0.46em";
 
+  // Maximum number of games you can miss before your trajectory line is
+  // split
+  const maxGameDifference = 9;
+
   // Offsets for the text on the plot and the x-axis (such that it ends
   // "prematurely")
   const currencyTextOffset = 10;
@@ -130,7 +134,6 @@ const drawLinePlot = (data, divId, margin) => {
   // Now split a player's data into clusters of closely grouped data
   // points; this is to avoid drawing long lines on the chart which make
   // it more difficult to view
-  const maxGameDifference = 9;
   const playerChunksToPush = [];
 
   for (const player of playersNew) {
