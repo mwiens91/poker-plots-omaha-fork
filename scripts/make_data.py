@@ -223,7 +223,7 @@ def process_raw_data() -> tuple[
             # Parse the lines
             player_name_raw = l1.split()[0]
             player_name = player_name_raw.lower().title()
-            player_data = [float(x) for x in l2.split("\t")]
+            player_data = [float(x) for x in l2.split()]
 
             buyin = player_data[0]
             buyout = player_data[1] + player_data[2]
