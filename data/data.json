@@ -9,8 +9,8 @@
         165
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/matt.webp",
-      "gameCount": 41,
-      "cumSum": 549.97,
+      "gameCount": 42,
+      "cumSum": 541.38,
       "matchupData": [
         {
           "player": "Matt",
@@ -164,6 +164,16 @@
           "player": "Matt",
           "players": [
             "Matt",
+            "David",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": -8.59
+        },
+        {
+          "player": "Matt",
+          "players": [
+            "Matt",
             "Aidan",
             "Bei",
             "David",
@@ -177,7 +187,7 @@
       ],
       "stats": {
         "total-money-won": 786.92,
-        "total-money-lost": 236.95,
+        "total-money-lost": 245.54,
         "largest-winning-streak": {
           "num-games": 4,
           "total": 183.07,
@@ -568,6 +578,15 @@
           "buyout": 20.05,
           "delta": 0.05,
           "cumSum": 549.97
+        },
+        {
+          "id": 58,
+          "date": "2022-05-03",
+          "player": "Matt",
+          "buyin": 20.0,
+          "buyout": 11.41,
+          "delta": -8.59,
+          "cumSum": 541.38
         }
       ]
     },
@@ -1356,8 +1375,8 @@
         60
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
-      "gameCount": 55,
-      "cumSum": -8.94,
+      "gameCount": 56,
+      "cumSum": -1.52,
       "matchupData": [
         {
           "player": "Zen",
@@ -1571,6 +1590,16 @@
           "player": "Zen",
           "players": [
             "Zen",
+            "David",
+            "Matt"
+          ],
+          "gameCount": 1,
+          "cumSum": 7.42
+        },
+        {
+          "player": "Zen",
+          "players": [
+            "Zen",
             "Aidan",
             "Bei",
             "Matt"
@@ -1602,7 +1631,7 @@
         }
       ],
       "stats": {
-        "total-money-won": 512.57,
+        "total-money-won": 519.99,
         "total-money-lost": 521.51,
         "largest-winning-streak": {
           "num-games": 5,
@@ -2120,6 +2149,15 @@
           "buyout": 19.66,
           "delta": 9.66,
           "cumSum": -8.94
+        },
+        {
+          "id": 58,
+          "date": "2022-05-03",
+          "player": "Zen",
+          "buyin": 10.0,
+          "buyout": 17.42,
+          "delta": 7.42,
+          "cumSum": -1.52
         }
       ]
     },
@@ -2418,8 +2456,8 @@
         206
       ],
       "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/david.webp",
-      "gameCount": 10,
-      "cumSum": -62.26,
+      "gameCount": 11,
+      "cumSum": -61.09,
       "matchupData": [
         {
           "player": "David",
@@ -2530,10 +2568,20 @@
           ],
           "gameCount": 1,
           "cumSum": 9.08
+        },
+        {
+          "player": "David",
+          "players": [
+            "David",
+            "Matt",
+            "Zen"
+          ],
+          "gameCount": 1,
+          "cumSum": 1.17
         }
       ],
       "stats": {
-        "total-money-won": 140.74,
+        "total-money-won": 141.91,
         "total-money-lost": 203.0,
         "largest-winning-streak": {
           "num-games": 1,
@@ -2646,6 +2694,15 @@
           "buyout": 0.0,
           "delta": -12.0,
           "cumSum": -62.26
+        },
+        {
+          "id": 58,
+          "date": "2022-05-03",
+          "player": "David",
+          "buyin": 40.0,
+          "buyout": 41.17,
+          "delta": 1.17,
+          "cumSum": -61.09
         }
       ]
     },
@@ -3510,6 +3567,30 @@
     }
   ],
   "games": [
+    {
+      "id": 58,
+      "date": "2022-05-03",
+      "data": [
+        {
+          "player": "Zen",
+          "buyin": 10.0,
+          "buyout": 17.42,
+          "delta": 7.42
+        },
+        {
+          "player": "David",
+          "buyin": 40.0,
+          "buyout": 41.17,
+          "delta": 1.17
+        },
+        {
+          "player": "Matt",
+          "buyin": 20.0,
+          "buyout": 11.41,
+          "delta": -8.59
+        }
+      ]
+    },
     {
       "id": 57,
       "date": "2022-05-01",
