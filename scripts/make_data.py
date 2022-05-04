@@ -218,16 +218,50 @@ def process_raw_data() -> tuple[
         with open(path) as f:
             lines = [l.rstrip() for l in f.readlines()]
 
-        # Go through the lines pairwise and get player data
-        for l1, l2 in zip(*[iter(lines)] * 2):
-            # Parse the lines
-            player_name_raw = l1.split()[0]
-            player_name = player_name_raw.lower().title()
-            player_data = [float(x) for x in l2.split()]
+        # Now we'll parse the lines. There are two formats we need to
+        # potentially worry about here. On Firefox, the ledger will be
+        # copy-pasted as
+        #
+        # PLAYERNAME @ SOMEID
+        # BUYIN BUYOUT STACK NET
+        #
+        # where this pattern is repeated for each player. On Chrome, it
+        # copy-pastes each player's data in one line:
+        #
+        # PLAYERNAME @ SOMEID BUYIN BUYOUT STACK NET
+        #
+        # Technically the string "DETAILS" (which is grabbed from a
+        # button using that string) is appended to the ID, but we aren't
+        # using the IDs from the ledger so this doesn't really matter
+        # for our purposes.
+        #
+        # How we're going to differentiate them is by how many elements
+        # there are on the first line when we split by whitespace. If
+        # there are more than 3, then it's the Chrome format. Otherwise,
+        # it'll be the Firefox format.
+        is_firefox_format = len(lines[0].split()) < 4
+
+        # Now, depending on the format, we'll group the data differently
+        # when we iterate through it. For Firefox format, we'll group
+        # the lines pairwise; for Chrome format, line-by-line is
+        # obviously fine.
+        iter_lines = zip(*[iter(lines)] * 2) if is_firefox_format else lines
+
+        for iter_line in iter_lines:
+            # Parse the line(s)
+            if is_firefox_format:
+                l1, l2 = iter_line
+                player_name_raw = l1.split()[0]
+                player_data = [float(x) for x in l2.split()]
+            else:
+                l_split = iter_line.split()
+                player_name_raw = l_split[0]
+                player_data = [float(x) for x in l_split[-4:]]
 
             buyin = player_data[0]
             buyout = player_data[1] + player_data[2]
             delta = player_data[3]
+            player_name = player_name_raw.lower().title()
 
             # Make sure player is valid; if not, raise an exception
             if not player_name in valid_player_names:
