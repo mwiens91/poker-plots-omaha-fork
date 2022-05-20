@@ -102,7 +102,7 @@ const drawPiePlot = (playerData, divId, margin) => {
 
     const labels = svgG
       .selectAll("g.slice")
-      .data(bakedData.filter((x) => x.endAngle - x.startAngle > 0.2)) // filter out small arcs
+      .data(bakedData.filter((x) => x.endAngle - x.startAngle > 0.22)) // filter out small arcs
       .enter()
       .append("g");
 
