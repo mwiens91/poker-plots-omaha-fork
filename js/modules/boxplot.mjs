@@ -12,7 +12,8 @@ const drawBoxPlot = (playerData, divId, margin) => {
   // Offset for the currency text
   const currencyTextOffset = 20;
 
-  // Minimum number of games to be eligible for box plot
+  // Minimum number of games to be eligible for box plot. If no players
+  // meet this threshold, the minimum will lower to one.
   const minNumberGames = 5;
 
   // Max and min percentage of width that height is
@@ -48,27 +49,33 @@ const drawBoxPlot = (playerData, divId, margin) => {
     (x >= 0 ? "+" : "") + parseCurrency.format(x);
 
   // Get relevant stats from data
-  const playersNew = playerData
-    .filter((player) => player.data.length >= minNumberGames)
-    .map((player) => {
-      const vals = player.data.map((d) => d.delta);
+  let filteredPlayers = playerData.filter(
+    (player) => player.data.length >= minNumberGames
+  );
 
-      const q1 = d3.quantile(vals, 0.25);
-      const q2 = d3.quantile(vals, 0.5);
-      const q3 = d3.quantile(vals, 0.75);
-      const iqr = q3 - q1;
-      const r0 = d3.max([d3.min(vals), q1 - 1.5 * iqr]);
-      const r1 = d3.min([d3.max(vals), q3 + 1.5 * iqr]);
+  if (filteredPlayers.length === 0) {
+    filteredPlayers = playerData;
+  }
 
-      return {
-        ...player,
-        quartiles: [q1, q2, q3],
-        range: [r0, r1],
-        outliers: vals
-          .filter((x) => x < r0 || x > r1)
-          .map((x) => ({ value: x, name: player.name })),
-      };
-    });
+  const playersNew = filteredPlayers.map((player) => {
+    const vals = player.data.map((d) => d.delta);
+
+    const q1 = d3.quantile(vals, 0.25);
+    const q2 = d3.quantile(vals, 0.5);
+    const q3 = d3.quantile(vals, 0.75);
+    const iqr = q3 - q1;
+    const r0 = d3.max([d3.min(vals), q1 - 1.5 * iqr]);
+    const r1 = d3.min([d3.max(vals), q3 + 1.5 * iqr]);
+
+    return {
+      ...player,
+      quartiles: [q1, q2, q3],
+      range: [r0, r1],
+      outliers: vals
+        .filter((x) => x < r0 || x > r1)
+        .map((x) => ({ value: x, name: player.name })),
+    };
+  });
 
   // Sizes
   let width = getWidth();

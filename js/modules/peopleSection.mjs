@@ -1,7 +1,8 @@
 // Sets up the people section of the page and returns the starting
 // player's name that was randomly selected
 const initializePeopleSection = (data) => {
-  // Minimum number of games to be randomly selected
+  // Minimum number of games to be randomly selected. If no players meet
+  // this threshold, the minimum will lower to one.
   const minGames = 3;
 
   // Initialise a formatter for displaying currency
@@ -204,9 +205,14 @@ const initializePeopleSection = (data) => {
 
   // Randomly select one of the players to activate in the people
   // section
-  const filteredPlayers = data.players.filter(
+  let filteredPlayers = data.players.filter(
     (player) => player.gameCount >= minGames
   );
+
+  if (filteredPlayers.length === 0) {
+    filteredPlayers = data.players;
+  }
+
   const randomPlayer =
     filteredPlayers[Math.floor(Math.random() * filteredPlayers.length)];
   adjustPeopleBody(randomPlayer);
