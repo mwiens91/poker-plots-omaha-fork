@@ -105,12 +105,12 @@ const drawLinePlot = (data, divId, margin) => {
     // doesn't get offset). The logic of offsetting is described
     // above.
     for (let j = 1; j < gameIdsWithDate.length; j++) {
-      const offset = (j * 24) / (gameIdsWithDate.length + 1);
+      const hoursOffset = (j * 24) / (gameIdsWithDate.length + 1);
 
       playersNew.forEach((player) =>
         player.data
           .find((game) => game.id === gameIdsWithDate[j])
-          ?.date.setHours(player.data[j].date.getHours() + offset)
+          ?.date.setHours(player.data[j].date.getHours() + hoursOffset)
       );
     }
 
@@ -122,9 +122,6 @@ const drawLinePlot = (data, divId, margin) => {
   const allDates = playersNew
     .map((player) => player.data.map((v) => v.date))
     .flat();
-  const minDate = d3.min(allDates);
-  const lowerDate = new Date(Number(minDate));
-  lowerDate.setDate(minDate.getDate() - 1); // this is possibly not robust?
 
   // Y-axis domain
   const yAxisDomain = d3
@@ -177,6 +174,7 @@ const drawLinePlot = (data, divId, margin) => {
   // For time series, we want the max zoom to show a given number of
   // dates; similarly, for serialized, we want the max zoom to show a
   // given number of games
+  const minDate = d3.min(allDates);
   const maxDate = d3.max(allDates);
   const maxGameId = d3.max(data.games.map((game) => game.id));
 
@@ -189,9 +187,22 @@ const drawLinePlot = (data, divId, margin) => {
   );
   const maxZoomSerialized = Math.max(1, (maxGameId - 1) / maxGamesToShow);
 
-  // x-scale - start slightly before the first data point
+  // x-scale - start slightly before the first data point. To make sure
+  // the scaling of the minimum data point is the same across both time
+  // and game-serialized views, we need to do a bit of arithmetic. I'm
+  // not going to write a demonstration here for why this works, but it
+  // isn't too hard to derive from scratch.
+  const lowerGameId = 0.9;
+
+  const lowerDateScaleFactor = (1 - lowerGameId) / (maxGameId - lowerGameId);
+  const lowerDateTimeDelta =
+    ((maxDate.getTime() - minDate.getTime()) * lowerDateScaleFactor) /
+    (1 - lowerDateScaleFactor);
+  const lowerDate = new Date(Number(minDate));
+  lowerDate.setTime(minDate.getTime() - lowerDateTimeDelta);
+
   let xScale = (useTimeSeries ? d3.scaleUtc : d3.scaleLinear)()
-    .domain(useTimeSeries ? [lowerDate, maxDate] : [0.9, maxGameId])
+    .domain(useTimeSeries ? [lowerDate, maxDate] : [lowerGameId, maxGameId])
     .range([margin.left, width - margin.right - xAxisOffset]);
   let xScaleCopy = xScale.copy();
 
