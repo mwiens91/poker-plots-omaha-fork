@@ -83,9 +83,15 @@ const initializePeopleSection = (data) => {
       peopleMostMoneyWonConsecutiveSubElement.textContent =
         player.name + " has never won a game";
     } else if (player.stats["largest-winning-streak"]["num-games"] === 1) {
-      peopleMostMoneyWonConsecutiveMainElement.textContent = "?";
+      peopleMostMoneyWonConsecutiveMainElement.textContent =
+        parseCurrency.format(player.stats["largest-winning-streak"].total);
       peopleMostMoneyWonConsecutiveSubElement.textContent =
-        player.name + " has never won consecutive games";
+        "on " +
+        data.games.find(
+          (x) =>
+            x.id === player.stats["largest-winning-streak"]["start-game-id"]
+        ).date +
+        " (1 game)";
     } else {
       peopleMostMoneyWonConsecutiveMainElement.textContent =
         parseCurrency.format(player.stats["largest-winning-streak"].total);
@@ -109,9 +115,14 @@ const initializePeopleSection = (data) => {
       peopleMostMoneyLostConsecutiveSubElement.textContent =
         player.name + " has never lost a game";
     } else if (player.stats["largest-losing-streak"]["num-games"] === 1) {
-      peopleMostMoneyLostConsecutiveMainElement.textContent = "?";
+      peopleMostMoneyLostConsecutiveMainElement.textContent =
+        parseCurrency.format(-player.stats["largest-losing-streak"].total);
       peopleMostMoneyLostConsecutiveSubElement.textContent =
-        player.name + " has never lost consecutive games";
+        "on " +
+        data.games.find(
+          (x) => x.id === player.stats["largest-losing-streak"]["start-game-id"]
+        ).date +
+        " (1 game)";
     } else {
       peopleMostMoneyLostConsecutiveMainElement.textContent =
         parseCurrency.format(-player.stats["largest-losing-streak"].total);
