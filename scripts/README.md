@@ -26,9 +26,10 @@ There are also two convenience scripts:
   runs [`make_data.py`](make_data.py), [`make_html.js`](make_html.js),
   and [`process_js.sh`](process_js.sh)
 
-+ [`2_do_1_but_also_commit_and_push.sh`](2_do_1_but_also_commit_and_push.sh):
++ [`2_do_1_but_also_commit_and_push.py`](2_do_1_but_also_commit_and_push.py):
   runs the first convenience script but also commits and pushes the
-  files changed as a result of the first script
+  files changed as a result of the first script. This script has a few
+  options which you can view by passing in the `--help` flag.
 
 In order to run the above scripts there are dependencies which are not
 explicitly included with the project (`package.json` and
