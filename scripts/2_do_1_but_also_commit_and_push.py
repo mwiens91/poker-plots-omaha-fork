@@ -69,7 +69,12 @@ if paths_with_unstaged_changes:
     sys.exit(1)
 
 # Run the script to generate the changes to push
-subprocess.run(["sh", "./1_make_data_and_html_and_min_js.sh"], check=True)
+subprocess.run(
+    ["sh", "./1_make_data_and_html_and_min_js.sh"],
+    check=True,
+    stdout=subprocess.DEVNULL,
+    stderr=subprocess.STDOUT,
+)
 
 # Add the changes with Git
 for git_add_command in [["git", "add", path] for path in paths_to_add]:
