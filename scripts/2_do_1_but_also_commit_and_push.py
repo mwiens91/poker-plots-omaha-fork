@@ -123,11 +123,14 @@ remote_name, remote_branch_name = (
 
 # Prompt to confirm pushing
 if not args.yes and input(
-    f"Pushing local branch {local_branch_name}"
+    f"\nPushing local branch {local_branch_name}"
     + f" to remote branch {remote_name}/{remote_branch_name}."
     + " Is this okay? [Y/n] "
 ).lower() in {"n", "no"}:
     sys.exit(0)
+
+# Add some whitespace so things are more readable
+print()
 
 # Push the commit
 subprocess.run(
