@@ -199,6 +199,9 @@ def process_raw_data() -> tuple[
 
         game = {"id": game_id, "date": date, "data": []}
 
+        # This is to check that everything adds to zero
+        game_delta_sum = 0
+
         # Increment the current game ID
         current_id += 1
 
@@ -279,6 +282,18 @@ def process_raw_data() -> tuple[
                     delta=delta,
                 )
             )
+
+            # Add the delta to the game's delta sum
+            game_delta_sum = round(game_delta_sum + delta, 2)
+
+        # Make sure the game delta's sum is 0
+        if game_delta_sum:
+            # Game's buyins/buyouts do not add to 0
+            print(
+                f"The game {filename} has non-zero deltas (they sum to ${game_delta_sum:.2})."
+            )
+            print("Aborting.")
+            sys.exit(1)
 
         # Push game
         game_data_list.append(game)
