@@ -26,11 +26,25 @@ const drawCalendar = (data, divId) => {
   // Initialise a formatter for displaying dates
   const parseDate = d3.utcParse("%Y-%m-%d");
 
-  // Massage the data so we just have (parsed) dates, total buy-ins and
-  // game id
+  // Massage the data so we just have (parsed) dates, total buy-ins,
+  // average absolute deviation of the deltas, Gini mean difference of
+  // the deltas, and game id
   const newData = data.games.map((game) => ({
     date: parseDate(game.date),
-    val: game.data.reduce((tot, datum) => tot + datum.buyin, 0),
+    totalBuyins: game.data.reduce((tot, datum) => tot + datum.buyin, 0),
+    deltasAad:
+      game.data.reduce((tot, x) => tot + Math.abs(x.delta), 0) /
+      game.data.length,
+    deltasGmd:
+      game.data.reduce(
+        (totOuter, x) =>
+          totOuter +
+          game.data.reduce(
+            (totInner, y) => totInner + Math.abs(x.delta - y.delta),
+            0
+          ),
+        0
+      ) / Math.pow(game.data.length, 2),
     id: game.id,
   }));
 
@@ -69,7 +83,7 @@ const drawCalendar = (data, divId) => {
     // newData array
     // (3) add all of the indices to the set of indices to skip
     for (let j = 1; j < elemsWithDate.length; j++) {
-      newData[i].val += newData[j].val;
+      newData[i].totalBuyins += newData[j].totalBuyins;
       indicesToPop.push(elemsWithDate[j]);
       visitedIndicesSet.add(elemsWithDate[j]);
     }
@@ -107,7 +121,7 @@ const drawCalendar = (data, divId) => {
 
   // Add in new dates
   for (const date of addInDates) {
-    newData.push({ date: date, val: 0, id: null });
+    newData.push({ date: date, totalBuyins: 0, id: null });
   }
 
   newData.sort((a, b) => b.date - a.date);
@@ -117,7 +131,7 @@ const drawCalendar = (data, divId) => {
   // - Y (quant values)
   // - I (indices)
   const X = d3.map(newData, (d) => d.date);
-  const Y = d3.map(newData, (d) => d.val);
+  const Y = d3.map(newData, (d) => d.totalBuyins);
   const I = d3.range(X.length);
 
   // Group data by year (data already sorted)
@@ -130,7 +144,7 @@ const drawCalendar = (data, divId) => {
   // Set up the colour scheme
   const colour = d3
     .scaleSqrt()
-    .domain([0, d3.max(newData.map((datum) => datum.val))])
+    .domain([0, d3.max(newData.map((datum) => datum.totalBuyins))])
     .range(["#ebedf0", "teal"]);
 
   // Make the SVG
@@ -162,7 +176,12 @@ const drawCalendar = (data, divId) => {
       })}</b><br>` +
         (newData[d].id === null
           ? "no game"
-          : `total buy-ins: ${parseCurrency.format(newData[d].val)}`)
+          : `total buy-ins: ${parseCurrency.format(
+              newData[d].totalBuyins
+            )}<br>` +
+            `deltas AAD: ${parseCurrency.format(newData[d].deltasAad)}` +
+            "<br>" +
+            `deltas GMD: ${parseCurrency.format(newData[d].deltasGmd)}`)
     );
 
   // svg stuff

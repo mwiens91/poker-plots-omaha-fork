@@ -36,6 +36,12 @@ head
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p",
     crossorigin="anonymous"
   )
+  // MathJax
+  script(src="https://polyfill.io/v3/polyfill.min.js?features=es6")
+  script#MathJax-script(
+    async="",
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  )
   // D3
   script(src="https://d3js.org/d3.v7.min.js", type="text/javascript")
   // Fonts
@@ -123,7 +129,7 @@ head
                 b cumulative sum
                 | : how much money a player has accumulated at a given point in time
               li
-                b net
+                b net/delta
                 | : the amount of money a player wins or loses in a game
               li
                 b buy-in
@@ -174,14 +180,7 @@ head
                   href="https://mwiens91.github.io/poker-plots/?lineYScaleExponent=0.7"
                 ): code https://mwiens91.github.io/poker-plots/?lineYScaleExponent=0.7
                 |
-                | will result in the y-axis scaling #{ ' ' }
-                var y
-                |
-                | =#{ ' ' }
-                var x
-                sup 0.7
-                | . This can be useful for distinguishing
-                | trajectories when the range close to 0 gets crowded.
+                | will result in the y-axis scaling \(y = x^{0.7}\). This can be useful for distinguishing trajectories closer to zero when far-away trajectories have made the y-limits large.
     .col-6
       .d-flex.justify-content-start.ms-5
         div(style={ width: infoColWidth })
@@ -196,7 +195,10 @@ head
               li hovering over a player's arc or label will show their current cumulative sum and their percentage share of the total winnings/losses
             h5 Games log
             ul
-              li hovering over a cell will show the sum of buy-ins for the corresponding date
+              li hovering over a cell will show the sum of buy-ins, the average absolute deviation (AAD) of deltas, and the Gini mean difference (GMD) of deltas for the corresponding date
+                br
+                br
+                | The AAD measures how far an average delta is from $0. Mathematically, if a game has \(n\) deltas \(\delta_1, \ldots, \delta_n\), then the AAD is given by \[\frac{1}{n}\sum_{i=0}^n\lvert\delta_i\rvert.\] The GMD measures how far on average two randomly selected deltas (possibly being the same delta) are from each other. Mathematically, with the same assumption as above, the GMD is given by \[\frac{1}{n^2} \sum_{i=1}^n\sum_{j=1}^n\lvert\delta_i-\delta_j\rvert.\]
               li clicking on a cell will show the corresponding game below the calendar
               li a cell's intensity is proportional to (the square root of) the sum of buy-ins for the corresponding date
               li clicking on the arrow at the top right of the displayed game will scroll to the line chart
@@ -305,7 +307,7 @@ head
           )
         #line-plot-game-info(style={ "margin-left": "0.1rem" })
   #box-plot.row.text-center(style={ "padding-top": "5rem" })
-    h1 Game winnings/losses box plot
+    h1 Game deltas box plot
   .row.pb-5
     #box-plot-parent.col.text-center
   #pie-charts.row.pt-5.pb-4.text-center
@@ -336,7 +338,9 @@ head
           - const lastGame = data.games[0];
           - const gamesToDisplay = data.games.map((d) => (d.date === lastGame.date ? d : "")).filter(String);
           - gamesToDisplay.sort((a, b) => a.id - b.id);
-          h3#selected-game-title(style={ "text-align": "center", "scroll-margin": "200px" })= "Selected game" + (gamesToDisplay.length > 1 ? "s" : "")
+          h3#selected-game-title(
+            style={ "text-align": "center", "scroll-margin": "200px" }
+          )= "Selected game" + (gamesToDisplay.length > 1 ? "s" : "")
           #selected-game-div.game-div.pt-4
             - const theDate = new Date(lastGame.date.replace(/-/g, "/"));
             .d-flex.justify-content-between
