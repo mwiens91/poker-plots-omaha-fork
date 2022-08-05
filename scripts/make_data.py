@@ -174,8 +174,9 @@ def process_raw_data() -> tuple[
       returned.
 
     Raises:
-      RuntimeError: A player name not found in the player colour
-        dictionaries was encountered in the raw data.
+      RuntimeError: Either when (1) player name not found in the player
+        colour dictionaries was encountered in the raw data, or (2) when
+        a game's sum of buyins and buyouts was non-zero.
     """
     # Initialize objects to return
     game_data_list = []
@@ -288,11 +289,9 @@ def process_raw_data() -> tuple[
         # Make sure the game delta's sum is 0
         if game_delta_sum:
             # Game's buyins/buyouts do not add to 0
-            print(
+            raise RuntimeError(
                 f"The game {filename} has non-zero deltas (they sum to ${game_delta_sum:.2})."
             )
-            print("Aborting.")
-            sys.exit(1)
 
         # Push game
         game_data_list.append(game)
