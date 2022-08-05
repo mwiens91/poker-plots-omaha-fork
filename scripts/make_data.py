@@ -208,7 +208,7 @@ def process_raw_data() -> tuple[
         # Get lines from the raw data file
         path = os.path.join(RAW_DATA_DIR, filename)
 
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             lines = [l.rstrip() for l in f.readlines()]
 
         # Now we'll parse the lines. There are two formats we need to
@@ -259,8 +259,7 @@ def process_raw_data() -> tuple[
             # Make sure player is valid; if not, raise an exception
             if not player_name in valid_player_names:
                 raise RuntimeError(
-                    'Invalid player name "%s" encounted in %s.'
-                    % (player_name_raw, filename)
+                    f'Invalid player name "{player_name_raw}" encounted in {filename}.'
                 )
 
             # Add data for this game dict
@@ -612,15 +611,15 @@ if __name__ == "__main__":
     # Dump to file
     data = dict(players=player_list, games=game_list)
 
-    with open(OUTFILE, "w") as f:
+    with open(OUTFILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
     # Dump minified version to file
-    with open(OUTFILE_MIN, "w") as f:
+    with open(OUTFILE_MIN, "w", encoding="utf-8") as f:
         json.dump(data, f)
 
     # Dump to a JS module
-    with open(OUTFILE_MODULE, "w") as f:
+    with open(OUTFILE_MODULE, "w", encoding="utf-8") as f:
         f.write(
             "// This module is generated automatically by the make_data.py script"
             + "\n\n"
