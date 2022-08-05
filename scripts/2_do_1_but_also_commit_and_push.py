@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+"""Does exactly what the module name says."""
+
 import argparse
 import os.path
 import subprocess
@@ -29,7 +31,7 @@ args = parser.parse_args()
 
 # Check for staged changes and exit if there are any
 has_staged_changes = (
-    subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0
+    subprocess.run(["git", "diff", "--cached", "--quiet"], check=False).returncode != 0
 )
 
 if has_staged_changes:
@@ -52,7 +54,7 @@ paths_with_unstaged_changes = []
 
 for path in paths_to_add:
     has_unstaged_changes = (
-        subprocess.run(["git", "diff", "--quiet", path]).returncode != 0
+        subprocess.run(["git", "diff", "--quiet", path], check=False).returncode != 0
     )
 
     if has_unstaged_changes:
@@ -83,7 +85,7 @@ for git_add_command in [["git", "add", path] for path in paths_to_add]:
 # Check again for staged changes, this time to determine if the script
 # produced any changes. Exit if there are no changes.
 made_any_changes = (
-    subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0
+    subprocess.run(["git", "diff", "--cached", "--quiet"], check=False).returncode != 0
 )
 
 if not made_any_changes:
