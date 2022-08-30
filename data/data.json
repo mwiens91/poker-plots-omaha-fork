@@ -1,21 +1,21 @@
 {
   "players": [
     {
-      "name": "Zen",
+      "name": "Bobby",
       "colourHex": "#aa60be",
       "colourRgb": [
         170,
         96,
         190
       ],
-      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/zen.webp",
+      "avatar": "https://mwiens91.github.io/poker-plots/data/avatars/bobby.webp",
       "gameCount": 6,
       "cumSum": 34.64,
       "matchupData": [
         {
-          "player": "Zen",
+          "player": "Bobby",
           "players": [
-            "Zen",
+            "Bobby",
             "Aidan",
             "Juno"
           ],
@@ -23,9 +23,9 @@
           "cumSum": 19.72
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "players": [
-            "Zen",
+            "Bobby",
             "Aidan",
             "Bei",
             "Juno"
@@ -34,9 +34,9 @@
           "cumSum": -0.86
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "players": [
-            "Zen",
+            "Bobby",
             "Aidan",
             "Juno",
             "Shawn"
@@ -45,9 +45,9 @@
           "cumSum": 34.88
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "players": [
-            "Zen",
+            "Bobby",
             "Aidan",
             "Bei",
             "David",
@@ -85,7 +85,7 @@
         {
           "id": 1,
           "date": "2022-06-01",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 35.75,
           "buyout": 16.65,
           "delta": -19.1,
@@ -94,7 +94,7 @@
         {
           "id": 2,
           "date": "2022-06-02",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 20.0,
           "buyout": 18.95,
           "delta": -1.05,
@@ -103,7 +103,7 @@
         {
           "id": 3,
           "date": "2022-06-19",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 10.0,
           "buyout": 18.23,
           "delta": 8.23,
@@ -112,7 +112,7 @@
         {
           "id": 4,
           "date": "2022-06-20",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 10.0,
           "buyout": 10.19,
           "delta": 0.19,
@@ -121,7 +121,7 @@
         {
           "id": 5,
           "date": "2022-07-18",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 20.0,
           "buyout": 54.88,
           "delta": 34.88,
@@ -130,7 +130,7 @@
         {
           "id": 6,
           "date": "2022-08-01",
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 35.0,
           "buyout": 46.49,
           "delta": 11.49,
@@ -156,8 +156,8 @@
             "David",
             "Aidan",
             "Bei",
-            "Juno",
-            "Zen"
+            "Bobby",
+            "Juno"
           ],
           "gameCount": 1,
           "cumSum": 33.76
@@ -208,8 +208,8 @@
           "players": [
             "Bei",
             "Aidan",
-            "Juno",
-            "Zen"
+            "Bobby",
+            "Juno"
           ],
           "gameCount": 2,
           "cumSum": -17.65
@@ -219,9 +219,9 @@
           "players": [
             "Bei",
             "Aidan",
+            "Bobby",
             "David",
-            "Juno",
-            "Zen"
+            "Juno"
           ],
           "gameCount": 1,
           "cumSum": 30.12
@@ -298,8 +298,8 @@
           "players": [
             "Shawn",
             "Aidan",
-            "Juno",
-            "Zen"
+            "Bobby",
+            "Juno"
           ],
           "gameCount": 1,
           "cumSum": 5.12
@@ -350,8 +350,8 @@
           "players": [
             "Aidan",
             "Bei",
-            "Juno",
-            "Zen"
+            "Bobby",
+            "Juno"
           ],
           "gameCount": 2,
           "cumSum": 48.79
@@ -360,8 +360,8 @@
           "player": "Aidan",
           "players": [
             "Aidan",
-            "Juno",
-            "Zen"
+            "Bobby",
+            "Juno"
           ],
           "gameCount": 2,
           "cumSum": -20.36
@@ -371,9 +371,9 @@
           "players": [
             "Aidan",
             "Bei",
+            "Bobby",
             "David",
-            "Juno",
-            "Zen"
+            "Juno"
           ],
           "gameCount": 1,
           "cumSum": -26.29
@@ -382,9 +382,9 @@
           "player": "Aidan",
           "players": [
             "Aidan",
+            "Bobby",
             "Juno",
-            "Shawn",
-            "Zen"
+            "Shawn"
           ],
           "gameCount": 1,
           "cumSum": -10.0
@@ -489,7 +489,7 @@
             "Juno",
             "Aidan",
             "Bei",
-            "Zen"
+            "Bobby"
           ],
           "gameCount": 2,
           "cumSum": -30.28
@@ -499,7 +499,7 @@
           "players": [
             "Juno",
             "Aidan",
-            "Zen"
+            "Bobby"
           ],
           "gameCount": 2,
           "cumSum": 0.64
@@ -509,8 +509,8 @@
           "players": [
             "Juno",
             "Aidan",
-            "Shawn",
-            "Zen"
+            "Bobby",
+            "Shawn"
           ],
           "gameCount": 1,
           "cumSum": -30.0
@@ -521,8 +521,8 @@
             "Juno",
             "Aidan",
             "Bei",
-            "David",
-            "Zen"
+            "Bobby",
+            "David"
           ],
           "gameCount": 1,
           "cumSum": -18.49
@@ -616,7 +616,7 @@
       "date": "2022-08-01",
       "data": [
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 35.0,
           "buyout": 46.49,
           "delta": 11.49
@@ -640,7 +640,7 @@
       "date": "2022-07-18",
       "data": [
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 20.0,
           "buyout": 54.88,
           "delta": 34.88
@@ -676,7 +676,7 @@
           "delta": 13.07
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 10.0,
           "buyout": 10.19,
           "delta": 0.19
@@ -700,7 +700,7 @@
       "date": "2022-06-19",
       "data": [
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 10.0,
           "buyout": 18.23,
           "delta": 8.23
@@ -730,7 +730,7 @@
           "delta": 52.05
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 20.0,
           "buyout": 18.95,
           "delta": -1.05
@@ -772,7 +772,7 @@
           "delta": -18.49
         },
         {
-          "player": "Zen",
+          "player": "Bobby",
           "buyin": 35.75,
           "buyout": 16.65,
           "delta": -19.1
