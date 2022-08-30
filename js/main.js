@@ -10,7 +10,7 @@ initializePeopleSection(data);
 
 // Plot stuff
 const linePlotMargin = { top: 10, bottom: 40, left: 35, right: 35 };
-const boxPlotMargin = { top: 20, bottom: 40, left: 35, right: 35 };
+const boxPlotMargin = { top: 20, bottom: 42, left: 35, right: 35 };
 const piePlotMargin = { top: 0, bottom: 0, left: 47, right: 47 };
 
 const redrawLinePlot = drawLinePlot(data, "line-plot-parent", linePlotMargin);
