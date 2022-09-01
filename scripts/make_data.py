@@ -109,20 +109,22 @@ AVATAR_BASE_URL = "https://mwiens91.github.io/poker-plots/data/avatars"
 # Colours for players. These are generated automatically and inserted
 # into this script by the make_player_colours.mjs script.
 PLAYER_COLOURS_HEX = {
-    "david": "#5eab65",
-    "bobby": "#aa60be",
-    "bei": "#ad9940",
-    "aidan": "#c8597b",
-    "shawn": "#648acc",
-    "juno": "#c8633d",
+    "david": "#70ad4b",
+    "bobby": "#8772c8",
+    "bei": "#c75a8f",
+    "shawn": "#d2a649",
+    "matt": "#50b09a",
+    "aidan": "#cd5943",
+    "juno": "#887234",
 }
 PLAYER_COLOURS_RGB = {
-    "david": [94, 171, 101],
-    "bobby": [170, 96, 190],
-    "bei": [173, 153, 64],
-    "aidan": [200, 89, 123],
-    "shawn": [100, 138, 204],
-    "juno": [200, 99, 61],
+    "david": [112, 173, 75],
+    "bobby": [135, 114, 200],
+    "bei": [199, 90, 143],
+    "shawn": [210, 166, 73],
+    "matt": [80, 176, 154],
+    "aidan": [205, 89, 67],
+    "juno": [136, 114, 52],
 }
 
 
