@@ -218,24 +218,18 @@ def process_raw_data() -> tuple[
         # potentially worry about here. On Firefox, the ledger will be
         # copy-pasted as
         #
-        # PLAYERNAME @ SOMEID
+        # PLAYERNAME POSSIBLY WITH WHITESPACE @ SOMEID
         # BUYIN BUYOUT STACK NET
         #
         # where this pattern is repeated for each player. On Chrome, it
         # copy-pastes each player's data in one line:
         #
-        # PLAYERNAME @ SOMEID BUYIN BUYOUT STACK NET
+        # PLAYERNAME POSSIBLY WITH WHITESPACE @ SOMEID BUYIN BUYOUT STACK NET
         #
-        # Technically the string "DETAILS" (which is grabbed from a
-        # button using that string) is appended to the ID, but we aren't
-        # using the IDs from the ledger so this doesn't really matter
-        # for our purposes.
-        #
-        # How we're going to differentiate them is by how many elements
-        # there are on the first line when we split by whitespace. If
-        # there are more than 3, then it's the Chrome format. Otherwise,
-        # it'll be the Firefox format.
-        is_firefox_format = len(lines[0].split()) < 4
+        # Technically for the above string "DETAILS" (which is grabbed from
+        # a button element named with that string) is appended to the ID,
+        # but we aren't using the IDs so this doesn't really matter.
+        is_firefox_format = len(lines[0].rpartition("@")[-1].split()) == 1
 
         # Now, depending on the format, we'll group the data differently
         # when we iterate through it. For Firefox format, we'll group
@@ -247,11 +241,11 @@ def process_raw_data() -> tuple[
             # Parse the line(s)
             if is_firefox_format:
                 l1, l2 = iter_line
-                player_name_raw = l1.split()[0]
+                player_name_raw = " ".join(l1.split()[:-2])
                 player_data = [float(x) for x in l2.split()]
             else:
                 l_split = iter_line.split()
-                player_name_raw = l_split[0]
+                player_name_raw = " ".join(l_split[:-6])
                 player_data = [float(x) for x in l_split[-4:]]
 
             buyin = player_data[0]
@@ -591,7 +585,10 @@ if __name__ == "__main__":
                 name=player_name,
                 colourHex=PLAYER_COLOURS_HEX[player_name.lower()],
                 colourRgb=PLAYER_COLOURS_RGB[player_name.lower()],
-                avatar=AVATAR_BASE_URL + "/" + player_name.lower() + ".webp",
+                avatar=AVATAR_BASE_URL
+                + "/"
+                + player_name.lower().replace(" ", "_")
+                + ".webp",
                 gameCount=len(player_dict[player_name]),
                 cumSum=player_dict[player_name][-1]["cumSum"],
                 matchupData=player_matchup_dict[player_name],

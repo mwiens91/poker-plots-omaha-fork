@@ -38,7 +38,12 @@ fs.readdirSync(rawDataDirPath).forEach((file) => {
   }
 
   for (let i = 0; i < lines.length; i += di) {
-    const playerName = lines[i].split(/\s+/)[0].toLowerCase();
+    const playerName = lines[i]
+      .match(/^(.*)@/)[1]
+      .trim()
+      .replace(/\s+/, " ")
+      .toLowerCase();
+
     const net = parseFloat(lines[i + di - 1].split(/\s+/).at(-1));
 
     if (playerName in playersWithCumSum) {

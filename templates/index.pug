@@ -220,7 +220,7 @@ head
     .d-flex.flex-row.justify-content-center
       .people-legend-avatar-div(style={ "max-width": "1044px" })
         each player in data.players
-          .px-1.pt-1.pb-1(id="people-icon-div-" + player.name)
+          .px-1.pt-1.pb-1(id="people-icon-div-" + player.name.replaceAll(" ", "_"))
             img.people-legend-avatar-circle(
               src=player.avatar,
               alt=player.name,

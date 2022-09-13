@@ -208,7 +208,7 @@ const initializePeopleSection = (data) => {
   // Add mouseover listeners to people legend avatars
   for (const player of data.players) {
     const legendElement = document.getElementById(
-      "people-icon-div-" + player.name
+      "people-icon-div-" + player.name.replaceAll(" ", "_")
     );
 
     legendElement.addEventListener("mouseover", () => adjustPeopleBody(player));
