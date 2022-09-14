@@ -101,7 +101,7 @@ exec(
     false
   )}' temp.py > make_data.py`
 );
-exec('rm temp.py');
+exec("rm temp.py");
 
 // Add back in executable permission and format code
 exec("chmod +x make_data.py");
