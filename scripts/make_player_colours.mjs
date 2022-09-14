@@ -19,10 +19,27 @@ fs.readdirSync(rawDataDirPath).forEach((file) => {
   const fullText = fs.readFileSync(fullFilePath, "utf8");
   const lines = fullText.split(/[\r\n]+/).filter((line) => line);
 
-  // Read the data
-  for (let i = 0; i < lines.length; i += 2) {
-    const playerName = lines[i].split(/(\s+)/)[0].toLowerCase();
-    const net = parseFloat(lines[i + 1].split(/(\s+)/)[6]);
+  // Read the data. We need to support both Firefox and Chrome here.
+  // The formatting of the copy-paste is browser dependent, see comments
+  // in make_data.py for a more thorough description.
+  const isFirefoxFormat =
+    lines[0]
+      .match(/@(.*?)$/)[1]
+      .trim()
+      .split(/\s+/).length === 1;
+
+  // Loop increment
+  let di;
+
+  if (isFirefoxFormat) {
+    di = 2;
+  } else {
+    di = 1;
+  }
+
+  for (let i = 0; i < lines.length; i += di) {
+    const playerName = lines[i].split(/\s+/)[0].toLowerCase();
+    const net = parseFloat(lines[i + di - 1].split(/\s+/).at(-1));
 
     if (playerName in playersWithCumSum) {
       playersWithCumSum[playerName] += net;
